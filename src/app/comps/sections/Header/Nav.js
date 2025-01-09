@@ -6,9 +6,9 @@ import "./header.scss";
 export default function Nav(){
     const [openNavbar, setOpenNavbar]=useState(false);
     return (
-        <div className="">
-            <nav className="bg-gray-800 p-4 w-full">
-                <div className="container mx-auto flex justify-between items-center">
+        <div className="w-full">
+            <nav className=" w-full nav-toggler-height">
+                <div className="bg-gray-800 p-4   flex justify-between items-center nav-toggler wi-full">
                     <a href="#" className="text-white text-lg font-bold">Mi Sitio</a>
                     <div className="hidden md:flex space-x-4">
                         <a href="#" className="text-gray-300 hover:text-white">Inicio</a>
@@ -24,7 +24,7 @@ export default function Nav(){
                         </button>
                     </div>
                 </div>
-                <div id="menu" className={openNavbar?"md:hidden ":"hidden"+" "}>
+                <div id="menu" className={openNavbar?"md:hidden nav-toggler-list bg-gray-800":"hidden"+" "}>
                     <a href="#" className="block text-gray-300 hover:text-white">Inicio</a>
                     <a href="#" className="block text-gray-300 hover:text-white">Servicios</a>
                     <a href="#" className="block text-gray-300 hover:text-white">Precios</a>
