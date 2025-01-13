@@ -1,4 +1,4 @@
-@use "../../../styles/vars.scss" as *;
+@use "../../../styles/vars" as *;
 
 .hero-image{
     width: 100%;
@@ -11,5 +11,6 @@
 }
 
 .hero-section{
-    height: 60vh;
+    background-color: $HeroSectionBG;
+    //height: 60vh;
 }

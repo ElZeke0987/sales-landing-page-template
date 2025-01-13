@@ -1,0 +1,16 @@
+@use "../../../styles/vars" as *;
+
+.benefits-section{
+    background-color: $BenefitsSectionBG;
+    @media (max-width:768px){
+        .benefit-item{
+            width: 90vw;
+        }
+        .benefit-desc{
+            width: 100%;
+            p{
+                width: 70%;
+            }
+    }
+    }
+}
