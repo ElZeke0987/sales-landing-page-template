@@ -7,7 +7,7 @@ import { ImgHeroBG } from "@/global-vars";
 
 export default function HeroSection(){
     return(
-        <section className="pt-32 md:pt-0 hero-section">
+        <section className="md:pt-10 pt-32 hero-section py-10">
             <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center">
                 <div className={"md:w-1/2 "+(ImgHeroBG?"relative":"")}>
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 hero-cont">Descubre el Futuro de [Tu Producto]</h1>

@@ -18,23 +18,47 @@
 
     }
 }
+@keyframes abrirNav {
+    0%{
+        top: -90vh;
+    }
+    100%{
+        top: 10vh;
+    }
+}
+
+@keyframes cerrarNav {
+    0%{
+        top: 10vh;
+    }
+    100%{
+        top: -90vh;
+    }
+}
 
 @media (max-width: 768px){
     .nav-toggler-height{
-        height: 100vh;
         z-index: 1000 !important;
         position: relative;
         *{
             position: relative;
-            z-index: 1000 !important;
+            z-index: 1000;
         }
 
         .nav-toggler{
-            height: 10%;
+            height: 10vh;
             width: 100%;
+            z-index: 1000;
         }
+        
         .nav-toggler-list{
-            height: 90%;
+
+            height: 90vh;
+            width: 100%;
+            position: fixed;
+            z-index: 900;
+
+            left: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -42,6 +66,12 @@
             a{
                 font-size: 40px;
             }
+        }
+        .closed-nav{
+            animation: cerrarNav $CloseNavAnimMS forwards;
+        }
+        .open-nav{
+            animation: abrirNav $OpenNavAnimMS forwards;
         }
     }
 }

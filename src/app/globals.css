@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@use "~slick-carousel/slick/slick.css" as *;
+@use "~slick-carousel/slick/slick-theme.css" as *;
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

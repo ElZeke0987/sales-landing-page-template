@@ -2,20 +2,25 @@
 
 import { useState } from "react"
 import "./header.scss";
+import { navLinks } from "@/global-vars";
 
 
 export default function Nav(){
     const [openNavbar, setOpenNavbar]=useState(false);
+
+
     return (
         <div className="w-full">
             <nav className=" w-full nav-toggler-height">
                 <div className="bg-gray-800 p-4  flex justify-between items-center nav-toggler wi-full nav-transp-item">
                     <a href="#" className="text-white text-lg font-bold">Mi Sitio</a>
                     <div className="hidden md:flex space-x-4">
-                        <a href="#" className="text-gray-300 hover:text-white">Inicio</a>
-                        <a href="#" className="text-gray-300 hover:text-white">Servicios</a>
-                        <a href="#" className="text-gray-300 hover:text-white">Precios</a>
-                        <a href="#" className="text-gray-300 hover:text-white">Contacto</a>
+
+                        {
+                            navLinks.map((linkObj, i)=>{
+                                return (<a href={linkObj.href} className={"text-gray-300 hover:text-white"} key={i}>{linkObj.text}</a>)
+                            })
+                        }
                     </div>
                     <div className="md:hidden">
                         <button id="menu-toggle" className="text-white focus:outline-none" onClick={()=>setOpenNavbar(!openNavbar)}>
@@ -25,11 +30,12 @@ export default function Nav(){
                         </button>
                     </div>
                 </div>
-                <div id="menu" className={openNavbar?"md:hidden nav-toggler-list bg-gray-800":"hidden nav-transp-item"+" "}>
-                    <a href="#" className="block text-gray-300 hover:text-white">Inicio</a>
-                    <a href="#" className="block text-gray-300 hover:text-white">Servicios</a>
-                    <a href="#" className="block text-gray-300 hover:text-white">Precios</a>
-                    <a href="#" className="block text-gray-300 hover:text-white">Contacto</a>
+                <div id="menu" className={(openNavbar?" open-nav":"  closed-nav")+" md:hidden nav-toggler-list bg-gray-800 nav-transp-item"} onClick={()=>setOpenNavbar(false)}>
+                        {
+                            navLinks.map((linkObj, i)=>{
+                                return (<a href={linkObj.href} className={"block text-gray-300 hover:text-white"} key={i} >{linkObj.text}</a>)
+                            })
+                        }
                 </div>
             </nav>
         </div>
