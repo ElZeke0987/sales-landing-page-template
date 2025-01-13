@@ -44,13 +44,6 @@ export default function Testimonials(){
                 <div className="carousel-list-cont flex justify-center">
                     <div className={" carousel-list flex flex-row px-4 "} style={{transform: `translateX(-${((carouselId-1) * 22)}vw)`}} onClick={()=>console.log("Click on testimonials section test")}>
                         {testimonialsList.map((tm, i)=>{
-                            const clases={
-                                [carouselId]:"car-i-center",
-                                [nextCarouselId]:"car-i-next",
-                                [prevCarouselId]:"car-i-prev",
-                                [undefined]:"car-i-void",
-                            }
-
                             return(<div key={i} className={"text-center carousel-item "}>{tm.text}</div>)
                         
                         })}
