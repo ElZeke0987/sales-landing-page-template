@@ -1,40 +1,6 @@
 @use "../../../styles/vars.scss" as *;
 
-
-.carousel-container{
-    .carousel-list-cont{
-        overflow: hidden;
-        position: relative;
-        width: $TestimonialCarouselMaxWX;
-        height: $TestimonialHY;
-    }
-    .carousel-list{
-        position: relative;
-        max-width: $TestimonialCarouselMaxWX;
-        transition: transform 0.5s;
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: $TestimonialItemWX;
-        grid-template-rows: $TestimonialHY;
-        gap: $TestimonialMargin;
-        .carousel-item{
-            background-color: $TestimonialItemBG;
-            width: 100%;
-        }
-        .car-i-center{
-            //margin: 0 $TestimonialMargin;
-            grid-column: 2 / 3;
-        }
-    }
-    .carousel-arrow{
-        transition: all 0.5s;
-        &:hover{
-            background-color: $TestimonialsCarouselArrHoverBG;
-        }
-    }
-    @media (max-width: 768px){
-        .carousel-list{
-            max-width: 100%;
-        }
-    }
+.testimonials-section{
+    background-color: $TestimonialsSectionBG;
+    //z-index: 10;
 }

@@ -5,15 +5,32 @@ $CloseNavAnimMS: 0.2s;
 $NavHY: 10vh;
 
 $HeroSectionBG: #273679;
-$BenefitsSectionBG: #0c1fc9;
+$featuresSectionBG: #09157e;
+$TestimonialsSectionBG: #1b1b79;
+
+$HeroImageWX: 31vw;
+$HeroImageHY: 31vw;
+
+$featuresGridGap: 30px;
+$featureItem768WX: 90%;
+$featureItem768HY: 30vh;
+$featureItemPadding: 5vh;
 
 $CarouselTransitionMS: 0.5;
-$TestimonialsCarouselArrHoverBG: #419fb9f4;
-$TestimonialItemBG: #000000;
-$TestimonialItemWX: 20vw;
+$DefCarouselArrHoverBG: #419fb9f4;
+$DefCarouselItemBG: #000000;
+$DefCarouselItemWX: 20vw;
 
-$TestimonialMargin: 5%;
+$DefCarouselGap: 5%;
 //$Testimonial768Margin: 
 
-$TestimonialCarouselMaxWX: 50vw;
-$TestimonialHY: 40vh;
+@media (max-width: 768px){
+    $DefCarouselMaxWX: 100% !important;
+}
+$DefCarouselMaxWX: 50vw;
+$DefCarouselHY: 40vh;
+
+$DefCarouselArrowHY: 10vh;
+
+$ProductTypesCarHY: 10vh;
+$ProductTypesCarWX: 100vw;

@@ -1,0 +1,77 @@
+
+@use "../../../styles/vars.scss" as *;
+
+.carousel-container{
+
+    .carousel-list-cont{
+        overflow: hidden;
+        position: relative;
+        width: $DefCarouselMaxWX;
+        height: $DefCarouselHY;
+
+    }
+    .carousel-list{
+        position: relative;
+        max-width: 100%;
+        transition: transform 0.5s;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: $DefCarouselItemWX;
+        grid-template-rows: $DefCarouselHY;
+        gap: $DefCarouselGap;
+        .carousel-item{
+            background-color: $DefCarouselItemBG;
+            width: 100%;
+            height: 100%;
+        }
+        .car-i-center{
+            //margin: 0 $TestimonialMargin;
+            grid-column: 2 / 3;
+        }
+    }
+    .carousel-arrow{
+        //z-index: 100;
+        transition: all 0.5s;
+        &:hover{
+            background-color: $DefCarouselArrHoverBG;
+        }
+    }
+    
+}
+@media (max-width: 768px){
+    
+
+        .carousel-container{
+            display: grid;
+            grid-template-columns: 50vw 50vw;
+            grid-template-rows: $DefCarouselHY 40%;
+            justify-items: center;
+
+            .carousel-list-cont{
+                width: 100%;
+                height: 100%;
+                grid-column: 1/4;
+                grid-row: 1/2;
+            }
+            .carousel-arrow{
+                width: 100%;
+                height: $DefCarouselArrowHY;
+
+            }
+            .arrow-prev{
+
+                grid-column: 1/2;
+                grid-row: 2/3;
+                
+            }
+            .arrow-next{
+                grid-column: 2/3;
+                grid-row: 2/3;
+            }
+        }
+        .carousel-list{
+            max-width: 100%;
+            grid-auto-columns: 100% !important;
+            gap: 1vw;
+        }
+    }

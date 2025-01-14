@@ -1,0 +1,42 @@
+@use "../../../styles/vars" as *;
+
+.features-section{
+    background-color: $featuresSectionBG;
+    display: grid;
+    .features-list{
+        display: grid;
+        gap: $featuresGridGap;
+    }
+    
+    .feature-item{
+        padding: $featureItemPadding;
+    }
+}
+@media (max-width:768px){
+    .features-section{
+        grid-auto-rows: auto;
+        gap: 40px;
+    }
+    .features-list{
+        justify-items: center;
+        grid-auto-rows: $featureItem768HY;
+    }
+    .feature-item{
+        width: $featureItem768WX;
+        height: 100%;
+        .feature-img{
+            //height: 60%;
+        }
+        .feature-title{
+            //height: 20%;
+        }
+
+    }
+    .feature-desc{
+        //height: 30%;
+        width: 100%;
+        p{
+            width: 70%;
+        }
+}
+}

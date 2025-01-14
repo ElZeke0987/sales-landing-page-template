@@ -1,0 +1,23 @@
+@use "../../../styles/vars.scss" as *;
+
+.products-types-carousel{
+    .carousel-container{
+        width: $ProductTypesCarWX;
+        display: flex;
+        justify-content: center;
+    }
+    .carousel-list-cont{
+        height: $ProductTypesCarHY;
+        
+        display: flex;
+        justify-content: center;
+    }
+    .carousel-list{
+        display: flex;
+    }
+}
+.product-image-cont{
+    width: 10vw;
+    height: 10vh;
+    
+}

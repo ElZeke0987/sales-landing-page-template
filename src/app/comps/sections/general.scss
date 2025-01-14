@@ -2,11 +2,24 @@
     height: 100vh;
 }
 
+@media (min-width: 768px){
+    .vh-full-nav{
+        height: 110vh;
+    }
+}
+
+
 .first-sect-trans-nav{
     *{
         z-index: 20;
     }
     .bg-first-trans{
         z-index: 0;
+    }
+}
+.z-dist{
+    z-index: 600;
+    header{
+        z-index: 900;
     }
 }
