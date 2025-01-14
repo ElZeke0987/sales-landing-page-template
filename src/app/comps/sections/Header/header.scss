@@ -23,13 +23,13 @@
         top: -90vh;
     }
     100%{
-        top: 10vh;
+        top: $NavHY;
     }
 }
 
 @keyframes cerrarNav {
     0%{
-        top: 10vh;
+        top: $NavHY;
     }
     100%{
         top: -90vh;
@@ -37,16 +37,20 @@
 }
 
 @media (max-width: 768px){
+    .nav-hy{
+        height: $NavHY;
+    }
     .nav-toggler-height{
         z-index: 1000 !important;
         position: relative;
+        
         *{
             position: relative;
             z-index: 1000;
         }
 
         .nav-toggler{
-            height: 10vh;
+            height: $NavHY;
             width: 100%;
             z-index: 1000;
         }

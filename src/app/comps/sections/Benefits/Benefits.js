@@ -1,6 +1,7 @@
 "use client";
 import { benefitsList } from "@/global-vars";
 import "./benefits.scss";
+import "../general.scss";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -20,7 +21,7 @@ export default function Benefits(){
     const [openId, setOpenId]=useState();
 
     return(
-        <section className="flex flex-col justify-center items-center w-full py-10 benefits-section" id="benefits">
+        <section className="flex flex-col justify-center items-center w-full benefits-section vh-full" id="benefits">
             <h1 className="text-lg md:text-3xl font-extrabold p-8 text-center"> Beneficios de nuestro gorro </h1>
             <div className="grid md:grid-cols-3 gap-8">
                 {

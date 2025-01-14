@@ -5,7 +5,7 @@ import { ImgTransNavBG } from "@/global-vars";
 export default function Header(){
 
     return(
-        <header className={"relative md:block w-full "+(ImgTransNavBG?"nav-transp":"") + ""}>
+        <header className={"relative md:block w-full nav-hy"+(ImgTransNavBG?"nav-transp":"") + ""}>
             <div className="fixed md:relative w-full">
                 {/* <Offers/> */}
                 <Nav/>

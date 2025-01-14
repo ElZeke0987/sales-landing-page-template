@@ -29,9 +29,36 @@ export const benefitsList=[
 ];
 
 export const testimonialsList=[
-    {text: "Excelente servicio de atencion al cliente", stars: 5, id: 1},
-    {text: "Estilo bien hecho de LA", stars: 4, id: 2},
-    {text: "C3-3", id: 3},
-    {text: "C4-3", id: 4},
-    //{text: "C5-3", id: 5},
+    {  
+        nameTest: "Leopoldo Hernandez",
+        text: "Excelente servicio de atencion al cliente", 
+        stars: 5, 
+        id: 1,
+        prfImg: "/images/testimonials/default-testimonial.jpg",
+    },
+    {
+        nameTest: "Fabricio Ochoa",
+        text: "Estilo bien hecho de LA", 
+        stars: 4, 
+        id: 2,
+        prfImg: "/images/testimonials/default-testimonial.jpg",
+    },
+    {
+        nameTest: "Lcoo Chinia",
+        text: "Quede anonadado wacho con este gorro",
+        id: 3,
+        prfImg: "/images/testimonials/default-testimonial.jpg",
+    },
+    {
+        nameTest: "Alex Luna",
+        text: "Hola, buen gorro",
+        id: 4,
+        prfImg: "/images/testimonials/default-testimonial.jpg",
+    },
+    {
+        nameTest: "Pity martinez",
+        text: "Homero",
+        id: 5,
+        prfImg: "/images/testimonials/default-testimonial.jpg",
+    },
 ]
