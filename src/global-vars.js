@@ -98,25 +98,4 @@ export const typesList = [
         title: "Gorro Nueva York",
         itemId: 4,
     },
-    {
-        id: 4,
-        imgUrl: "/images/gorroNY.jpg",
-        price: "39.99",
-        title: "Gorro Nueva York",
-        itemId: 4,
-    },
-    {
-        id: 5,
-        imgUrl: "/images/gorroNY.jpg",
-        price: "39.99",
-        title: "Gorro Nueva York",
-        itemId: 4,
-    },
-    {
-        id: 6,
-        imgUrl: "/images/gorroNY.jpg",
-        price: "39.99",
-        title: "Gorro Nueva York",
-        itemId: 4,
-    },
 ]

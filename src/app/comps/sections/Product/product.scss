@@ -1,5 +1,15 @@
 @use "../../../styles/vars.scss" as *;
 
+@keyframes effectChangeType{
+    from{
+        
+        transform: scale(40%, 100%);
+    }
+    to{
+        transform: scale(100%, 100%);
+    }
+}
+
 .products-types-carousel{
     .carousel-container{
         width: $ProductTypesCarWX;
@@ -17,8 +27,22 @@
         grid-template-rows: $ProductTypeItemHY;
         grid-auto-columns: $ProductTypeItemWX;
         align-items: center;
+        justify-items: center;
         gap: 0;
         transform: translateX(0) !important;
+    }
+    .type-selected{
+        position: relative;
+        .glass-abs{
+            animation-name: effectChangeType;
+            animation-duration: $ProdTypeSelectedAnimS;
+            position: absolute;
+            top: -25%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: $ProductTypeSelectedBG;
+        }
     }
 }
 .product-image-cont{
