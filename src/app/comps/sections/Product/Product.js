@@ -3,6 +3,7 @@ import { typesList } from "@/global-vars";
 import Carousel from "../../reusable/Carousel/Carousel";
 import Image from "next/image";
 import "./product.scss";
+import "../general.scss";
 import { useState } from "react";
 
 function ImageSelectFrame({obj, setObjOpt}){
@@ -27,7 +28,7 @@ export default function Product(){
                     </div>
                     
                     <div className="products-types-carousel">
-                        <Carousel objList={typesList} Element={ImageSelectFrame} setObjOpt={setObjOpt}/>
+                        <Carousel objList={typesList} Element={ImageSelectFrame} setObjOpt={setObjOpt} carouselListContClasses={"scroll-modern-mini-x"}/>
                     </div>
                 </div>
                 <div>

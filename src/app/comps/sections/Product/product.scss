@@ -8,12 +8,17 @@
     }
     .carousel-list-cont{
         height: $ProductTypesCarHY;
-        
+        overflow: none;
+        overflow-x: auto;
         display: flex;
         justify-content: center;
     }
     .carousel-list{
-        display: flex;
+        grid-template-rows: $ProductTypeItemHY;
+        grid-auto-columns: $ProductTypeItemWX;
+        align-items: center;
+        gap: 0;
+        transform: translateX(0) !important;
     }
 }
 .product-image-cont{

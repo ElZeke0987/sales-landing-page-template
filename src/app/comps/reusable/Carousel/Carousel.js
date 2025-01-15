@@ -12,33 +12,47 @@ function getTranslateX(carouselId){
     }
 }
 
-export default function Carousel({objList, Element, arrows=true , setObjOpt,carouselContainerClasses, carouselListContClasses, carouselListClasses}){
+export default function Carousel({objList, Element, arrows=true , setObjOpt,carouselContainerClasses, carouselListContClasses, carouselListClasses, centerAlwaysItems=true}){
     const [nextCarouselId, setNextCarouselId]=useState();
     const [carouselId, setCarouselId]=useState(1);
     const [prevCarouselId, setPrevCarouselId]=useState();
     const [isAnimating, setIsAnimating]=useState(0);
     const carouselDyn=useRef(null);
     const carouselCenterItem=useRef(null);
+    const carouselSta=useRef(null);
+    const firstNormalItem = useRef();
 
     useEffect(()=>{
         setNextCarouselId(carouselId+1);
         setPrevCarouselId(carouselId-1);
-        
-        if(carouselCenterItem){
+        const parentList = carouselDyn.current;
+        const parentDims = parentList?.getBoundingClientRect();
+        const firstNormalDims = firstNormalItem.current?.getBoundingClientRect();
+        if(carouselId==-1 && centerAlwaysItems){
+            const firstNormalOffSetX = (firstNormalDims.left - parentDims.left)
             
-            const parentList = carouselDyn.current;
+            console.log(" to select: "+`${firstNormalOffSetX}px`)
+
+            parentList.style.left = `${firstNormalOffSetX}px`;
+        }
+        if(carouselCenterItem&&arrows&&firstNormalItem.current){
+            const centerStatic = carouselSta.current;
             const childCenter= carouselCenterItem.current;
-            console.log("Test of childCenter: ", carouselId,childCenter);
+            parentList.style.position = "absolute"
+            parentList.style.top = "0";
+            //console.log("Test of childCenter: ", carouselId,childCenter);
             if(!childCenter) {return}
             const childDims = childCenter.getBoundingClientRect();
-            //const parentDims = parentList.getBoundingClientRect();
+            const centerDims = centerStatic.getBoundingClientRect();
             
-            const centeredOnX = childDims.width / 2;
+            
+            const centeredOnX = (childDims.left - parentDims.left);
 
-            console.log("testing dims: ", childDims)
-            const offSetX = centeredOnX * carouselId;
 
-            parentList.style.transform = `translateX(-${offSetX}px)`
+            //console.log("testing dims: ", childDims)
+            const offSetX = centeredOnX ;
+            //parentList.style.transform = `translateX(-${offSetX}px)`
+            parentList.style.left = `-${offSetX}px`;
         }
     },[carouselId])
 
@@ -47,13 +61,22 @@ export default function Carousel({objList, Element, arrows=true , setObjOpt,caro
         //setIsAnimating(0);
     },[isAnimating])
 
+    function setSelectRefs(el, objId){
+        carouselCenterItem.current=objId==carouselId?el:carouselCenterItem.current;
+        if(firstNormalItem.current){/*console.log("first normal item ref test: ", carouselId,firstNormalItem.current);*/return};
+        console.log("first normal item ref test: ", carouselId,firstNormalItem.current)
+        firstNormalItem.current=objId==1?el:firstNormalItem.current;
+        //console.log("refs test: ", carouselId ,carouselCenterItem.current, carouselId, firstNormalItem.current)
+    }
+
     function handleIndChange(dir){
-        console.log("Changing carousel")
+        console.log("Changing carousel: ", carouselId);
         setIsAnimating(dir=="next"?1:2);
-        
+        const lastInd=objList.length-(centerAlwaysItems?2:2)
+        const firstInd = centerAlwaysItems?-1:0;
         setCarouselId((prev)=>{
-            if(prev==0 &&dir=="prev")return objList.length+1
-            else if(prev==objList.length+1&&dir=="next")return 0
+            if(prev <= firstInd &&dir=="prev")return lastInd
+            else if(prev==lastInd&&dir=="next")return firstInd
             else return dir=="next"?prev+1:prev-1;
 
         })
@@ -61,13 +84,13 @@ export default function Carousel({objList, Element, arrows=true , setObjOpt,caro
     //console.log("testing objList: ", objList)
     //style={{transform: `translateX(${getTranslateX(carouselId)})`}}
     return(
-    <div className={"carousel-container w-full flex justify-center "+carouselContainerClasses}>
+    <div className={"carousel-container w-full md:flex md:justify-center"+carouselContainerClasses}>
         {arrows&&<button onClick={()=>handleIndChange("prev")} className="carousel-arrow arrow-prev w-10 ">{"<"}</button>}
-        <div className={"carousel-list-cont md:flex md:justify-center "+carouselListContClasses}>
+        <div ref={carouselSta} className={"carousel-list-cont md:flex md:justify-center "+carouselListContClasses} >
             <div ref={ carouselDyn} className={"carousel-list flex flex-row px-4 "+carouselListClasses}  onClick={()=>console.log("Click on testimonials section test")}>
                 {objList.map((obj, i)=>{
                     return(
-                        <div ref={carouselCenterItem} key={i}>
+                        <div ref={el=>setSelectRefs(el, obj.id)} key={i}>
                             <Element obj={obj} i={i} setObjOpt={setObjOpt}  />
                         </div>
                     

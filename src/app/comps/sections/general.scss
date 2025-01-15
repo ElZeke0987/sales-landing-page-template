@@ -1,3 +1,5 @@
+@use "../../styles/vars.scss" as *;
+
 .vh-full{
     height: 100vh;
 }
@@ -21,5 +23,27 @@
     z-index: 600;
     header{
         z-index: 900;
+    }
+}
+
+.scroll-modern-mini-x{
+    &::-webkit-scrollbar{
+        height: $ScrollModernMiniHY;
+        //background: $ScrollModernMiniTrackBG;
+    }
+    /*&::-webkit-scrollbar-track{
+        height: 10px;
+        background: $ScrollModernMiniTrackBG;
+    }*/
+    &::-webkit-scrollbar-thumb{
+        display: none;
+        background: $ScrollModernMiniThumbBG;
+        border-radius: 10px;
+    }
+    &:hover{
+        &::-webkit-scrollbar-thumb{
+            display: flex;
+        }
+        
     }
 }
