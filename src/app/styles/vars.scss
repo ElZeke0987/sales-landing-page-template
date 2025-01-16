@@ -1,21 +1,97 @@
+
+
+$NavLinksQuant: 4;
 $OfferBG: #222;
 $TranspNavBG: none;
 $OpenNavAnimMS: 0.5s;
 $CloseNavAnimMS: 0.2s;
 $NavHY: 10vh;
 
-$HeroSectionBG: #273679;
-$featuresSectionBG: #09157e;
-$TestimonialsSectionBG: #1b1b79;
+/*----Sections Backgrounds----*/
+
+$HeroSectionBG: #eee;
+$ProductSectionBG: #1c1c1c;
+$featuresSectionBG: #eee;
+$TestimonialsSectionBG: #61639d98;
+
+/*--Section secondary colors--*/
+
+$FeaturesTitleColor: #222;
+
+/* - Hero Section - */
 
 $HeroImageWX: 31vw;
 $HeroImageHY: 31vw;
+
+/* - Product Section - */
+
+$ProductSectionHY: 107vh;
+
+$ProductPrincipalHY: 80%;
+$ProductPrincipalGap: 20px;
+$ProductVisualsGap: 30px;
+
+$ProductImageContHY: 80%;
+$ProductImageContWX: 100%;
+
+$ProductImageHY: 100%;
+$ProductImageWX: 100%;
+
+$ProductCarouselGeneralHY: 20%;
+$ProductTypesCarHY: 100%;
+$ProductTypesCarWX: 30vw;
+
+$ProductTypeItemWX: 10vw;
+$ProductTypeItemHY: 100%;
+
+$ProductTypeSelectedBG: #09157e7a;
+$ProdTypeSelectedAnimS: 0.5s;
+
+$ProductTitleFontSize: 1.5rem;
+
+$ProductPriceFontSize: 1.2rem;
+$ProductPriceColor: #02ea28;
+
+$ProductDescFontSize: 0.8rem;
+
+$BuyContGap: 5vh;
+
+$StockTxtColor: black;
+$StockOptHoverBG: #1e79c88e;
+$StockOptHoverTxtColor: #000000;
+
+$ProductButtonWX: 100%;
+$ProductButtonHY: 7.5vh;
+
+$ProductButtonsGap: 0.5rem;
+$ProductButtonBuyNowBG: #2c7e09;
+$ProductButtonAddToCartBG: #eee;
+$ProductButtonAddToCartBRD: $ProductButtonBuyNowBG;
+
+/* - Big Features Section */
+
+$FeaturesSectionGap: 60px;
+$FeaturesContGap: 30px;
 
 $featuresGridGap: 30px;
 $featureItem768WX: 90%;
 $featureItem768HY: 30vh;
 $featureItemPadding: 5vh;
 
+/* - Testimonials Section - */
+
+$TestimonialsContGap: 60px;
+
+/* - FAQ Section - */
+
+
+$FaqTitleHY: 15vh;
+$FaqTitleTxtSize: 2.1rem;
+
+
+/*---- Reusable's ----*/
+
+/* Carrousel */
 $CarouselTransitionMS: 0.5;
 $DefCarouselArrHoverBG: #419fb9f4;
 $DefCarouselItemBG: #000000;
@@ -32,15 +108,44 @@ $DefCarouselHY: 40vh;
 
 $DefCarouselArrowHY: 10vh;
 
-$ProductTypesCarHY: 10vh;
-$ProductTypesCarWX: 30vw;
+/* Accordion */
+$AccordionBRD: #ffffff;
+$AccordionBRDStyle: solid;
+$AccordionTitleBG: #222;
+$AccordionHY: 50vh;
+$AccordionWidth: 5px;
 
-$ProductTypeItemWX: 10vw;
-$ProductTypeItemHY: 100%;
+$AccordionTitleJustify: center;
+$AccordionContentJustify: flex-start;
 
-$ProductTypeSelectedBG: #09157e7a;
-$ProdTypeSelectedAnimS: 0.5s;
+$AccordionDefCols: 1;
+$AccordionColWX: 100vw;
+$AccordionRowInitialHY: auto;
+$AccordionRowFinalHY: 90%;
+$AccordionRowFinalMaxHY: 50%;
+
+/* Custom Select*/
+
+$cusSelectBg: #eee;
+$cusSelectedColor: #111;
+$cusSelOptsContBg: #eee;
+$cusSelOptsContTxtColor: #777;
+$cusSelOptsContHoverBg: #7d98dd;
+$cusSelScrollbarWX: 10px;
+$cusSelScrollColor: #030f2b;
+$cusSelListOptsMaxHY: 35vh;
+
+/*----Custom Scrolls----*/
 
 $ScrollModernMiniHY: 7.5px;
 $ScrollModernMiniTrackBG: aqua;
 $ScrollModernMiniThumbBG: black;
+
+/*----Animations Vars Section----*/
+
+
+$NavLogoFadeInS: 1.2s;
+$NavLinksFadeInFactor: 420;
+$NavLinksFadeInMinMS: 1300ms;
+
+$ProductInfoFadeInS:0.9s;

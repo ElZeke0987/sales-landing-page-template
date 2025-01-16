@@ -1,8 +1,14 @@
 @use "../../../styles/vars" as *;
-
+.features-title{
+    color: $FeaturesTitleColor;
+}
+.features-cont{
+    gap: $FeaturesContGap;
+}
 .features-section{
     background-color: $featuresSectionBG;
     display: grid;
+    gap: $FeaturesSectionGap;
     .features-list{
         display: grid;
         gap: $featuresGridGap;

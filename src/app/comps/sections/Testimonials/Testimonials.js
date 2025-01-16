@@ -27,8 +27,11 @@ export default function Testimonials(){
 
     return(
         <section className="testimonials-section vh-full-nav flex flex-col justify-center" id="testimonials" >
-            <div className="w-full flex justify-center py-10  text-4xl font-bold">Testimonios</div>
-            <Carousel objList={testimonialsList} Element={TestimonialItem} centerAlwaysItems={false}/>
+            <div className="w-full flex justify-center  text-4xl font-bold">Testimonios</div>
+            
+                <Carousel objList={testimonialsList} Element={TestimonialItem} centerAlwaysItems={false}/>
+            
+                
         </section>
     )
 }

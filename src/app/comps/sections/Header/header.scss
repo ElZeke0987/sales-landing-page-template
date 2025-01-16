@@ -1,5 +1,5 @@
  @use "../../../styles/vars" as *;
-
+@use "../../../styles/animations.scss" as *;
 
  .wi-full{
     width: 100% !important;
@@ -9,7 +9,20 @@
     background-color: $OfferBG;
 }
 
+.nav-logo{
+    animation-name: fadeIn;
+    animation-duration: $NavLogoFadeInS;
+}
 
+.nav-links-list{
+
+    @for $i from 0 through $NavLinksQuant - 1{
+        .anim-#{$i + 1}{
+            animation-name: fadeIn;
+            animation-duration: calc($NavLinksFadeInMinMS + #{$i * $NavLinksFadeInFactor }ms);
+        }
+    }
+}
 
 .nav-transp{
     background-color: $TranspNavBG;

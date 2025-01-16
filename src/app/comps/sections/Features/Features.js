@@ -23,17 +23,20 @@ export default function features(){
     const [openId, setOpenId]=useState();
 
     return(
-        <section className=" w-full features-section  py-16" id="features">
-            <h1 className="text-lg md:text-3xl font-extrabold p-10 text-center"> Beneficios de nuestro gorro </h1>
-            <div className="md:grid-cols-3 features-list">
-                {
-                    featuresList.map((obj, i)=>{
-                        
-                        return <FeatureItem featureObj={obj} openId={openId} setOpenId={setOpenId} actualId={i} key={i} />
-                    })
-                }
+        <section className=" w-full flex flex-col features-section py-16 justify-center" id="features">
+            <h1 className="text-lg md:text-3xl font-extrabold text-center features-title"> Beneficios de nuestro gorro </h1>
+            <div className="features-cont flex flex-col">
+                <div className="md:grid-cols-3 features-list">
+                    {
+                        featuresList.map((obj, i)=>{
+                            
+                            return <FeatureItem featureObj={obj} openId={openId} setOpenId={setOpenId} actualId={i} key={i} />
+                        })
+                    }
+                </div>
+                <CTA text="Comprueba estos beneficios"/>
             </div>
-            <CTA text="Comprueba estos beneficios"/>
+                
         </section>
     )
 }

@@ -6,6 +6,7 @@ import Image from "next/image";
 import Features from "./Features/Features";
 import Testimonials from "./Testimonials/Testimonials";
 import Product from "./Product/Product";
+import FAQ from "./Faq/faq";
 
 
 export default function Sections(){
@@ -20,6 +21,7 @@ export default function Sections(){
             <Product/>
             <Features/>
             <Testimonials/>
+            <FAQ/>
         </div>
     )
 }

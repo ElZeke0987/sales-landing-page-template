@@ -13,12 +13,12 @@ export default function Nav(){
         <div className="w-full">
             <nav className=" w-full nav-toggler-height">
                 <div className="bg-gray-800 p-4  flex justify-between items-center nav-toggler wi-full nav-transp-item">
-                    <a href="#" className="text-white text-lg font-bold">Mi Sitio</a>
-                    <div className="hidden md:flex space-x-4">
+                    <a href="#" className="text-white text-lg font-bold nav-logo">Mi Sitio</a>
+                    <div className="hidden md:flex space-x-4 nav-links-list">
 
                         {
                             navLinks.map((linkObj, i)=>{
-                                return (<a href={linkObj.href} className={"text-gray-300 hover:text-white"} key={i}>{linkObj.text}</a>)
+                                return (<a href={linkObj.href} className={`text-gray-300 hover:text-white anim-${i+1}`} key={i}>{linkObj.text}</a>)
                             })
                         }
                     </div>
@@ -30,10 +30,10 @@ export default function Nav(){
                         </button>
                     </div>
                 </div>
-                <div id="menu" className={(openNavbar?" open-nav":"  closed-nav")+" md:hidden nav-toggler-list bg-gray-800 nav-transp-item"} onClick={()=>setOpenNavbar(false)}>
+                <div id="menu" className={(openNavbar?" open-nav":"  closed-nav")+" md:hidden nav-toggler-list bg-gray-800 nav-transp-item nav-links-list"} onClick={()=>setOpenNavbar(false)}>
                         {
                             navLinks.map((linkObj, i)=>{
-                                return (<a href={linkObj.href} className={"block text-gray-300 hover:text-white"} key={i} >{linkObj.text}</a>)
+                                return (<a href={linkObj.href} className={`block text-gray-300 hover:text-white anim-${i+1}`} key={i} >{linkObj.text}</a>)
                             })
                         }
                 </div>

@@ -4,6 +4,10 @@
     height: 100vh;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 @media (min-width: 768px){
     .vh-full-nav{
         height: 110vh;

@@ -121,13 +121,13 @@ export default function Carousel({objList, Element, arrows=true , objOpt, setObj
     //console.log("testing objList: ", objList)
     //style={{transform: `translateX(${getTranslateX(carouselId)})`}}
     return(
-    <div className={"carousel-container w-full md:flex md:justify-center"+carouselContainerClasses}>
+    <div className={"carousel-container w-full md:flex md:justify-center "+carouselContainerClasses}>
         {arrows&&<button onClick={()=>handleIndChange("prev")} className="carousel-arrow arrow-prev w-10 ">{"<"}</button>}
         <div ref={carouselSta} className={"carousel-list-cont md:flex md:justify-center "+carouselListContClasses} >
             <div ref={ carouselDyn} className={"carousel-list flex flex-row px-4 "+carouselListClasses}  >
                 {objList.map((obj, i)=>{
                     return(
-                        <div ref={el=>setSelectRefs(el, obj.id)} key={i}>
+                        <div ref={el=>setSelectRefs(el, obj.id)} key={i} className="carousel-item">
                             <Element obj={obj} i={i} objOpt={objOpt} setObjOpt={setObjOpt}  />
                         </div>
                     

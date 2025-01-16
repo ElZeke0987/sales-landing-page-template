@@ -1,0 +1,17 @@
+@use "../../../styles/vars.scss" as *;
+
+.faq-carousel-cont{
+    .accordion{
+        width: 80%;
+    }
+}
+
+.faq-title-cont{
+    height: $FaqTitleHY;
+    .faq-title-txt{
+        font-size: $FaqTitleTxtSize;
+    }
+    .accordion{
+        border-radius: 30px;
+    }
+}

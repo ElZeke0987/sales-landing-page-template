@@ -1,0 +1,70 @@
+@use "../../../styles/vars.scss" as *;
+@use "../../../styles/animations.scss" as *;
+
+@keyframes animAccordionOpen{
+    from{
+        position: absolute;
+        top: 0;
+
+        transform: scaleY(0);
+    }
+    to{
+        transform: scaleY(1);
+    }
+}
+
+.accordion{
+    border: $AccordionWidth  $AccordionBRD $AccordionBRDStyle;
+    overflow: hidden;
+    //height: $AccordionHY;
+    .accordion-item{
+        width: 100%;
+        transition: all 0.5s;
+        //height: $AccordionRowInitialHY;
+        
+        .accordion-title-cont{
+            background-color: $AccordionTitleBG;
+            justify-content: $AccordionTitleJustify;
+            
+            &:active {
+                .accordion-open-button{
+                    animation-name: fadeIn;
+                    animation-duration: 0.5s;
+                }
+                
+            }
+        }
+
+        .accordion-title{
+           
+            width: 70%;
+            height: calc(max-content + 10px);
+            
+            z-index: 10;
+        }
+        .accordion-content-cont{
+            background-color: white;
+            
+        }
+        .accordion-content{
+            width: 50%;
+            justify-content: $AccordionContentJustify;
+            max-height: 0;
+            overflow: hidden;
+            color: black;
+            transition: 0.5s max-height;
+           
+        }
+        .open{
+            //transition: $ all;
+            height: auto;
+            max-height: 10000px;
+            
+        }
+    }
+    .open-item{
+        //height: $AccordionRowFinalHY;
+        //max-height: $AccordionRowFinalMaxHY;
+    }
+
+}
