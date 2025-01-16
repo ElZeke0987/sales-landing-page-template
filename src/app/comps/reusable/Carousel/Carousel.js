@@ -68,7 +68,7 @@ export default function Carousel({objList, Element, arrows=true , objOpt, setObj
                 carouselIdSel, "!=", objList.length-1,
                 )
             
-            if(!centerAlwaysItems&&(freezeLastCond||freezeFirstCond))return
+            if(!centerAlwaysItems&&(freezeLastCond||freezeFirstCond)&&objOpt&&setObjOpt)return
             parentList.style.left = `-${offSetX}px`;
         }
     },[carouselId])
@@ -95,7 +95,7 @@ export default function Carousel({objList, Element, arrows=true , objOpt, setObj
     function handleIndChange(dir){
         
         setIsAnimating(dir=="next"?1:2);
-        const lastInd=objList.length-(centerAlwaysItems?2:1)
+        const lastInd=objList.length-(centerAlwaysItems||(!centerAlwaysItems&&!setObjOpt)?2:1)
         const firstInd = centerAlwaysItems?-1:0;
         setCarouselId(prev=>{
             if(prev <= firstInd &&dir=="prev")return lastInd
