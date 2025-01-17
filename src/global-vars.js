@@ -188,3 +188,88 @@ export const faqList =[
         linkTxt: "Mas info de como usar un gorro",
     },
 ]
+
+export const footerLinksSections=[
+    {
+        title: "Navegacion",
+        links: [
+            {
+                txt: "Inicio",
+                href: "",
+            },
+            {
+                txt: "Compra ahora",
+                href: "",
+            },
+            {
+                txt: "Caracteristicas",
+                href: "",
+            },
+            {
+                txt: "Testimonios",
+                href: "",
+            },
+            {
+                txt: "FAQ",
+                href: "",
+            },
+        ]
+    },
+    {
+        title: "Otras paginas",
+        links: [
+            {
+                txt: "StreetWearer",
+                href:"",
+            },
+            {
+                txt: "E-commerce templates",
+                href:"",
+            },
+            {
+                txt: "SmirXFolio",
+                href:"",
+            },
+        ]
+    },
+    {
+        title: "Contacto",
+        links: [
+            {
+                txt: "Sugerencias y dudas",
+                href:"",
+            },
+            {
+                txt: "Inversores",
+                href:"",
+            },
+            {
+                txt: "Errores",
+                href:"",
+            },
+        ]
+    }
+]
+
+export const footerRRSS=[
+    {
+        icon: "",
+        alt: "IG",
+        href: "",
+    },
+    {
+        icon: "",
+        alt: "FB",
+        href: "",
+    },
+    {
+        icon: "",
+        alt: "TW",
+        href: "",
+    },
+    {
+        icon: "",
+        alt: "YT",
+        href: "",
+    },
+]

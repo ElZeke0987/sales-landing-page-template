@@ -7,6 +7,7 @@ import Features from "./Features/Features";
 import Testimonials from "./Testimonials/Testimonials";
 import Product from "./Product/Product";
 import FAQ from "./Faq/faq";
+import Footer from "./Footer/footer";
 
 
 export default function Sections(){
@@ -22,6 +23,7 @@ export default function Sections(){
             <Features/>
             <Testimonials/>
             <FAQ/>
+            <Footer/>
         </div>
     )
 }

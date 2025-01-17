@@ -20,43 +20,54 @@
     .accordion-item{
         width: 100%;
         transition: all 0.5s;
-        //height: $AccordionRowInitialHY;
+        height: $AccordionItemHY;
         
         .accordion-title-cont{
             background-color: $AccordionTitleBG;
-            justify-content: $AccordionTitleJustify;
-            
+            justify-content: $AccordionTitleContAlignX;
+            align-items: $AccordionTitleContAlignY;
+            height: $AccordionTitleContHY;
+            transition: all $AccordiontTitleContTransS;
+            &:hover{
+                background-color: $AccordionTitleHoverBG;
+            }
             &:active {
-                .accordion-open-button{
+                /*.accordion-open-button{
                     animation-name: fadeIn;
-                    animation-duration: 0.5s;
-                }
+                    animation-duration: 100s;
+                }*/
                 
             }
         }
 
         .accordion-title{
            
-            width: 70%;
-            height: calc(max-content + 10px);
+            width: $AccordionTitleWX;
             
             z-index: 10;
         }
+        .accordion-open-button{
+            width: $AccordionOpenButtonWX;
+        }
         .accordion-content-cont{
-            background-color: white;
+            background-color: $AccordionItemContentBG;
             
         }
         .accordion-content{
-            width: 50%;
+
+            width: $AccordionContWX;
             justify-content: $AccordionContentJustify;
             max-height: 0;
             overflow: hidden;
-            color: black;
-            transition: 0.5s max-height;
-           
+            color: $AccordionItemContentColor;
+            transition: $AccordionContentOpenTransS max-height; 
+            .accordion-content-height{
+                height: $AccordionContentPaddingY ;
+            }
         }
         .open{
-            //transition: $ all;
+            transition:  0 max-height; 
+            //padding: $AccordionContentPaddingY 0;
             height: auto;
             max-height: 10000px;
             

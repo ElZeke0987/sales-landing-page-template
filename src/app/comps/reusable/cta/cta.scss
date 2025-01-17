@@ -1,0 +1,8 @@
+@use "../../../styles/vars.scss" as *;
+
+.cta-button{
+    background-color: $CTABG;
+    &:hover{
+        background-color: $CTAHoverBG;
+    }
+}

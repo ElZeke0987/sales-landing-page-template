@@ -13,6 +13,8 @@ $HeroSectionBG: #eee;
 $ProductSectionBG: #1c1c1c;
 $featuresSectionBG: #eee;
 $TestimonialsSectionBG: #61639d98;
+$FaqSectionBG: #61639d98;
+$FooterBG: #000;
 
 /*--Section secondary colors--*/
 
@@ -74,22 +76,79 @@ $FeaturesSectionGap: 60px;
 $FeaturesContGap: 30px;
 
 $featuresGridGap: 30px;
+
+$featureItemGap: 10px;
+$featureItemAlignY: space-evenly;
+
 $featureItem768WX: 90%;
 $featureItem768HY: 30vh;
-$featureItemPadding: 5vh;
 
+$featureItemPadding: 5vh;
+$featureItemBG: none;
+
+$featureItemTitleBG: rgb(228, 228, 228);
+$featureItemTitleColor: rgb(0,0,0);
+
+$featureItemDescBG: none;
+$featureItemDescColor: rgb(0,0,0);
 /* - Testimonials Section - */
 
 $TestimonialsContGap: 60px;
 
 /* - FAQ Section - */
+$FaqSectionHY: auto;
+$FaqSectionMaxHY: 10000px;
+$FaqSectionAlignY: flex-start;
 
+$FaqContPaddingY: 60px;
+$FaqContAlignHY: center;
+
+$FaqInsHY: 70%;
+$FaqInsAlignX: flex-start;
+
+$FaqInsGap: 1rem;
+$FaqInsDir: column;
 
 $FaqTitleHY: 15vh;
 $FaqTitleTxtSize: 2.1rem;
 
+/* - Footer Section - */
+
+$FooterContHY: 50vh;
+$FooterFlexDir: column;
+$FooterAlignY: flex-start;//Recuerda qu
+$FooterAlignX: center;
+
+$FooterInsideWX: 80%;
+$FooterInsideHY: 70%;
+
+$FooLinksContWidth: 70%;
+$FooLinksContAlignX: center;
+$FooLinksContAlignY: center;
+$FooLinksContDir: column;
+$FooterLinksGap: 3rem;
+
+$FooOthLinksJustify: flex-start;
+
+$FooterRRSSContWidth: 57%;
+$FooRRSSContJustify: flex-start;
+$FooterRRSSInsWidth: auto;
+$FooterRRSSInsJustify: flex-start;
+$FooterRRSSGap:40px;
+
+$FooSectionTitleColor: #444;
+$FooLinkColor: #161616;
+$FooLinkHoverColor: #eee;
+$FooRRSSColor: #333;
+$FooRRSSHoverColor: #e9e9e9;
+
 
 /*---- Reusable's ----*/
+
+/* Call To Action Button */
+
+$CTABG: rgb(0, 156, 26);
+$CTAHoverBG: rgb(6, 233, 74);
 
 /* Carrousel */
 $CarouselTransitionMS: 0.5;
@@ -109,18 +168,33 @@ $DefCarouselHY: 40vh;
 $DefCarouselArrowHY: 10vh;
 
 /* Accordion */
-$AccordionBRD: #ffffff;
-$AccordionBRDStyle: solid;
-$AccordionTitleBG: #222;
-$AccordionHY: 50vh;
-$AccordionWidth: 5px;
 
-$AccordionTitleJustify: center;
+$AccordionBRD: none;
+$AccordionBRDStyle: solid;
+
+$AccordionHY: auto;
+$AccordionWidth: 5px;
+$AccordionContentOpenTransS: 2s;
+
+$AccordionTitleBG: #222;
+$AccordionTitleHoverBG: #444;
+$AccordiontTitleContTransS: 0.35s;
+$AccordionTitleWX: 20%;
+$AccordionTitleContAlignX: flex-start;
+$AccordionTitleContAlignY: center;
+$AccordionTitleContHY: 7vh;
+
+$AccordionOpenButtonWX: 10%;
+
+$AccordionContWX: 95%;
 $AccordionContentJustify: flex-start;
+$AccordionContentPaddingY: 30vh;//<<<---- El padding Y del acordion se cambia en global vars
 
 $AccordionDefCols: 1;
 $AccordionColWX: 100vw;
-$AccordionRowInitialHY: auto;
+$AccordionItemHY: auto;
+$AccordionItemContentBG: #3c3c3c;
+$AccordionItemContentColor: #eee;
 $AccordionRowFinalHY: 90%;
 $AccordionRowFinalMaxHY: 50%;
 

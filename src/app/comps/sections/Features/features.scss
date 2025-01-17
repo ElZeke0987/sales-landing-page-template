@@ -16,6 +16,19 @@
     
     .feature-item{
         padding: $featureItemPadding;
+        background-color: $featureItemBG;
+        align-items: $featureItemAlignY;
+        gap: $featureItemGap;
+        .item-feature-title{
+            background-color: $featureItemTitleBG;
+            border-radius: 10px;
+            overflow: hidden;
+            color: $featureItemTitleColor;
+        }
+        .item-feature-desc{
+            background-color: $featureItemDescBG;
+            color: $featureItemDescColor;
+        }
     }
 }
 @media (max-width:768px){

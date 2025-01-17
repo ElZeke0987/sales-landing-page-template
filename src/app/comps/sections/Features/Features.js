@@ -9,12 +9,12 @@ import CTA from "../../reusable/cta/CTA";
 
 function FeatureItem({featureObj, openId, setOpenId, actualId}){
     return(
-        <div className="bg-gray-600 rounded-md feature-item md:w-64" key={actualId}>
+        <div className="rounded-md feature-item md:w-64 flex flex-col" key={actualId}>
             <div className="flex justify-center feature-img">
                 <Image src={featureObj.imgUrl} className="rounded-full w-auto" width={500} height={500} alt={featureObj.title} />
             </div>
-            <h1 className="text-center font-extrabold feature-title">{featureObj.title}</h1>
-            <div className="flex justify-center w-full feature-desc"><p className="text-center">{featureObj.description}</p></div>
+            <h1 className="text-center font-extrabold item-feature-title">{featureObj.title}</h1>
+            <div className="flex justify-center w-full item-feature-desc"><p className="text-center">{featureObj.description}</p></div>
         </div>
     )
 }

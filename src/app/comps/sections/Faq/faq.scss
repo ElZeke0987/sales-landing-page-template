@@ -1,5 +1,21 @@
 @use "../../../styles/vars.scss" as *;
 
+.faq-section{
+    background-color: $FaqSectionBG;
+    height: $FaqSectionHY;
+    align-items: $FaqSectionAlignY;
+    .faq-cont{
+        padding: $FaqContPaddingY 0;
+        align-items: $FaqContAlignHY;
+    }
+    .faq{
+        height: $FaqInsHY;
+        justify-content: $FaqInsAlignX;
+        gap: $FaqInsGap;
+        flex-direction: $FaqInsDir;
+    }
+}
+
 .faq-carousel-cont{
     .accordion{
         width: 80%;
