@@ -61,8 +61,11 @@
             overflow: hidden;
             color: $AccordionItemContentColor;
             transition: $AccordionContentOpenTransS max-height; 
-            .accordion-content-height{
-                height: $AccordionContentPaddingY ;
+            .accordion-content-height-top{
+                height: $AccordionContentPaddingTop;
+            }
+            .accordion-content-height-bottom{
+                height: $AccordionContentPaddingBottom;
             }
         }
         .open{

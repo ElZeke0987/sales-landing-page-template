@@ -188,7 +188,8 @@ $AccordionOpenButtonWX: 10%;
 
 $AccordionContWX: 95%;
 $AccordionContentJustify: flex-start;
-$AccordionContentPaddingY: 30vh;//<<<---- El padding Y del acordion se cambia en global vars
+$AccordionContentPaddingTop: 20px;
+$AccordionContentPaddingBottom : 20px;//<<<---- El padding Y del acordion se cambia en global vars
 
 $AccordionDefCols: 1;
 $AccordionColWX: 100vw;
