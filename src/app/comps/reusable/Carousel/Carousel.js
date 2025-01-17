@@ -93,11 +93,12 @@ export default function Carousel({objList, Element, arrows=true , objOpt, setObj
     }
 
     function handleIndChange(dir){
-        
+        const toRestByWindowWX=window.innerWidth<1024?1:2;
+        console.log("inner: ",window.innerWidth);
         setIsAnimating(dir=="next"?1:2);
-        const lastInd=objList.length-(centerAlwaysItems||(!centerAlwaysItems&&!setObjOpt)?2:1)
-        const firstInd = centerAlwaysItems?-1:0;
-        setCarouselId(prev=>{
+        const lastInd=objList.length-(centerAlwaysItems||(!centerAlwaysItems&&!setObjOpt)?toRestByWindowWX:1)//En el caso de que no se tenga que centrar el objeto en el carrusel, 2 slides antes sera el ultimo slide
+        const firstInd = centerAlwaysItems?-1:0;//Si se centrara, dejaria un slide mas para dejar margen de vista y centramiento del primer elemento
+        setCarouselId(prev=>{//Manejo eficiente de cambio de slides de un lugar a otro
             if(prev <= firstInd &&dir=="prev")return lastInd
             else if(prev==lastInd&&dir=="next")return firstInd
             else return dir=="next"?prev+1:prev-1;

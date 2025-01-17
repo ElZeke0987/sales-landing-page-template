@@ -5,7 +5,7 @@ import "./footer.scss";
 function FooterLinks(){
     return(
         <div className="footer-links-cont flex">
-            <div className="footer-other-links flex">
+            <div className="footer-other-links flex flex-col md:flex-row">
                 {console.log(footerLinksSections)}
                 {footerLinksSections.map((section,indexSection)=>{
                     return(
@@ -32,7 +32,7 @@ function FooterLinks(){
 function RRSSCont(){
     return(
         <div className="footer-rrss-cont flex">
-            <div className="footer-rrss flex">
+            <div className="footer-rrss flex ">
                 {
                     footerRRSS.map((rrss, i)=>{
                         return(

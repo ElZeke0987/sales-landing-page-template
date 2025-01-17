@@ -21,9 +21,9 @@
         gap: $featureItemGap;
         .item-feature-title{
             background-color: $featureItemTitleBG;
-            border-radius: 10px;
-            overflow: hidden;
+            border-radius: $featureItemTitleRadius;
             color: $featureItemTitleColor;
+            padding: $featureItemTitlePaddingY 0;
         }
         .item-feature-desc{
             background-color: $featureItemDescBG;

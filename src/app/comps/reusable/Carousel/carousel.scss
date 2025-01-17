@@ -42,7 +42,7 @@
     }
     
 }
-@media (max-width: 768px){
+@media (max-width: 1024px){
     
 
         .carousel-container{
@@ -63,7 +63,12 @@
             .carousel-arrow{
                 width: 100%;
                 height: $DefCarouselArrowHY;
-
+                &:active{
+                    background-color: $DefCarouselArrHoverBG;
+                }
+                &:hover{
+                    background-color: none;
+                }
             }
             .arrow-prev{
 

@@ -13,8 +13,9 @@
     }
 }
 
+
 .accordion{
-    border: $AccordionWidth  $AccordionBRD $AccordionBRDStyle;
+    border: $AccordionBRDWidth  $AccordionBRD $AccordionBRDStyle;
     overflow: hidden;
     //height: $AccordionHY;
     .accordion-item{
@@ -81,4 +82,10 @@
         //max-height: $AccordionRowFinalMaxHY;
     }
 
+}
+
+@media (max-width:1250px) {
+    .accordion .accordion-item .accordion-title{
+       width: $AccordionTitle768WX;
+   }
 }

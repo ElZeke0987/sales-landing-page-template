@@ -31,17 +31,17 @@ export default function Product(){
     const stockNumbers=Array.from({length: objOpt.stock<objOpt.buyLimit?objOpt.stock:objOpt.buyLimit}, (_,i)=>{return {val:i+1, txt: `${i+1} unidades`}});
     return(
         <div className="w-full flex flex-col md:flex-row justify-center items-center product-section" id="product-section">
-            <div className="flex product-principal">
+            <div className="flex product-principal flex-col lg:flex-row">
                 <div className="flex flex-col product-visuals">
                     <div className="product-image-cont flex justify-center items-center">
                         <Image src={objOpt.imgUrl} width={500} height={500} alt="Imagen del Producto" className="rounded-lg shadow-lg bg-gray-100"/>
                     </div>
                     
                     <div className="products-types-carousel">
-                        <Carousel objList={typesList} Element={ImageSelectFrame} objOpt={objOpt} setObjOpt={setObjOpt} carouselListContClasses={"scroll-modern-mini-x"} selControls={true} centerAlwaysItems={false}/>
+                        <Carousel objList={typesList} Element={ImageSelectFrame} objOpt={objOpt} setObjOpt={setObjOpt} carouselListContClasses={"scroll-modern-mini-x no-hover-scroll"} selControls={true} centerAlwaysItems={false}/>
                     </div>
                 </div>
-                <div className="flex flex-col justify-around">
+                <div className="flex flex-col justify-around product-info-sub">
                     <div className="product-info">
                         <h1 className="product-title w-full">
                             {objOpt.title}

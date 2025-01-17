@@ -5,3 +5,11 @@
     gap: $TestimonialsContGap;
     //z-index: 10;
 }
+@media (max-width:768px){
+    .testimonials-section{
+        gap: 0;
+        height: $Testimonials768HY;
+        //z-index: 10;
+    }
+    
+}

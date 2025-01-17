@@ -24,10 +24,11 @@ $FeaturesTitleColor: #222;
 
 $HeroImageWX: 31vw;
 $HeroImageHY: 31vw;
+$HeroPadding768: 20px;
 
 /* - Product Section - */
 
-$ProductSectionHY: 107vh;
+$ProductSectionPaddingY: 60px;
 
 $ProductPrincipalHY: 80%;
 $ProductPrincipalGap: 20px;
@@ -39,11 +40,16 @@ $ProductImageContWX: 100%;
 $ProductImageHY: 100%;
 $ProductImageWX: 100%;
 
+//$ProductVisuals768WX: 150vh;
 $ProductCarouselGeneralHY: 20%;
+@media (max-width:768px) {
+
+    $ProductCarouselGeneralHY: 20% !important;
+}
 $ProductTypesCarHY: 100%;
 $ProductTypesCarWX: 30vw;
 
-$ProductTypeItemWX: 10vw;
+$ProductTypeItemWX: 7vw;
 $ProductTypeItemHY: 100%;
 
 $ProductTypeSelectedBG: #09157e7a;
@@ -70,6 +76,8 @@ $ProductButtonBuyNowBG: #2c7e09;
 $ProductButtonAddToCartBG: #eee;
 $ProductButtonAddToCartBRD: $ProductButtonBuyNowBG;
 
+$ProductInfoPaddingX: 10px;
+
 /* - Big Features Section */
 
 $FeaturesSectionGap: 60px;
@@ -86,14 +94,17 @@ $featureItem768HY: 30vh;
 $featureItemPadding: 5vh;
 $featureItemBG: none;
 
+$featureItemTitleRadius: 20px;
 $featureItemTitleBG: rgb(228, 228, 228);
 $featureItemTitleColor: rgb(0,0,0);
+$featureItemTitlePaddingY: 10px;
 
 $featureItemDescBG: none;
 $featureItemDescColor: rgb(0,0,0);
 /* - Testimonials Section - */
 
 $TestimonialsContGap: 60px;
+$Testimonials768HY: 100vh;
 
 /* - FAQ Section - */
 $FaqSectionHY: auto;
@@ -111,6 +122,7 @@ $FaqInsDir: column;
 
 $FaqTitleHY: 15vh;
 $FaqTitleTxtSize: 2.1rem;
+$FaqTitleTxtSize768: 1.7rem;
 
 /* - Footer Section - */
 
@@ -153,7 +165,7 @@ $CTAHoverBG: rgb(6, 233, 74);
 /* Carrousel */
 $CarouselTransitionMS: 0.5;
 $DefCarouselArrHoverBG: #419fb9f4;
-$DefCarouselItemBG: #000000;
+$DefCarouselItemBG: none;
 $DefCarouselItemWX: 20vw;
 
 $DefCarouselGap: 5%;
@@ -173,13 +185,16 @@ $AccordionBRD: none;
 $AccordionBRDStyle: solid;
 
 $AccordionHY: auto;
-$AccordionWidth: 5px;
+$AccordionBRDWidth: 5px;
 $AccordionContentOpenTransS: 2s;
 
 $AccordionTitleBG: #222;
 $AccordionTitleHoverBG: #444;
 $AccordiontTitleContTransS: 0.35s;
 $AccordionTitleWX: 20%;
+
+
+$AccordionTitle768WX: 100%;
 $AccordionTitleContAlignX: flex-start;
 $AccordionTitleContAlignY: center;
 $AccordionTitleContHY: 7vh;
@@ -214,7 +229,7 @@ $cusSelListOptsMaxHY: 35vh;
 
 $ScrollModernMiniHY: 7.5px;
 $ScrollModernMiniTrackBG: aqua;
-$ScrollModernMiniThumbBG: black;
+$ScrollModernMiniThumbBG: rgb(163, 163, 163);
 
 /*----Animations Vars Section----*/
 

@@ -51,3 +51,8 @@ body{
         
     }
 }
+
+
+.no-hover-scroll::-webkit-scrollbar-thumb{
+    display: flex;
+}

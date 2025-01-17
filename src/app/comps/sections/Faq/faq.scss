@@ -20,6 +20,13 @@
     .accordion{
         width: 80%;
     }
+    @media (max-width:768px) {
+        .accordion{
+            width: 100%;
+            border-radius: 0 !important;
+
+        }
+    }
 }
 
 .faq-title-cont{
@@ -29,5 +36,12 @@
     }
     .accordion{
         border-radius: 30px;
+    }
+}
+@media (max-width: 768px) {
+    .faq-title-cont{
+        .faq-title-txt{
+            font-size: $FaqTitleTxtSize768;
+        }
     }
 }
