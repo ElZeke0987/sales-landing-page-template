@@ -75,6 +75,7 @@
             max-width: 100%;
             max-height: 100%;
             height: $ProductTypeItemHY;
+            width: $ProductTypeImgWX;
         }
     }
     .type-selected{
@@ -172,6 +173,9 @@
 }
 
 @media (max-width: 1024px){
+    .product-visuals{
+        height: 100vh;
+    }
     .products-types-carousel{
         .carousel-arrow{
             display: none;
@@ -185,8 +189,8 @@
             }
         }
         .carousel-list{
-            grid-template-rows: 30vh;
-            grid-auto-columns: 40vw !important;
+            grid-template-rows: 100%;
+            grid-auto-columns: 76% !important;
             left: 0 !important;
             //padding: 0 $ProductTypeItemWX;
             .carousel-item{
