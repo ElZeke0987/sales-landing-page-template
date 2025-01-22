@@ -1,11 +1,12 @@
 export const ImgHeroBG = false;//Fondo en la hero section de imagen
 export const ImgTransNavBG = false;
+export const addToCartSystem = true;
 
 export const navLinks=[
-    {href:"#", text:"Inicio"},
+    {href:"/", text:"Inicio"},
     {href:"#features", text:"Beneficios"},
     {href:"#testimonials", text:"Testimonios"},
-    {href:"#", text:"Inicio"},
+    {href:"/cart", text:"Carrito"},
 ]
 
 export const featuresList=[

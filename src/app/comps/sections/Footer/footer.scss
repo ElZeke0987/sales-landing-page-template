@@ -2,7 +2,7 @@
 @use "../../../styles/vars.scss" as *;
 .landing-footer-cont{
     background-color: $FooterBG;
-    height: $FooterContHY;
+    min-height: $FooterContHY;
     flex-direction: $FooterFlexDir;
     justify-content: $FooterAlignX;
     align-items: $FooterAlignY;

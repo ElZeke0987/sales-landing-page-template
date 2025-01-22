@@ -1,11 +1,12 @@
 "use client";
-import { typesList } from "@/global-vars";
+import { addToCartSystem, typesList } from "@/global-vars";
 import Carousel from "../../reusable/Carousel/Carousel";
 import Image from "next/image";
 import "./product.scss";
 import "../general.scss";
 import { useState } from "react";
 import CustomSelect from "../../reusable/customSelect/customSelect";
+import { useCart } from "@/app/cartProvider";
 
 function ImageSelectFrame({obj, objOpt, setObjOpt}){
 
@@ -19,14 +20,13 @@ function ImageSelectFrame({obj, objOpt, setObjOpt}){
     )
 }
 
-
 export default function Product(){
 
     const [objOpt, setObjOpt]=useState(typesList[0])
     const [quantitySel, setQuatitySel]=useState(1);
-
+    const { addToCart } = useCart()
     function changeStockQuantity(e){
-        setQuatitySel(e.target.value)
+        setQuatitySel(e)
     }
     const stockNumbers=Array.from({length: objOpt.stock<objOpt.buyLimit?objOpt.stock:objOpt.buyLimit}, (_,i)=>{return {val:i+1, txt: `${i+1} unidades`}});
     return(
@@ -54,11 +54,11 @@ export default function Product(){
                         </div>
                     </div>
                     <div className="product-buy-cont flex flex-col">
-                        <CustomSelect opts={stockNumbers} defaultText="1 unidad" defaultValue={1} clases="stock-select"/>
+                        <CustomSelect opts={stockNumbers} defaultText="1 unidad" defaultValue={1} clases="stock-select" onSelect={changeStockQuantity}/>
                         
                         <div className="flex flex-col items-center product-buy-buttons">
                             <button className="buy-now button-buy">Buy Now</button>
-                            <button className="add-to-cart  button-buy">Add to cart</button>
+                            {addToCartSystem&& <button className="add-to-cart  button-buy" onClick={()=>addToCart({item: objOpt, quantity: quantitySel.val})}>Add to cart</button>}
                         </div>
                         
                     </div>

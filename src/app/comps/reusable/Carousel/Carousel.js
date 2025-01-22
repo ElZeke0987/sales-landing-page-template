@@ -32,7 +32,7 @@ export default function Carousel({objList, Element, arrows=true , objOpt, setObj
         if(carouselId==-1 && centerAlwaysItems && firstNormalItem.current){
             const firstNormalOffSetX = (firstNormalDims.left - parentDims.left)
             
-            console.log(" to select: "+`${firstNormalOffSetX}px`)
+           // console.log(" to select: "+`${firstNormalOffSetX}px`)
 
             parentList.style.left = `${firstNormalOffSetX}px`;
         }
@@ -61,12 +61,12 @@ export default function Carousel({objList, Element, arrows=true , objOpt, setObj
             const freezeFirstCond=carouselId<firstFreezeMovItemId;
             const moveFirstToLast= carouselIdSel!=objList.length-1;
             
-            console.log("Changing carousel: ", carouselId);
-            console.log("testing cond to freeze move: ",
+            //console.log("Changing carousel: ", carouselId);
+            /*console.log("testing cond to freeze move: ",
                 carouselId, ">" ,objList.length-lastFreezeMovItemId, (freezeLastCond), "\n",
                 carouselId, "<" ,firstFreezeMovItemId,freezeFirstCond, "\n",
                 carouselIdSel, "!=", objList.length-1,
-                )
+                )*/
             
             if(!centerAlwaysItems&&(freezeLastCond||freezeFirstCond)&&objOpt&&setObjOpt)return
             parentList.style.left = `-${offSetX}px`;
@@ -94,7 +94,7 @@ export default function Carousel({objList, Element, arrows=true , objOpt, setObj
 
     function handleIndChange(dir){
         const toRestByWindowWX=window.innerWidth<1024?1:2;
-        console.log("inner: ",window.innerWidth);
+        //console.log("inner: ",window.innerWidth);
         setIsAnimating(dir=="next"?1:2);
         const lastInd=objList.length-(centerAlwaysItems||(!centerAlwaysItems&&!setObjOpt)?toRestByWindowWX:1)//En el caso de que no se tenga que centrar el objeto en el carrusel, 2 slides antes sera el ultimo slide
         const firstInd = centerAlwaysItems?-1:0;//Si se centrara, dejaria un slide mas para dejar margen de vista y centramiento del primer elemento
