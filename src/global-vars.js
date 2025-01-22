@@ -2,11 +2,14 @@ export const ImgHeroBG = false;//Fondo en la hero section de imagen
 export const ImgTransNavBG = false;
 export const addToCartSystem = true;
 
+export const taxes=10;//%
+export const delivery=0;//USD o $
+
 export const navLinks=[
     {href:"/", text:"Inicio"},
     {href:"#features", text:"Beneficios"},
     {href:"#testimonials", text:"Testimonios"},
-    {href:"/cart", text:"Carrito"},
+    {href:"/cart", text:"Carrito", itsCart: true},
 ]
 
 export const featuresList=[

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useCart } from "../cartProvider"
 import Header from "../comps/sections/Header/Header";
 import "./cartStyles.scss";
+import { delivery, taxes } from "@/global-vars";
 
 let firstRender=true;
 
@@ -12,7 +13,7 @@ function QuantityChanger({quantState, setQuantState, maxQuantity}){
     function handleChangeQuantity(operation){
         setQuantState(prev=>{
             if(prev<=0&&operation=="-" ) return 0;
-            if(prev>=maxQuantity+1) return maxQuantity;
+            if(prev>=maxQuantity&&operation=="+") return maxQuantity;
             return operation=="+"?prev+1:prev-1;
         })
     }
@@ -24,13 +25,35 @@ function QuantityChanger({quantState, setQuantState, maxQuantity}){
     </div>)
 }
 
-function ItemRow({item, i, setSubTotal}){
+function ItemRow({item, i, setSubTotal, cartList}){
     const [quantState, setQuantState]=useState(item.quantity);
     /*useEffect(()=>{
         item.quantity = quantState;
     },[quantState])*/
+
+
     const toFix=item.item.price * quantState;
+    
     const fixedNum= toFix.toFixed(2);
+
+    useEffect(()=>{
+        console.log("CartList: ", cartList)
+        item.quantity=quantState;
+            setSubTotal(0);
+            setSubTotal(pv=>{
+                let toRet=pv||0;
+                if(cartList.length==0)return 0;
+                cartList?.forEach(itemInCart => {
+                    const totalPrice = itemInCart.quantity * itemInCart.item.price;
+                    const fixed=totalPrice.toFixed(2)
+                    const parsedFix=parseFloat(fixed);
+                    toRet+=parsedFix;
+                }) 
+                return toRet.toFixed(2);
+            });
+        
+    },[quantState, cartList])
+
     return(
         <div className="item-row flex w-full real-item">
             <div className="item-principal item-col flex justify-start items-center">{item.item.title}</div>
@@ -49,6 +72,19 @@ export default function CartPage(){
         firstRender=false;
     },[cart])*/
     
+    const [netTotal, setNetTotal]=useState(0);
+
+    useEffect(()=>{
+
+        const percentTaxes=(subTotal / 100 * taxes)
+        const taxesFixed=parseFloat(percentTaxes.toFixed(2));
+        const deliveryFixed=delivery;
+        const subTotalFixed=parseFloat(subTotal)
+        const finalValue=taxesFixed+subTotalFixed+delivery;
+        const finalFixed=finalValue.toFixed(2);
+        setNetTotal(finalFixed)
+    },[subTotal])
+
     return(<div>
         <Header/>
         <h1 className="cart-title text-4xl w-full text-center">Your cart ({cart.length} {cart.length==1?"item":"items"})</h1>
@@ -61,21 +97,27 @@ export default function CartPage(){
                     <div className="item-total item-col flex justify-start items-center" >Total( $ x N )</div>
                 </div>
                 {cart?.map((item, i)=>{
-                    /* setSubTotal(pv=>{
-                        const toFix=item.item.price * item.quantity;
-                        const fixedNum= toFix.toFixed(2);
-                        return pv + fixedNum;
-                    }) */
-                    return (<ItemRow item={item} i={i} key={i}/>)
+                    
+                    return (<ItemRow item={item} i={i} key={i} setSubTotal={setSubTotal} cartList={cart}/>)
 
                 })}
             </div>
             <div className="cart-options">
-                <button onClick={clearCart} className="clear-button">Clear cart</button>
+                <button onClick={()=>clearCart(setSubTotal)} className="clear-button">Clear cart</button>
             </div>
-            <div className="cart-totals">
-                <div>Sub total: {subTotal}</div>
+            <div className="cart-totals-cont flex justify-center items-end flex-col">
+                <div className="cart-totals flex flex-col">
+                    <div className="totals-values-cont grid flex-col align-center ">
+                        <div className="sub-total price-row"><span className="price-row-title">Sub total:</span> <span className="price-row-n">${subTotal}</span></div>
+                        <div className="taxes price-row"><span className="price-row-title">Taxes:</span> <span className="price-row-n">{taxes}%</span></div>
+                        <div className="delivery price-row"><span className="price-row-title">Delivery:</span> <span className="price-row-n">${delivery}</span></div>
+                        <div className="net-total price-row"><span className="price-row-title">Total neto:</span> <span className="price-row-n">${netTotal}</span></div>
+                    </div>
+                        
+                </div>
+                <a href="/payment" className="checkout-btn">Checkout</a>
             </div>
+            
         </div>
             
         

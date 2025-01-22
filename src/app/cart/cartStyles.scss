@@ -78,3 +78,55 @@ body{
         font-size: $ClearButtonTxtSize;
     }
 }
+
+.cart-totals-cont{
+    width: $CartTotalsContWX;
+    gap: $CartTotalsContGap;
+    .totals-values-cont{
+        width: $CartTotalsValuesContWX;
+    }
+    .cart-totals{
+        background-color: $CartTotalsBG;
+        width: $CartTotalsWX;
+        justify-content: $CartTotalsJustify;
+        align-items: $CartTotalsAlign;
+        padding-top: $CartTotalsPaddTop;
+        padding-bottom: $CartTotalsPaddBot;
+    }
+    
+    .sub-total{
+        font-size: $CartTotalsSubTxtSize;
+        color: $CartTotalsSubColor;
+        justify-self: $CartTotalsSubSelfX;
+    }
+    .taxes{
+        font-size: $CartTotalsTaxTxtSize;
+        color: $CartTotalsTaxColor;
+        justify-self: $CartTotalsTaxSelfX;
+    }
+    .delivery{
+        font-size: $CartTotalsDeliveryTxtSize;
+        color: $CartTotalsDeliveryColor;
+        justify-self: $CartTotalsDeliverySelfX;
+    }
+    .net-total{
+        font-size: $CartTotalsNetTxtSize;
+        color: $CartTotalsNetColor;
+        justify-self: $CartTotalsNetSelfX;
+    }
+    .price-row{
+        width: $CartPriceRowWX;
+        display: flex;
+        justify-content: $CartPriceRowJustify;
+    }
+}
+
+.checkout-btn{
+    padding: $CheckoutPaddY 0;
+    text-align: center;
+    color: $CheckoutColor;
+    width: $CheckoutContWX;
+    background-color: $CheckoutBG;
+    border-radius: $CheckoutContBorderRadius;
+    
+}

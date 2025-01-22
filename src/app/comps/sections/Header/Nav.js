@@ -3,11 +3,12 @@
 import { useState } from "react"
 import "./header.scss";
 import { navLinks } from "@/global-vars";
+import { useCart } from "@/app/cartProvider";
 
 
 export default function Nav(){
     const [openNavbar, setOpenNavbar]=useState(false);
-
+    const { cart }=useCart()
 
     return (
         <div className="w-full">
@@ -18,7 +19,10 @@ export default function Nav(){
 
                         {
                             navLinks.map((linkObj, i)=>{
-                                return (<a href={linkObj.href} className={`text-gray-300 hover:text-white anim-${i+1}`} key={i}>{linkObj.text}</a>)
+                                return (<a href={linkObj.href} className={`text-gray-300 hover:text-white anim-${i+1} relative nav-link-item`} key={i}>
+                                    {linkObj.text}
+                                    {(linkObj.itsCart||linkObj.href=="/cart")&&<div className="absolute cart-length">{cart.length}</div>}
+                                </a>)
                             })
                         }
                     </div>
@@ -33,7 +37,10 @@ export default function Nav(){
                 <div id="menu" className={(openNavbar?" open-nav":"  closed-nav")+" md:hidden nav-toggler-list bg-gray-800 nav-transp-item nav-links-list"} onClick={()=>setOpenNavbar(false)}>
                         {
                             navLinks.map((linkObj, i)=>{
-                                return (<a href={linkObj.href} className={`block text-gray-300 hover:text-white anim-${i+1}`} key={i} >{linkObj.text}</a>)
+                                return (<a href={linkObj.href} className={`block text-gray-300 hover:text-white anim-${i+1} relative nav-link-item`} key={i} >
+                                    {linkObj.text}
+                                    {(linkObj.itsCart||linkObj.href=="/cart")&&<div className="absolute cart-length">{cart.length}</div>}
+                                </a>)
                             })
                         }
                 </div>

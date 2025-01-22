@@ -36,7 +36,8 @@ export function CartProvider({children}){
         setCart(prevCart=>{return prevCart.filter(item=> item.id!==id)});
     }
 
-    function clearCart(){
+    function clearCart(setSubTotal){
+        setSubTotal(0);
         setCart([])
         
     }

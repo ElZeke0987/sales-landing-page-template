@@ -13,7 +13,21 @@
     animation-name: fadeIn;
     animation-duration: $NavLogoFadeInS;
 }
-
+.nav-link-item{
+    .cart-length{
+        top: $CartLengthTop;
+        left: $CartLengthLeft;
+        padding: 10px;
+        border-radius: 100%;
+        width: $CartLengthWX;
+        height: $CartLengthHY;
+        background-color: $CartLengthBG;
+        color: $CartLengthColor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
 .nav-links-list{
 
     @for $i from 0 through $NavLinksQuant - 1{

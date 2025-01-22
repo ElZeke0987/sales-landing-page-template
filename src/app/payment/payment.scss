@@ -1,0 +1,17 @@
+@use "./vars.scss" as *;
+
+.methods-btns{
+    gap: $MethodsGap;
+    button{
+        background-color: $BtnMethodBG;
+        padding: $BtnMethodPadd;
+        border-radius: 100%;
+        width: $BtnMethodWX;
+        height: $BtnMethodHY;
+        transition: all $BtnTransS;
+    }
+    .method-active{
+        background-color: $BtnMethodsActiveBG;
+        color: $BtnMethodsActiveColor;
+    }
+}
