@@ -1,0 +1,139 @@
+@use "./skillsVars.scss" as *;
+@use "../../../styles/animations.scss" as *;
+
+@mixin bgById($listIds, $mapIds){
+    @each $itemId in $listIds{
+        .category-#{$itemId}{
+            background: map-get($mapIds, $itemId);//Be sure that map-get will be deprecated in Dart Sass 3.0.0
+        }
+    }
+    
+}
+
+@mixin iconById($listIds, $mapIds){
+    @each $itemId in $listIds{
+        .skill-icon-#{$itemId} svg{
+            fill: map-get($mapIds, $itemId);//Be sure that map-get will be deprecated in Dart Sass 3.0.0
+        }
+        .skill-icon-#{$itemId}::before{
+            background: map-get($mapIds, $itemId);
+        }
+    }
+    
+}
+
+.skills-section{
+    h2{
+        font-size: $SkillsSectionTitleSize;
+    }
+}
+
+.skills-tree{
+    @include bgById($Categories, $CategoriesColor);
+    padding: $SkillsTreePadding;
+    .anim-box{
+        height: 110%;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        animation: scaleYToEnd $SkillsTreeCatS ease forwards;
+    }
+    .skills-cat{
+        gap: $SkillsTreeCatsGap;
+        .skill-cat-item{
+            border-top-left-radius: $SkillsCatItemRadius;
+            border-top-right-radius: $SkillsCatItemRadius;
+            padding: $SkillsCatItemPadding;
+            h3{
+                z-index: 100;
+            }
+           
+        }
+    }
+    .skills-box{
+        grid-template-columns: repeat(auto-fit, $SkillsTreeGridCol);
+        grid-auto-rows: $SkillsTreeGridRow;
+        gap: $SkillsTreeGap;
+        z-index:  100;
+        padding: $SkillBoxPadding;
+        @include iconById($SkillIcons, $SkillIconsColor);
+        
+        
+    }
+}
+.skills-box-cont{
+    border-top-left-radius: $SkillsBoxRadius;
+    border-top-right-radius: $SkillsBoxRadius;
+    position: relative;
+    z-index: 90;
+    margin-bottom: -1%;
+    .anim-box{
+        transform: translate(-100%);
+        animation-duration: $SkillsTreeBoxS;
+        animation-delay: $SkillsTreeBoxDelayS;
+    }
+}
+
+.skill-item{
+    .skill-icon-mysql{
+        .cls-1,.cls-4{fill:#00758f;}
+        .cls-2,.cls-3{fill:#f29111;}
+        .cls-3,.cls-4{fill-rule:evenodd;}
+    }
+    .skill-icon{
+        position: relative;
+        perspective: 100px;
+        .icon-cont{
+            transition: all $LevitateIconAnimS;
+            font-size: 100%;
+        }
+        &::before{
+            transition: all $LevitateIconAnimS, filter 10s;
+            content: "";
+            position: absolute;
+            z-index: 10;
+            width: 60%;
+            height: 15px;
+            border-radius: 100%;
+            bottom: -15px;
+            left: auto;
+            filter: blur(10px);
+            transform: rotateX(45deg);
+        }
+        
+        &:hover{
+            .icon-cont{
+                transform: translateY(-10px);
+            }
+            &::before{
+                filter: brightness(1.2) blur(10px);
+            }
+        }
+    }
+    svg{
+        width: 100%;
+        height: 100%;
+        animation: fadeInBtm 0.8s ease forwards;
+        
+    }
+}
+@media (max-width: 768px){
+    .skills-tree .skills-box{
+        grid-template-columns: repeat(auto-fit, 40vw);
+        padding: 6vh;
+
+    }
+    .skill-item .skill-icon::before{
+        bottom: 3vw;
+        width: 100%;
+    }
+}
+@media (max-width: 474px){
+    .skills-box-cont{
+        border-top-left-radius: $SkillsBox-Radius-474;
+        border-top-right-radius: $SkillsBox-Radius-474;
+    }
+    .skill-item .skill-icon::before{
+        bottom: 10vw;
+    }
+}

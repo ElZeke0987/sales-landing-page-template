@@ -1,0 +1,113 @@
+@use "./servicesVars.scss" as *;
+@use "../../../styles/animations.scss" as *;
+
+.services-section{
+    border-top-left-radius: $ServicesSectionRadius;
+    border-top-right-radius: $ServicesSectionRadius;
+    position: relative;
+    height: auto;
+    z-index: 100;
+    padding: $ServicesSectionPadding;
+    background-color: $ServicesSectionBG;
+    h2{
+        font-size: $ServicesSectionTitleSize;
+        padding: $ServicesSectionTitlePadding;
+    }
+}
+
+.srv-grid-cont{
+    height: $SrvGridContHY;
+}
+
+.srv-grid{
+    width: $SrvGridWX;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: $SrvGridGap;
+}
+
+.service-card{
+    border-radius: $ServiceCardRadius;
+    border: $ServiceCarBRD;
+    transition: all $ServiceLineAnimS;
+    width: $ServiceCard-WX;
+    height: auto;
+    .cta-cont{
+        height: 30%;
+        .cta-button{
+            
+            background-color: $ServiceCTABG;
+            transform: translate(-5px, -5px);
+            box-shadow: 5px 5px 2px $ServiceCTAShadowColor;
+            &:Hover{
+                box-shadow: none;
+                background-color: $ServiceCTAHoverBG;
+                transform: translate(0, 0);
+                box-shadow: 10px 10px 0 $ServiceCTAHoverShadowColor;
+                box-shadow: none;
+            }
+        }
+    }
+    .anim-line{
+        margin: $ServiceLineMargin;
+        width: $ServiceLineWidth;
+        height: $ServiceLineHeight;
+        background-color: $ServiceLineBG;
+        border-radius: $ServiceLineRadius;
+        
+        &::before{
+            content: "";
+            position: absolute;
+            transition: all $ServiceLineAnimS; 
+            height: 100%;
+            background-color: $ServiceLineAnimBG;
+            width: 100%;
+            transform: scaleX(0);
+
+        }
+    }
+    &:hover{
+        border-color: $ServiceLineAnimBG;
+        .anim-line::before{
+            transform: scaleX(100%);
+        }
+        
+    }
+
+    .srv-textual{
+        padding: $ServiceCardTextualPadding;
+    }
+    .princ-img{
+        height: $ServiceCardImgHY;
+        object-fit: cover;
+    }
+    h3{
+        font-size: $ServiceCardTitleSize;
+    }
+    p{
+        font-size: $ServiceCardTextSize;
+    }
+}
+@media (max-width: 1200px) {
+    .srv-grid{
+        gap: $SrvGrid-Gap-1024
+    }
+    .service-card{
+        width: $ServiceCard-WX-1200;
+    }
+    
+}
+@media (max-width: 768px) {
+    .srv-grid{
+        gap: $SrvGrid-Gap-768;
+        flex-direction: row;
+        align-items: start;
+        .service-card{
+            width: $ServiceCard-WX-768;
+        }
+        .cta-cont{
+            height: auto;
+            padding: 10px;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+@keyframes slide-prev-To-Right{
+   0%{
+        opacity: 1;
+   }
+   100%{
+        transform: translateX(160%);
+        opacity: 0;
+   }
+}
+
+@keyframes slide-prev-To-Left{
+    0%{
+         opacity: 1;
+    }
+    100%{
+         transform: translateX(-100%);
+         opacity: 0;
+    }
+ }
+
+ @keyframes slide-next-To-Right{
+    0%{
+         opacity: 0;
+         transform: translateX(-160%);
+    }
+    100%{
+         transform: translateX(-60%);
+         opacity: 1;
+    }
+ }
+ @keyframes slide-next-To-Left{
+    0%{
+         opacity: 0;
+         transform: translateX(100%);
+    }
+    100%{
+         transform: translateX(-60%);
+         opacity: 1;
+    }
+ }
+
+
+@mixin animationDeclaration($dir, $i){
+    
+    .#{$dir}-#{$i}{
+        @if $i==2 {
+            animation-name: slide-#{$dir}-To-Right;
+        } @else{
+            animation-name: slide-#{$dir}-To-Left;
+        }
+    }
+}

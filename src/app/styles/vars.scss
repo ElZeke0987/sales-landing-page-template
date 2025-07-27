@@ -1,0 +1,256 @@
+
+$CartLengthBG: rgb(181, 80, 3);
+$CartLengthColor: #ffffff;
+$CartLengthWX: 1.2rem;
+$CartLengthHY: 1.2rem;
+$CartLengthTop: -60%;
+$CartLengthLeft: 90%;
+$CartLengthTxtSize: 0.8rem;
+
+$NavLinksQuant: 4;
+$OfferBG: #222;
+$TranspNavBG: none;
+$OpenNavAnimMS: 0.5s;
+$CloseNavAnimMS: 0.2s;
+$NavHY: 10vh;
+
+/*----Sections Backgrounds----*/
+$NavBG: #1a1a1a;
+$HeroSectionBG: #1a1a1a;
+$ProductSectionBG: #1a1a1a;
+
+$featuresGradientPos: 34%;
+$featuresSectionGradientUpper: $ProductSectionBG;
+$featuresSectionBG: #252525;
+$TestimonialGradientPos: 0%;
+$TestimonialsSectionGradientUpper: $featuresSectionBG;
+$TestimonialsSectionBG: #afdeff;
+$FaqSectionBG: #1a1a1a;
+$FooterBG: #000;
+
+/*--Section secondary colors--*/
+
+$FeaturesTitleColor: #fff;
+$TestimonialTitleColor: #111;
+$FaqTitleColor: #fff;
+
+/* - Hero Section - */
+
+$HeroSectionHY: 120vh;
+
+$HeroContHY: 80%;
+
+$HeroImageContHY: 100%;
+$HeroImageFadeInS: 1.5s;
+
+$HeroImageWX: 31vw;
+$HeroImageHY: 31vw;
+$HeroImageRadialGradPos: 55%;
+
+$HeroPadding768: 20px;
+
+$HeroTextualAlign: start;
+$HeroTextualPadding: 25vh 0 0 0;
+
+$HeroTitleColor: #fff;
+$HeroTitleBG: none;
+$HeroTitleRadius: 10px;
+
+$HeroSubTitleColor: #999;
+$HeroSubTitleBG: none;
+$HeroSubTitleRadius: 10px;
+
+/* - Product Section - */
+
+
+
+/* - Big Features Section */
+
+$FeaturesSectionHY:none;
+$FeaturesSectionPadding: 40vh 0;
+
+$FeatureImgBG: #fff;
+
+$FeaturesAmount: 3;
+$featuresAnimS: 1.5;
+$featureAnimDelay: 0.75;
+$featureAnimBG: rgb(25, 63, 199);
+$featureAnimBGHover: #1a47f9;
+
+$FeaturesSectionGap: 5rem;
+$FeaturesContGap: 4rem;
+
+$featuresGridGap: 8rem;
+
+$featureItemGap: 10px;
+$featureItemAlignY: space-evenly;
+
+$featureItem768WX: 90%;
+$featureItem768HY: 30vh;
+
+$featureItemPadding: 5vh;
+$featureItemBG: #1a1a1a;
+$featureItemImgSize: 9rem;
+$featureItemRadius: 30px;
+
+$featureItemTitleRadius: 20px;
+$featureItemTitleBG: none;
+$featureItemTitleColor: #9a9a9a;
+$featureItemTitlePaddingY: 10px;
+
+$featureItemDescBG: none;
+$featureItemDescColor: #fff;
+/* - Testimonials Section - */
+
+
+$TestimonialsContGap: 60px;
+$TestimonialsSectionHY: 120vh;
+$Testimonials768HY: 100vh;
+$TestimonialItemNameColor: #0d47a1;
+$TestimonialItemMsgColor: #1a1a1a;
+
+$TestimonialCarArrowHY: 3rem;
+$TestimonialCarArrowWX: 3rem;
+
+$TestimonialCarArrowBG: none;
+$TestimonialCarArrowColor: #0d47a1;
+$TestimonialCarArrowBGHover: #0d47a1 !important;
+$TestimonialCarArrowColorHover: $TestimonialsSectionBG;
+$TestimonialCarArrowBRD: #0d47a1 4px solid;
+
+
+/* - FAQ Section - */
+$FaqSectionHY: auto;
+$FaqSectionMaxHY: 10000px;
+$FaqSectionAlignY: flex-start;
+
+$FaqContPaddingY: 60px;
+$FaqContAlignHY: center;
+
+$FaqInsHY: 70%;
+$FaqInsAlignX: flex-start;
+
+$FaqInsGap: 1rem;
+$FaqInsDir: column;
+
+$FaqTitleHY: 15vh;
+$FaqTitleTxtSize: 2.1rem;
+$FaqTitleTxtSize768: 1.7rem;
+
+/* - Footer Section - */
+
+$FooterContHY: 50vh;
+$FooterFlexDir: column;
+$FooterAlignY: flex-start;//Recuerda qu
+$FooterAlignX: center;
+
+$FooterInsideWX: 80%;
+$FooterInsideHY: 70%;
+
+$FooLinksContWidth: 70%;
+$FooLinksContAlignX: center;
+$FooLinksContAlignY: center;
+$FooLinksContDir: column;
+$FooterLinksGap: 3rem;
+
+$FooOthLinksJustify: flex-start;
+
+$FooterRRSSContWidth: 57%;
+$FooRRSSContJustify: flex-start;
+$FooterRRSSInsWidth: auto;
+$FooterRRSSInsJustify: flex-start;
+$FooterRRSSGap:40px;
+
+$FooSectionTitleColor: #444;
+$FooLinkColor: #161616;
+$FooLinkHoverColor: #eee;
+$FooRRSSColor: #333;
+$FooRRSSHoverColor: #e9e9e9;
+
+
+/*---- Reusable's ----*/
+
+/* Call To Action Button */
+
+$CTABG: #0d47a1;
+$CTAHoverBG: #0d47a1;
+
+/* Carrousel */
+$CarouselTransitionMS: 0.5;
+$DefCarouselArrHoverBG: #419fb9f4;
+$DefCarouselItemBG: none;
+$DefCarouselItemWX: 20vw;
+
+$DefCarouselGap: 5%;
+//$Testimonial768Margin: 
+
+@media (max-width: 768px){
+    $DefCarouselMaxWX: 100% !important;
+}
+$DefCarouselMaxWX: 50vw;
+$DefCarouselHY: 40vh;
+$DefCarouselArrowContHY: 20vh;
+$DefCarouselArrowHY: 10vh;
+
+/* Accordion */
+
+$AccordionBRD: none;
+$AccordionBRDStyle: solid;
+
+$AccordionHY: auto;
+$AccordionBRDWidth: 5px;
+$AccordionContentOpenTransS: 1s;
+
+$AccordionTitleBG: #222;
+$AccordionTitleHoverBG: #444;
+$AccordiontTitleContTransS: 0.35s;
+$AccordionTitleWX: 100%;
+
+
+$AccordionTitle768WX: 100%;
+$AccordionTitleContAlignX: flex-start;
+$AccordionTitleContAlignY: center;
+$AccordionTitleContHY: 7vh;
+
+$AccordionOpenButtonWX: 10%;
+
+$AccordionContWX: 95%;
+$AccordionContentJustify: flex-start;
+$AccordionContentPaddingTop: 20px;
+$AccordionContentPaddingBottom : 20px;//<<<---- El padding Y del acordion se cambia en global vars
+
+$AccordionDefCols: 1;
+$AccordionColWX: 100vw;
+$AccordionItemHY: auto;
+$AccordionItemContentBG: #3c3c3c;
+$AccordionItemContentColor: #eee;
+$AccordionRowFinalHY: 90%;
+$AccordionRowFinalMaxHY: 50%;
+
+/* Custom Select*/
+
+$cusSelectBg: #eee;
+$cusSelectedColor: #111;
+$cusSelOptsContBg: #eee;
+$cusSelOptsContTxtColor: #777;
+$cusSelOptsContHoverBg: #7d98dd;
+$cusSelScrollbarWX: 10px;
+$cusSelScrollColor: #030f2b;
+$cusSelListOptsMaxHY: 35vh;
+
+$cusSelectOpenAnimS: 0.7s;
+
+/*----Custom Scrolls----*/
+
+$ScrollModernMiniHY: 7.5px;
+$ScrollModernMiniTrackBG: aqua;
+$ScrollModernMiniThumbBG: rgb(163, 163, 163);
+
+/*----Animations Vars Section----*/
+
+
+$NavLogoFadeInS: 1.2s;
+$NavLinksFadeInFactor: 420;
+$NavLinksFadeInMinMS: 1300ms;
+
+$ProductInfoFadeInS:0.9s;

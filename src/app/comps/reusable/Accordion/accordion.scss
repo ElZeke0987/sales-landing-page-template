@@ -1,0 +1,91 @@
+@use "../../../styles/vars.scss" as *;
+@use "../../../styles/animations.scss" as *;
+
+@keyframes animAccordionOpen{
+    from{
+        position: absolute;
+        top: 0;
+
+        transform: scaleY(0);
+    }
+    to{
+        transform: scaleY(1);
+    }
+}
+
+
+.accordion{
+    border: $AccordionBRDWidth  $AccordionBRD $AccordionBRDStyle;
+    overflow: hidden;
+    //height: $AccordionHY;
+    .accordion-item{
+        width: 100%;
+        transition: all 0.5s;
+        height: $AccordionItemHY;
+        
+        .accordion-title-cont{
+            background-color: $AccordionTitleBG;
+            justify-content: $AccordionTitleContAlignX;
+            align-items: $AccordionTitleContAlignY;
+            height: $AccordionTitleContHY;
+            transition: all $AccordiontTitleContTransS;
+            &:hover{
+                background-color: $AccordionTitleHoverBG;
+            }
+            &:active {
+                /*.accordion-open-button{
+                    animation-name: fadeIn;
+                    animation-duration: 100s;
+                }*/
+                
+            }
+        }
+
+        .accordion-title{
+           
+            width: $AccordionTitleWX;
+            
+            z-index: 10;
+        }
+        .accordion-open-button{
+            width: $AccordionOpenButtonWX;
+        }
+        .accordion-content-cont{
+            background-color: $AccordionItemContentBG;
+            
+        }
+        .accordion-content{
+
+            width: $AccordionContWX;
+            justify-content: $AccordionContentJustify;
+            max-height: 0;
+            overflow: hidden;
+            color: $AccordionItemContentColor;
+            transition: $AccordionContentOpenTransS max-height; 
+            .accordion-content-height-top{
+                height: $AccordionContentPaddingTop;
+            }
+            .accordion-content-height-bottom{
+                height: $AccordionContentPaddingBottom;
+            }
+        }
+        .open{
+            transition:  0 max-height; 
+            //padding: $AccordionContentPaddingY 0;
+            height: auto;
+            max-height: 10000px;
+            
+        }
+    }
+    .open-item{
+        //height: $AccordionRowFinalHY;
+        //max-height: $AccordionRowFinalMaxHY;
+    }
+
+}
+
+@media (max-width:1250px) {
+    .accordion .accordion-item .accordion-title{
+       width: $AccordionTitle768WX;
+   }
+}

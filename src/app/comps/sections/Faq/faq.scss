@@ -1,0 +1,64 @@
+
+@use "./faqVars.scss" as *;
+
+.faq-section{
+    background-color: $FaqSectionBG;
+    height: $FaqSectionHY;
+    align-items: $FaqSectionAlignY;
+    .faq-cont{
+        padding: $FaqContPaddingY 0;
+        align-items: $FaqContAlignHY;
+    }
+    .faq{
+        height: $FaqInsHY;
+        justify-content: $FaqInsAlignX;
+        gap: $FaqInsGap;
+        flex-direction: $FaqInsDir;
+    }
+}
+
+.faq-carousel-cont{
+    .accordion{
+        width: 80%;
+        gap: $FaqAccordionGap;
+        .accordion-item{
+            border-radius: 30px;
+            overflow: hidden;
+            .accordion-title-cont{
+                cursor: pointer;
+                .open-cont{
+                    border-radius: 100%;
+                    transition: all 0.5s;
+                    &:hover{
+                        background-color: $FaqOpenButtHoverBG;
+                        color: $FaqOpenButtHoverColor;
+                    }
+                }
+            }
+            
+            
+        }
+    }
+    @media (max-width:768px) {
+        .accordion{
+            width: 100%;
+            border-radius: 0 !important;
+
+        }
+    }
+}
+
+.faq-title-cont{
+    height: $FaqTitleHY;
+    .faq-title-txt{
+        font-size: $FaqTitleTxtSize;
+        color: $FaqTitleColor;
+    }
+}
+@media (max-width: 768px) {
+    .faq-title-cont{
+        .faq-title-txt{
+            font-size: $FaqTitleTxtSize768;
+        }
+    }
+}

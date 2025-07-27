@@ -1,0 +1,13 @@
+.lazy-loading-invisible{
+    
+    opacity: 0;
+    transition: 0.5s opacity;
+}
+.full-viewport{
+    height: 100vh;
+    width: 100vw;
+}
+.lazy-load-visible{
+    transition: 0.5s opacity;
+    opacity: 1;
+}

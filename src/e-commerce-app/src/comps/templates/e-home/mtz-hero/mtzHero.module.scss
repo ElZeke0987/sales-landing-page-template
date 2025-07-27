@@ -1,0 +1,42 @@
+@import './mtzHeroVars.scss';
+
+.mtz-hero .mtz-cta-button {
+    position: relative;
+    background: $mtz-button-bg;
+    color: $mtz-button-text;
+    padding: $mtz-button-padding;
+    border-radius: $mtz-button-border-radius;
+    font-size: $mtz-button-font-size;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: $mtz-button-transition;
+    z-index: 100;
+    
+    &::before {
+      content: '';
+      z-index: $mtz-button-gradient-z-index;
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        $mtz-button-hover-gradient,
+        transparent
+      );
+      transition: $mtz-button-gradient-transition;
+    }
+
+    &:hover {
+      transform: $mtz-button-hover-transform;
+      box-shadow: $mtz-button-hover-shadow $mtz-button-shadow;
+      
+      &::before {
+        left: 100%;
+      }
+    }
+}

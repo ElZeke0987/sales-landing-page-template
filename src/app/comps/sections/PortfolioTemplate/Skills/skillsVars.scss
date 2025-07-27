@@ -1,0 +1,53 @@
+$SkillsSectionTitleSize: 4rem;
+
+$SkillsTreePadding: 40px 0 0 0;
+
+$SkillsTreeCatsGap: 20px;
+
+$SkillsTreeGridCol: 300px;
+$SkillsTreeGridRow: 300px;
+$SkillsTreeGap: 100px;
+
+$SkillsCatItemRadius: 20px;
+$SkillsCatItemPadding: 20px;
+
+$SkillsTreeCatS: 0.4s;
+$SkillsTreeBoxS: 0.3s;
+$SkillsTreeBoxDelayS: 0.4s;
+
+$SkillsBoxRadius: 30px;
+$SkillsBox-Radius-474: 0;
+
+
+$SkillBoxPadding: 20vh 0;
+
+$Categories: "f-e", "b-e", "db";
+
+$CategoriesColor: (
+    f-e: #251fdc, //Front-End
+    b-e: #424, //Back-End
+    db: #b1f1fa, //Databases
+);
+
+$SkillIcons: "react", "next", "sass", "tailwind", "node", "express", "sequelize", "mysql", "phpmyadmin";
+
+$SkillIconsColor: (
+    react: #61DAFB, 
+    next: #222, 
+    sass: #CC6699,
+    tailwind: #06B6D4,
+    node: #83CD29,
+    express: #E2E8F0,
+    sequelize: #52B0E7,
+    mysql:  #00618C,
+    phpmyadmin: #F89820,
+
+);
+
+
+$CategoryFrontEndBG: #251fdc;
+$CategoryBackEndBG: #424;
+$CategoryDataBaseBG: rgb(13, 116, 37);
+
+$LevitateIconAnimS: 0.5s;
+$IconUnderNeonEffBG: rgba(106, 204, 239, 0.5);

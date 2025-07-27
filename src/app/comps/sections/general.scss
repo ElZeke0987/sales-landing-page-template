@@ -1,0 +1,58 @@
+@use "../../styles/vars.scss" as *;
+
+.vh-full{
+    height: 100vh;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+@media (min-width: 768px){
+    .vh-full-nav{
+        height: 110vh;
+    }
+}
+
+
+.first-sect-trans-nav{
+    *{
+        z-index: 20;
+    }
+    .bg-first-trans{
+        z-index: 0;
+    }
+}
+.z-dist{
+    z-index: 600;
+    header{
+        z-index: 900;
+    }
+}
+
+.scroll-modern-mini-x{
+    &::-webkit-scrollbar{
+        height: $ScrollModernMiniHY;
+        //background: $ScrollModernMiniTrackBG;
+    }
+    /*&::-webkit-scrollbar-track{
+        height: 10px;
+        background: $ScrollModernMiniTrackBG;
+    }*/
+    &::-webkit-scrollbar-thumb{
+        display: none;
+        background: $ScrollModernMiniThumbBG;
+        border-radius: 10px;
+    }
+    &:hover{
+        &::-webkit-scrollbar-thumb{
+            display: flex;
+        }
+        
+    }
+}
+
+
+.no-hover-scroll::-webkit-scrollbar-thumb{
+    display: flex;
+}

@@ -1,0 +1,48 @@
+
+@use "./typeItemVars.scss" as *;
+
+.type-item{
+    border-radius: $ProductType-Radius;
+    background: $ProductType-BG;
+    color: $ProductType-Color;
+    width: $ProductType-WX;
+    font-size: $ProductType-Size;
+    font-weight: $ProductType-Weight;
+    padding: $ProductType-Padding;
+    cursor: pointer;
+    .category-name{
+        transition: opacity $ProductTypeAnim-AnimS;
+    }
+    .anim-block{
+        top: $ProductTypeAnim-HY;
+        left: 0;
+        opacity: 0;
+        transition: all $ProductTypeAnim-AnimS;
+        font-size: $ProductTypeAnim-Size;
+        height: $ProductTypeAnim-HY;
+    }
+    &:hover{
+        .category-name{
+            opacity: 0;
+        }
+        @mixin gradientsHere($BG1, $BG2, $Color){
+            background: $BG1;
+            background: -moz-linear-gradient(0deg, $BG1 0%, $BG2 $ProductTypeAnim-Grad-X);
+            background: -webkit-linear-gradient(0deg, $BG1 0%, $BG2 $ProductTypeAnim-Grad-X);
+            background: linear-gradient(0deg, $BG1 0%, $BG2 $ProductTypeAnim-Grad-X);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#222",endColorstr="#535353",GradientType=1);
+            color: $Color
+        }
+        .anim-bg-remove{
+            @include gradientsHere($ProductTypeAnim-Grad-BG-Remove, $ProductTypeAnim-Grad-BG-Remove-2, $ProductTypeAnim-Grad-Color-Remove)
+        }
+        .anim-bg-filter{
+            @include gradientsHere($ProductTypeAnim-Grad-BG-Filter, $ProductTypeAnim-Grad-BG-Filter-2, $ProductTypeAnim-Grad-Color-Filter)
+        }
+        .anim-block{
+            
+            opacity: 1;
+            top: 0;
+        }
+    }
+}

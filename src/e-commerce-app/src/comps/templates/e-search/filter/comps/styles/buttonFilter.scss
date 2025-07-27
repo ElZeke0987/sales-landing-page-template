@@ -1,0 +1,29 @@
+@use "./buttonFilterVars.scss" as *;
+
+.button-filter-txt{
+    color: $ButtonFilterColor;
+}
+
+.filter-button-container{
+    padding: $FilterButtonCont-Padding;
+}
+
+.filter-button{
+    transition: all $FilterButton-AnimS;
+    background-color: $FilterButton-BG;
+    border-radius: $FilterButton-Radius;
+    cursor: pointer;
+    padding: $FilterButton-Padding;
+
+    svg{
+        width: 2rem;
+        height: 2rem;
+        stroke: $FilterButton-SVG-Stroke;
+        line, circle{
+            stroke: $FilterButton-SVG-Stroke;
+        }
+    }
+}
+.radius-button{
+    border-radius: $FilterButtonOpen-Radius;
+}

@@ -1,0 +1,132 @@
+@use "./cart-vars.scss" as *;
+
+body{
+    background-color: $CartBG;
+    
+}
+
+.cart-title{
+    color: $CartTitleColor;
+    font-size: $CartTitleTxtSize;
+    padding: $CartYPadding 0;
+}
+.quantity-handler{
+    button{
+        &:active{
+            outline: none;
+        }
+        padding: $QuantityButtsPadding;
+    }
+    .left-edge{
+        border: $QuantityHandBRDWX $QuantityHandBRDColor $QuantityHandBRDType; 
+        border-right: none;
+        border-top-left-radius: $QuantityHandBRDRadius;
+        border-bottom-left-radius: $QuantityHandBRDRadius;
+    }
+    .right-edge{
+        border: $QuantityHandBRDWX $QuantityHandBRDColor $QuantityHandBRDType; 
+        border-left: none;
+        border-top-right-radius: $QuantityHandBRDRadius;
+        border-bottom-right-radius: $QuantityHandBRDRadius;
+    }
+    
+    .quant-viewer{
+        border: $QuantityHandBRDWX $QuantityHandBRDColor $QuantityHandBRDType; 
+        padding: $QuantityPrincipalPadding;
+    }
+}
+
+.cart-grid{
+    width: $CartGridWX;
+    .item-row{
+        
+        color: $CartItemRowColor;
+        grid-template-columns: $ItemRowGridOrder;
+        border-bottom: #555 solid 2px;
+        .item-col{
+            text-align: center;
+            border-right: #999 solid 2px;
+        }
+        /*.item-col{
+            width: 100%;
+        }*/
+        .item-principal{
+            text-align: start;
+            width: $ItemRowPrincipalWX;
+        }
+        .item-price{
+            width: $ItemRowPriceWX;
+        }
+        .quantity-handler{
+            width: $ItemRowQuantityWX;
+        }
+        .item-total{
+            text-align: end;
+            width: $ItemRowTotalWX;
+        }
+    }
+    .real-item{
+        .quantity-handler{
+            padding: $ItemRowQuantityPadding;
+        }
+    }
+}
+.cart-options{
+    width: $CartOptsWX;
+    .clear-button{
+        color: $ClearButtonColor;
+        font-size: $ClearButtonTxtSize;
+    }
+}
+
+.cart-totals-cont{
+    width: $CartTotalsContWX;
+    gap: $CartTotalsContGap;
+    .totals-values-cont{
+        width: $CartTotalsValuesContWX;
+    }
+    .cart-totals{
+        background-color: $CartTotalsBG;
+        width: $CartTotalsWX;
+        justify-content: $CartTotalsJustify;
+        align-items: $CartTotalsAlign;
+        padding-top: $CartTotalsPaddTop;
+        padding-bottom: $CartTotalsPaddBot;
+    }
+    
+    .sub-total{
+        font-size: $CartTotalsSubTxtSize;
+        color: $CartTotalsSubColor;
+        justify-self: $CartTotalsSubSelfX;
+    }
+    .taxes{
+        font-size: $CartTotalsTaxTxtSize;
+        color: $CartTotalsTaxColor;
+        justify-self: $CartTotalsTaxSelfX;
+    }
+    .delivery{
+        font-size: $CartTotalsDeliveryTxtSize;
+        color: $CartTotalsDeliveryColor;
+        justify-self: $CartTotalsDeliverySelfX;
+    }
+    .net-total{
+        font-size: $CartTotalsNetTxtSize;
+        color: $CartTotalsNetColor;
+        justify-self: $CartTotalsNetSelfX;
+    }
+    .price-row{
+        width: $CartPriceRowWX;
+        display: flex;
+        justify-content: $CartPriceRowJustify;
+    }
+}
+
+.checkout-btn{
+    padding: $CheckoutPaddY 0;
+    text-align: center;
+    color: $CheckoutColor;
+    width: $CheckoutContWX;
+    background-color: $CheckoutBG;
+    border-radius: $CheckoutContBorderRadius;
+    
+}

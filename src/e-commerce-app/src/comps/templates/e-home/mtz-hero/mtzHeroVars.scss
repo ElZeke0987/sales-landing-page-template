@@ -1,0 +1,19 @@
+// Colores
+$mtz-button-bg: rgb(37, 35, 68);
+$mtz-button-text: rgb(250, 250, 250);
+$mtz-button-shadow: rgba(37, 35, 68, 0.4);
+$mtz-button-hover-gradient: rgba(21, 21, 21, 0.4);
+
+// Dimensiones
+$mtz-button-padding: 1rem 2.5rem;
+$mtz-button-border-radius: 50px;
+$mtz-button-font-size: 1.2rem;
+
+// Efectos
+$mtz-button-transition: all 0.3s ease;
+$mtz-button-hover-transform: translateY(-2px);
+$mtz-button-hover-shadow: 0 5px 15px;
+$mtz-button-gradient-transition: all 0.5s;
+
+// Z-index
+$mtz-button-gradient-z-index: 15;

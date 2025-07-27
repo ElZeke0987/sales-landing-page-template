@@ -1,0 +1,73 @@
+@use "./filterMenuVars.scss" as *;
+@keyframes openInsideItemVisualizer{
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+@keyframes openVisualizer {
+    0%{
+        max-height: 0;
+       // transform: scaleY(0);
+    }
+    100%{
+        max-height: auto;
+       // transform: scaleY(1);
+    }
+}
+@keyframes closeVisualizer {
+    0%{
+        max-height: auto;
+       // transform: scaleY(0);
+    }
+    100%{
+        max-height: 0;
+       // transform: scaleY(1);
+    }
+}
+.filter-menu {
+    padding: $FilterMenu-Padding;
+    height: max-content;
+    border-radius: $FilterMenuItem-Radius;
+    .multi-select{
+        height: $MultiSelectFilter-HY;
+        gap: $MultiSelectFilter-Gap;
+        .multi-select-item{
+            width: $MultiSelectFilterItem-WX;
+            color: $MultiSelectFilterItem-Color;
+            border-radius: $FilterMenuItem-Radius;
+            transition: all $FilterMenuItem-AnimS;
+            cursor: pointer;
+            gap: $FilterMenuItem-Gap;
+            padding: $FilterMenuItem-Padding;
+
+            &:hover{
+                background-color: $FilterMenuItem-Hover-BG;
+                color: $FilterMenuItem-Hover-Color
+            }
+        }
+        .outline-input{
+            display: flex;
+            width: 20px;
+            height: 20px;
+            border: $MultiSelectFilterItemOutline-BRD;
+            border-radius: $MultiSelectFilter-Radius;
+        }
+        .activated-inp{
+            background-color: aqua;
+        }
+    }
+    width: $FilterMenu-WX;
+    background-color: $FilterMenu-BG;
+}
+.visualizer-field{
+    height: max-content;
+    animation: openVisualizer 0.6s forwards;
+    transition: all 0.6s;
+}
+.close-anim{
+    animation: closeVisualizer 0.6s forwards;
+    
+}

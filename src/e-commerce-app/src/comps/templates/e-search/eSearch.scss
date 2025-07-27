@@ -1,0 +1,9 @@
+@use "./eSearchVars.scss" as *;
+
+.esearch-outter-cont{
+    background-color: $GeneralBG;
+    padding: $InnerItems-Gap;
+    .esearch-inner-cont{
+        gap: $InnerItems-Gap
+    }
+}

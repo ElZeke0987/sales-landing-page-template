@@ -1,0 +1,28 @@
+@use "./vars.scss" as *;
+
+
+.payment-section{
+    background-color: $PaymentSectionBG;
+    padding: $PaymentSectionPadd;
+    border-radius: $PaymentSectionRadius;
+}
+
+.payment-container{
+    justify-content: $PaymentJustify;
+    .card-info{
+        gap: $CardInfoGenGap;
+    }
+    
+    .sub-info{
+        gap: $CardSubInfoGap;
+    }
+    .section{
+        padding: $PaymentInnerSectionsPadd;
+        gap: $PaymentInnerSectionsGap;
+    }
+    .top-brd{
+        border-top: $PaymentTopBRD;
+    }
+}
+
+

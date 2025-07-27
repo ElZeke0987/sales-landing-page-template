@@ -1,0 +1,48 @@
+$ServicesSectionPadding: 0 0 50px 0;
+$ServicesSectionRadius: 20px;
+$ServicesSectionBG: #222;
+
+$ServicesSectionTitleSize: 4rem;
+$ServicesSectionTitlePadding: 90px 0;
+
+$SrvGridContHY: 100%;
+$SrvGridWX: 100%;
+$SrvGridGap: 50px;
+$SrvGrid-Gap-768: 20px;
+$SrvGrid-Gap-1024: 50px;
+
+
+
+$SrvGridRowSize: 100%;
+$SrvGridColSize: minmax(0%, calc(50% - $SrvGridGap));
+
+$ServiceCard-WX: 45%;
+$ServiceCard-WX-1200: 46%;
+$ServiceCard-WX-768: 90vw;
+
+
+
+$ServiceCardImgHY: 45%;
+$ServiceCardRadius: 20px;
+$ServiceCarBRD: solid 4px #b1d1ff;
+$ServiceCardTitleSize: 2rem;
+$ServiceCardTextSize: 1.2rem;
+$ServiceCardTextualPadding: 0px 20px;
+
+
+$ServiceLineAnimS: 0.7s;
+$ServiceLineWidth: 70%;
+$ServiceLineHeight: 5px;
+$ServiceLineMargin: 10px;
+$ServiceLineBG: #9fc0ef;
+$ServiceLineAnimBG: #3480ea;
+$ServiceLineRadius: 10px;
+
+$ServiceCTABG: #0c5ed1;
+$ServiceCTAShadowColor: #09469c;
+$ServiceCTAHoverBG: #0e4ca3;
+$ServiceCTAHoverShadowColor: #0e2a50;
+
+
+
+

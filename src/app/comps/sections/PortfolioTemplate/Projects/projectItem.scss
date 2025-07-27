@@ -1,0 +1,59 @@
+@use "../../../styles/varsFiles/projectVars.scss" as *;
+@use "../../../styles/vars.scss" as *;
+.project-item{
+    padding: $ProjectItemPadding;
+    .inner-item{
+        border: $ProjectItemBorder;
+    }
+    
+    .online{
+        color: $ProjectItemOnlineColor;
+        font-size: $ProjectItemOnlineSize;
+    }
+    .offline{
+        color: $ProjectItemOfflineColor;
+        font-size: $ProjectItemOfflineSize;
+    }
+    .down-element{
+        border-radius: $ProjectItemRadius;
+        width: $ProjectItemDownWX;
+        height: $ProjectItemDownHY;
+    }
+   
+    img{
+
+    }
+    .over-text{
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: all $ProjectItemOpacTransS;
+        padding: $ProjectItemOverPadding;
+        background-color: $ProjectItemOverBG;
+        backdrop-filter: blur($ProjectItemOverBlur);
+        &:hover{
+            opacity: 1;
+        }
+        
+    }
+
+    h3{
+        font-size: $ProjectItemTitleSize;
+        color: $ProjectItemTitleColor;
+    }
+    h4{
+        font-size: $ProjectItemSubTitleSize;
+        color: $ProjectItemSubTitleColor;
+
+    }
+    p{
+        font-size: $ProjectItemTxtSize;
+        color: $ProjectItemTxtColor;
+    }
+}
+@media (hover: none){
+    .project-item .over-text{
+        opacity: 1;
+    }
+}

@@ -1,0 +1,10 @@
+@use "./contactVars.scss" as *;
+@use "./formContact.scss" as *;
+
+.contact-section{
+    padding: $ContactSection-Padding;
+    gap: $ContactSection-Gap;
+    h2{
+        font-size: $ContactSectionTitle-Size;
+    }
+}

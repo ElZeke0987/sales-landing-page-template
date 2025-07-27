@@ -1,0 +1,51 @@
+@use "../../../styles/vars.scss" as *;
+
+.testimonials-section{
+    background: rgb(26,26,26);
+    background: -moz-linear-gradient(180deg, $TestimonialsSectionGradientUpper 0%, $TestimonialsSectionBG $TestimonialGradientPos);
+    background: -webkit-linear-gradient(180deg, $TestimonialsSectionGradientUpper 0%, $TestimonialsSectionBG $TestimonialGradientPos);
+    background: linear-gradient(180deg, $TestimonialsSectionGradientUpper 0%, $TestimonialsSectionBG $TestimonialGradientPos);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1a1a1a",endColorstr="#e3f2fd",GradientType=1);
+    gap: $TestimonialsContGap;
+    height: $TestimonialsSectionHY;
+    //z-index: 10;
+    .testimonials-section-title{
+        color: $TestimonialTitleColor;
+    }
+    .carousel-arrow{
+        height: $TestimonialCarArrowHY;
+        width: $TestimonialCarArrowWX;
+        color: $TestimonialCarArrowColor;
+        background-color: $TestimonialCarArrowBG;
+        border-radius: 100%;
+        border: $TestimonialCarArrowBRD;
+        &:hover{
+            color: $TestimonialCarArrowColorHover;
+            background-color: $TestimonialCarArrowBGHover;
+
+        }
+    }
+    .carousel-item{
+        img
+        {
+            border-radius: 100%;
+            overflow: hidden;
+        }
+        
+        .testimonial-name{
+            color: $TestimonialItemNameColor;
+            
+        }
+        .testimonial-p{
+            color: $TestimonialItemMsgColor;
+        }
+    }
+}
+@media (max-width:768px){
+    .testimonials-section{
+        gap: 0;
+        height: $Testimonials768HY;
+        //z-index: 10;
+    }
+    
+}

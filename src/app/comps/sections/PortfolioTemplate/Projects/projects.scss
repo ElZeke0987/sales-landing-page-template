@@ -1,0 +1,20 @@
+@use "../../../styles/varsFiles/projectVars.scss" as *;
+@use "../../../styles/vars.scss" as *;
+
+.projects-section{
+    min-height: $ProjectsSectionMinHY;
+    gap: $ProjectsGap;
+    h2{
+        font-size: $ProjectsTitleSize;
+        padding: $ProjectsTitlePadding;
+        span{
+            font-size: $ProjectsAdviseSize;
+        }
+    }
+    .projects-grid{
+        grid-template-columns: repeat(auto-fit, $ProjectsGridColsSize);
+        grid-auto-rows: $ProjectsGridRowsSize;
+        gap: $ProjectsGridGap;
+        padding: $ProjectsGridPadding;
+    }
+}

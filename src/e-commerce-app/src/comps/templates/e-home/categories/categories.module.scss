@@ -1,0 +1,151 @@
+@use "../../../styles/vars" as *;
+@use "../../../styles/animations.scss" as *;
+
+.features-title{
+    color: $FeaturesTitleColor;
+}
+.features-cont{
+    gap: $FeaturesContGap;
+}
+
+@keyframes slideOpenBGChange {
+    0%{
+        left: -100%;
+        background-color: $featureAnimBG;
+    }
+    30%{
+        left: 0;
+    }
+    100%{
+        
+        background-color: $featureAnimBGHover;
+    }
+}
+
+.features-section{
+
+    background: rgb(26,26,26);
+    background: -moz-linear-gradient(180deg, $featuresSectionGradientUpper 0%, $featuresSectionBG $featuresGradientPos);
+    background: -webkit-linear-gradient(180deg, $featuresSectionGradientUpper 0%, $featuresSectionBG $featuresGradientPos);
+    background: linear-gradient(180deg, $featuresSectionGradientUpper 0%, $featuresSectionBG $featuresGradientPos);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1a1a1a",endColorstr="#e3f2fd",GradientType=1);
+
+    display: grid;
+    gap: $FeaturesSectionGap;
+    height: $FeaturesSectionHY;
+    padding: $FeaturesSectionPadding;
+    .features-list{
+        display: grid;
+        gap: $featuresGridGap;
+        .feature-img{
+            
+            img{
+                background-color: $FeatureImgBG;
+                object-fit:cover;
+                width: $featureItemImgSize;
+                height: $featureItemImgSize;
+            }
+        }
+        @for $i from 0 through $FeaturesAmount{
+            .anim-#{$i}{
+                
+                .item-feature-title{
+                    position: relative;
+                    overflow: hidden;
+                    span{
+                        position: relative;
+                        z-index: 100;
+                    }
+                    .anim-block{
+                        content: "";
+                        background-color: $featureAnimBG;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0%;
+                        height: 100%;
+                        animation-name: scaleToEnd;
+                        animation-duration: #{$featuresAnimS}s;
+                        animation-delay: #{($i - 1) * $featureAnimDelay}s;
+                        animation-fill-mode: forwards;
+                        z-index: 10;
+                    }  
+                }
+                
+            }
+        }
+    }
+    
+    .feature-item{
+        padding: $featureItemPadding;
+        background-color: $featureItemBG;
+        align-items: $featureItemAlignY;
+        gap: $featureItemGap;
+        border-radius: $featureItemRadius;
+        .item-feature-title{
+            background-color: $featureItemTitleBG;
+            border-radius: $featureItemTitleRadius;
+            color: $featureItemTitleColor;
+            padding: $featureItemTitlePaddingY 0;
+        }
+        .item-feature-desc{
+            background-color: $featureItemDescBG;
+            color: $featureItemDescColor;
+        }
+    }
+    .cta-button{
+        position: relative;
+        overflow: hidden;
+        .cta-text{
+            z-index: 100;
+        }
+        .anim-block-cta{
+            content: "";
+            position: absolute;
+            top: 0%;
+            left: -100%;
+            height: 100%;
+            width: 100%;
+            background-color: $featureAnimBG;
+            transition: all 0.5s;
+            
+            z-index: 10;
+        }
+        &:hover{
+            .anim-block-cta{
+                animation-name: slideOpenBGChange;
+                animation-duration: 0.75s;
+                left: 0;
+                background-color: $featureAnimBGHover;
+            }
+        }
+    }
+}
+@media (max-width:768px){
+    .features-section{
+        grid-auto-rows: auto;
+        gap: 40px;
+    }
+    .features-list{
+        justify-items: center;
+        grid-auto-rows: $featureItem768HY;
+    }
+    .feature-item{
+        width: $featureItem768WX;
+        height: 100%;
+        .feature-img{
+            //height: 60%;
+        }
+        .feature-title{
+            //height: 20%;
+        }
+
+    }
+    .feature-desc{
+        //height: 30%;
+        width: 100%;
+        p{
+            width: 70%;
+        }
+}
+}

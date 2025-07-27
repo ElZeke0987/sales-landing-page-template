@@ -1,0 +1,73 @@
+@keyframes fadeIn {
+    0%{
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInNotBig {
+    0%{
+        transform: translateY(-12%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes levitating1 {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.16);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes scaleToEnd {
+    0%{
+        width: 100%;
+        left: -50%;
+        transform: scaleX(0);
+    }
+    50%{
+        transform: scaleX(2);
+    }
+    100%{
+        left: 115%;
+        transform: scaleX(0);
+        
+    }
+    
+}
+
+@keyframes showOverflow {
+    0%{
+        overflow: hidden;
+    }
+    100%{
+        overflow: visible;
+    }
+}
+
+@keyframes openCusSelectOpts {
+    0%{
+
+        transform: translateY(-50%) scaleY(0);
+        opacity: 0;
+    }
+    100%{
+        top: 110%;
+        transform: translateY(8 vb px) scaleY(1);
+        opacity: 1;
+    }
+}
+

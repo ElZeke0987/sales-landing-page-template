@@ -1,0 +1,76 @@
+$ProductSectionPaddingY: 60px;
+
+$ProductPrincipalHY: 80%;
+$ProductPrincipalGap: 20px;
+$ProductVisualsGap: 30px;
+
+$ProductImageContHY: 40vw;
+$ProductImageContWX: 40vw;
+
+$ProductImageHY: 100%;
+$ProductImageWX: 100%;
+
+$ProductImageHoverS: 0.7s;
+
+//$ProductVisuals768WX: 150vh;
+$ProductCarouselGeneralHY: 20%;
+$ProductCarouselContainerHY: auto;
+@media (max-width:768px) {
+    $ProductCarouselGeneralHY: 20% !important;
+}
+$ProductTypesCarHY: 20vh!important;
+$ProductTypesCarWX: 30vw;
+
+
+$ProductTypeItemWX: 7vw;
+$ProductTypeItemHY: 7vw;
+
+$ProductTypeItemBG: #fff;
+
+$ProductTypeSelectedBG: #09157e7a;
+$ProdTypeSelectedAnimS: 0.5s;
+
+$ProductTitleFontSize: 1.5rem;
+
+$ProductPriceFontSize: 1.2rem;
+$ProductPriceColor: #02ea19;
+
+$ProductDescFontSize: 0.8rem;
+
+$BuyContGap: 5vh;
+
+$StockTxtColor: black;
+$StockOptHoverBG: #1e79c88e;
+$StockOptHoverTxtColor: #000000;
+
+$ProductButtonWX: 100%;
+$ProductButtonHY: 7.5vh;
+
+$ProductButtonsGap: 0.5rem;
+$ProductButtonBuyNowBG: #2c7e09;
+$ProductButtonAddToCartBG: #eee;
+$ProductButtonAddToCartBRD: $ProductButtonBuyNowBG;
+
+$ProductInfoPaddingX: 10px;
+
+$ProductLowStockColor: red;
+$ProductHighLightedLSBRD: #000;
+$ProductHighLightedBG: red;
+$ProductHighLightedColor: #fff;
+$ProductHighLightedRadius: 20px;
+$ProductHighLightedPadding: 5px 10px;
+
+$ProductHighLightedNmbBRD: red 3px solid;
+$ProductHighLightedNmbBG: none;
+$ProductHighLightedNmbColor: #fff;
+$ProductHighLightedNmbRadius: 20px;
+$ProductHighLightedNmbPadding: 5px;
+
+$benefitBRDRadius: 10px;
+$benefitBRD: 3px green solid;
+$benefitItemGap: 10px;
+$benefitSVGWH: 0.89rem;
+$benefitSVGColor: green;
+$benefitsListPadding: 10px 20px;
+
+$ProductCusSelRadius: 0.9rem;

@@ -1,0 +1,80 @@
+@use "./productCardVars.scss" as *;
+
+.product-wh{
+    height: $Product-HY;
+    width: $Product-WX;
+    border-radius: $ProductCard-Radius;
+    -webkit-box-shadow: 0px 10px 6px 0px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0px 10px 6px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 10px 6px 0px rgba(0,0,0,0.15);
+}
+
+.product-card-info{
+    transition: all $ProductTypeAnim-AnimS;
+    border-radius: $ProductCard-Radius; 
+    padding: $ProductCard-padding;
+    cursor: pointer;
+    .counter-color{
+        transition: all $ProductCounter-AnimS;
+    }
+    &:hover{
+        background-color: $ProductCard-Hover-BG;
+        .type.counter-color{
+            background-color: $ProductCard-Hover-CounterType-BG;
+            color: $ProductCard-Hover-CounterType-Color;
+        }
+        .counter-color{
+            color: $ProductCard-Hover-Counter-Color;
+        }
+    }
+    .price{
+        color: $ProductPrice-Color;
+        font-weight: $ProductPrice-Weight;
+    }
+    .title{
+        color: $ProductTitle-Color;
+    }
+    .desc{
+        color: $ProductDesc-Color;
+    }
+    .type{
+        border-radius: $ProductType-Radius;
+        background: $ProductType-BG;
+        color: $ProductType-Color;
+        width: $ProductType-WX;
+        font-size: $ProductType-Size;
+        font-weight: $ProductType-Weight;
+        padding: $ProductType-Padding;
+        cursor: pointer;
+        .anim-block{
+            top: $ProductTypeAnim-HY;
+            left: 0;
+            opacity: 0;
+            transition: all $ProductTypeAnim-AnimS;
+            font-size: $ProductTypeAnim-Size;
+            height: $ProductTypeAnim-HY;
+        }
+        &:hover{
+            
+            @mixin gradientsHere($BG1, $BG2, $Color){
+                background: $BG1;
+                background: -moz-linear-gradient(0deg, $BG1 0%, $BG2 $ProductTypeAnim-Grad-X);
+                background: -webkit-linear-gradient(0deg, $BG1 0%, $BG2 $ProductTypeAnim-Grad-X);
+                background: linear-gradient(0deg, $BG1 0%, $BG2 $ProductTypeAnim-Grad-X);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#222",endColorstr="#535353",GradientType=1);
+                color: $Color
+            }
+            .anim-bg-remove{
+                @include gradientsHere($ProductTypeAnim-Grad-BG-Remove, $ProductTypeAnim-Grad-BG-Remove-2, $ProductTypeAnim-Grad-Color-Remove)
+            }
+            .anim-bg-filter{
+                @include gradientsHere($ProductTypeAnim-Grad-BG-Filter, $ProductTypeAnim-Grad-BG-Filter-2, $ProductTypeAnim-Grad-Color-Filter)
+            }
+            .anim-block{
+                
+                opacity: 1;
+                top: 0;
+            }
+        }
+    }
+}
