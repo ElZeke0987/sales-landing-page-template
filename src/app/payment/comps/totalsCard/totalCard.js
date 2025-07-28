@@ -1,15 +1,26 @@
 import { delivery, taxes } from "@/global-vars";
 import { useEffect, useState } from "react";
 import "./totalCard.scss";
+import { useCart } from "../../../cartProvider";
+import { usePersonalInfoStore } from "../../personalInfoStore";
+function getTotalOfProducts(cart){
+    return cart.reduce((total, item)=>total+item.price*item.quantity, 0)
+}
 
 export function TotalCard(){
     const [subTotal, setSubTotal]=useState(0);
     const [netTotal, setNetTotal]=useState(0)
+    const {cart}=useCart()
+    const {getShippingPrice}=usePersonalInfoStore()
+    const [shippingPrice, setShippingPrice]=useState(0)
+
+        
+
     useEffect(()=>{
-        const parsedSubTotal=JSON.parse(localStorage.getItem('subTotal')).subTotal;
-        console.log("parsed subTotal: ", parsedSubTotal)
-        setSubTotal(parsedSubTotal)
-    },[])
+        const parsedSubTotal=getTotalOfProducts(cart);
+        getShippingPrice(cart).then((price)=>setShippingPrice(price))
+        setSubTotal(parsedSubTotal) 
+    },[cart])
     
     useEffect(()=>{
 

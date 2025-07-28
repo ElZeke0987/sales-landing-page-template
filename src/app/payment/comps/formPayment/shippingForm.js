@@ -11,7 +11,8 @@ export function ShippingForm(){
         city, setCity,
         state, setState,
         zip, setZip,
-        country, setCountry
+        country, setCountry,
+        getShippingPrice
     } = usePersonalInfoStore();
     return(
         <div className="basic-info flex flex-col">

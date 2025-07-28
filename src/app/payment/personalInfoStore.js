@@ -1,11 +1,14 @@
 
 
 import { create } from "zustand";
-
-function getCartItemIds(){
-    
+import { useCart } from "../cartProvider";
+function getCartItemIds(cart){
+    return cart.map(item => ({
+        id: item.id,
+        quantity: item.quantity,
+        extId: item.extId
+    }));
 }
-
 export const usePersonalInfoStore=create((set)=>({
     email:"",
     setEmail:(email)=>set({email}),
@@ -25,7 +28,8 @@ export const usePersonalInfoStore=create((set)=>({
     setZip:(zip)=>set({zip}),
     country:"",
     setCountry:(country)=>set({country}),
-    getShippingPrice:async()=>{
+    getShippingPrice:async(cart)=>{
+        console.log("getCartItemIds: ",getCartItemIds(cart))
         const response=await fetch("/api/shipping-rate", {
             method: "POST",
             headers: {
@@ -42,7 +46,7 @@ export const usePersonalInfoStore=create((set)=>({
                     "email": this.email,
                     "name": this.firstName+" "+this.lastName
                 }, 
-                itemsIdsToBeProccesed: getCartItemIds()
+                itemsIdsToBeProccesed: getCartItemIds(cart)
             })
         })
         const data=await response.json()

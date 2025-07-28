@@ -32,6 +32,7 @@ export async function onlyWhenNeeded(){
         "| Cantidad de productos en catálogo:", Array.isArray(data.result) ? data.result.length : 0
     );
     // Use global assignment to avoid errors when assigning to imported variable
+    global.privateCatalogData = data.result;
     global.catalogData = data.result.map((prd)=>{
         /*
         Explicación de las variables seleccionadas para el objeto de producto (catalogData):
@@ -73,9 +74,8 @@ export async function onlyWhenNeeded(){
 }
 
 export async function GET(){
-
-    if(global.catalogData){
-        console.log("Returning cached catalog data")
+    if(global.catalogData&&global.privateCatalogData){
+        console.log("Returning cached catalog data ")
         return new Response(JSON.stringify(global.catalogData), {
             headers: {
                 "Content-Type": "application/json"

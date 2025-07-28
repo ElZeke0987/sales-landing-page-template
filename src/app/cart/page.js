@@ -36,7 +36,6 @@ function ItemRow({item, i, setSubTotal, cartList}){
         item.quantity = quantState;
     },[quantState])*/
 
-    console.log("Item: ", item)
     const toFix=item.price * quantState;
     
     const fixedNum= toFix.toFixed(2);
