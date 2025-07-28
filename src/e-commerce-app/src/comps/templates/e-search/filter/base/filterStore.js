@@ -4,19 +4,18 @@ import { exampleProducts } from "../../results/examplesProducts";
 //Act = activate or set something to true as well, open&close boolean
 
 const petProductFetch=async()=>{
+    console.log("Fetching products")
     const response=await fetch("/api/get-products", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
         }
     })
-    console.log(response.result)
-    return new Response(JSON.stringify(await response.json()), {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
+    const data=await response.json()
+    console.log("response result: ", data)
+    return data
 }
+petProductFetch()
 
 const useFilterStore = create(set=>({
     filters: {
