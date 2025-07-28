@@ -1,7 +1,7 @@
 
 export const manualProductsInfo=[
     {
-        id: "cold lm",
+        id: "cold-lm",
         stock: 10,
         price: 12,
         title: "Producto de ejemplo (oversize) 1",
@@ -10,7 +10,7 @@ export const manualProductsInfo=[
         desc: "LM-Style worldwide - Ideal for cold winds - Absolute essential for a street look  on a motorcycle",
     },
     {
-        id: "empty z oversize",
+        id: "empty-z-oversize",
         stock: 10,
         price: 30,
         title: "Producto de ejemplo (oversize) 2",
@@ -19,7 +19,7 @@ export const manualProductsInfo=[
         desc: "Iconic, original, ",//To make later
     },
     {
-        id: "empty z shoes",
+        id: "empty-z-shoes",
         stock: 10,
         price: 47,
         title: "Producto de ejemplo (zapatillas) 1",

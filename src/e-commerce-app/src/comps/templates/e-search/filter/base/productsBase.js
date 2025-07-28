@@ -22,16 +22,15 @@ const petProductFetch=async()=>{
 // result: Propiedad de 'data' que contiene el array principal de productos retornado por la API.
 export async function newProductList(state){
     const data=await petProductFetch()
-    console.log("data result: ", data.result, " with manualProductsInfo", manualProductsInfo)
     const newProductList=manualProductsInfo.map((prdInfo, i) => {
         // Busca si existe un producto obtenido del backend con el mismo nombre que el id del producto manual
-        const prdExist = data.result.find(p => p.name.toLowerCase() === prdInfo.id.toLowerCase());
+        const prdExist = data.result.find(p => p.name.replace(/\s+/g, "-").toLowerCase() === prdInfo.id.toLowerCase());
         if (prdExist) {
             // Si hay match, pone la informacion manual de ese producto mas la conseguida desde la API directamente
             prdInfo.title=prdExist.name
             return{
                 
-                imgList: [{ imgUrl:prdExist.thumbnail_url, title:prdInfo.id}],
+                imgList: [{ imgUrl: `/images/products/${prdInfo.id}/${prdInfo.id}-preview.png` || prdExist.thumbnail_url, title: prdInfo.id }],
                 ...prdInfo,
             }
         }
