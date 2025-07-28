@@ -11,7 +11,7 @@ import ProductAside from "./productAside/productAside";
 
 
 export default function Product(){
-    const { prodObj }=useProductIdStore()
+    const {prodObj}=useProductIdStore()
     const [objOpt, setObjOpt]=useState(prodObj||{imgList: [{id: 0, imgUrl: "/public/images/testimonials/default-testimonial.jpg", title:"hola-dumy"}]})//Item a nivel objeto en programacion
 
     const [imgSel, setImgSel]=useState(objOpt.imgList[0]||{id: 0, imgUrl: "/public/images/testimonials/default-testimonial.jpg", title:"hola-dumy"})//Item a nivel imagen

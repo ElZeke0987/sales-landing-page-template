@@ -1,7 +1,17 @@
-import { exampleProducts } from "../examplesProducts"
 import { create } from "zustand"
-export const useProductIdStore=create(set=>({
+import { newProductList } from "@/e-commerce-app/src/comps/templates/e-search/filter/base/productsBase"
+
+export const useProductIdStore = create(set => ({
     id: undefined,
     prodObj: undefined,
-    setNewId: (newId)=> set((state)=>({...state, id: newId, prodObj: exampleProducts.find(prod=> prod.id===newId)}))
+    setNewId: async (newId) => {
+        const products = await newProductList();
+        set(state => ({
+            ...state,
+            id: newId,
+            prodObj: products?.find(prod => prod.id === newId)
+        }));
+    }
 }))
+
+

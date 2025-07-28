@@ -37,6 +37,9 @@ export async function newProductList(state){
     })
     
     console.log("new product list", newProductList)
-   state(newProductList)
-   global.productList=newProductList
+   if(state){
+    state(newProductList)
+    return
+   }
+   return newProductList
 }
