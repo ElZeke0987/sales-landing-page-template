@@ -2,6 +2,22 @@ import { create } from "zustand";
 import { filterLists } from "./filterVars";
 import { exampleProducts } from "../../results/examplesProducts";
 //Act = activate or set something to true as well, open&close boolean
+
+const petProductFetch=async()=>{
+    const response=await fetch("/api/get-products", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+    console.log(response.result)
+    return new Response(JSON.stringify(await response.json()), {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+}
+
 const useFilterStore = create(set=>({
     filters: {
         category: [ ...filterLists.category ],

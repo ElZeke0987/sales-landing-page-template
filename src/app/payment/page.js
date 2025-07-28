@@ -5,7 +5,8 @@ import  Header  from "../comps/sections/Header/Header";
 import "./payment.scss";
 
 import { TotalCard } from "./comps/totalsCard/totalCard";
-import { ShippingForm } from "./comps/formPayment/shipping/shippingForm";
+import { ShippingForm } from "./comps/formPayment/shippingForm";
+import { PaymentForm } from "./comps/formPayment/paymentForm";
 
 export default function PaymentSections(){
     const [payMethod, setPayMethod]=useState("bank")
@@ -13,7 +14,20 @@ export default function PaymentSections(){
     function handlePayMethodClick(method){
         setPayMethod(method)
     }
-    
+    async function handleTestFetch(){
+        const body={
+            method: payMethod
+        }
+        const response=await fetch("/api/payment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        })
+        const data=await response.json()
+        console.log(data)
+    }    
    
     return(
     <div>
@@ -23,28 +37,10 @@ export default function PaymentSections(){
         
         <div className="flex payment-container w-full">
             <div className="flex payment-section">
+                <button onClick={()=>setSectProgress("shipping")}>Shipping</button>
+                <button onClick={()=>setSectProgress("payment")}>Payment</button>
                 {sectProgress=="shipping"&&<ShippingForm/>}
-                {sectProgress=="payment"&&<div className="basic-info flex flex-col">
-                    <div className="flex flex-col">
-                        <label>Name On Card</label>
-                        <input className="card-input"/>
-                    </div>
-                    <div className="flex flex-col">
-                        <label>Card Number</label>
-                        <input className="" placeholder="XXXX XXXX XXXX XXXX"/>
-                    </div>
-                    <div className="card-sub-info flex">
-                        <div className="flex flex-col">
-                            <label>Expire Date</label>
-                            <input className="" placeholder="XXXX XXXX XXXX XXXX"/>
-                        </div>
-                        <div className="flex flex-col">
-                            <label>CVV / CVC</label>
-                            <input className="" placeholder="XXX"/>
-                        </div>
-                    </div>
-                    
-                </div>}
+                {sectProgress=="payment"&&<PaymentForm/>}
                 <div className="digital-methods">
                     
                 </div>
