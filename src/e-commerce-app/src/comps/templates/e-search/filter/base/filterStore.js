@@ -1,21 +1,8 @@
 import { create } from "zustand";
 import { filterLists } from "./filterVars";
-import { exampleProducts } from "../../results/examplesProducts";
+import { manualProductsInfo } from "./manualProductsInfo";
 //Act = activate or set something to true as well, open&close boolean
-
-const petProductFetch=async()=>{
-    console.log("Fetching products")
-    const response=await fetch("/api/get-products", {
-        method: "GET",
-        headers: {
-            "Content-Type": "application/json",
-        }
-    })
-    const data=await response.json()
-    console.log("response result: ", data)
-    return data
-}
-petProductFetch()
+import { newProductList } from "./productsBase";
 
 const useFilterStore = create(set=>({
     filters: {
@@ -27,22 +14,20 @@ const useFilterStore = create(set=>({
     setPriceRange: (range)=> set(state=>({filters: {...state.filters, priceRange: range}})),
     setRate: (rate)=> set( state=> ({...state.filters, rate})),
 
-    productList: exampleProducts,
+    productListByState:(state)=> newProductList(state),
     setCategoryActProducts: (state)=>{
        console.log("testing: ", state.filters.category)
  
 
         const activeCategories=state.filters.category.filter((cat)=>cat.act);
-        //console.log("active testing: ", activeCategories)
-        const newProductList=
-        state.productList.map((prd, i)=>{//Activate all products with categoryToAct 
+        
+        const newProductList= state.productList?.map((prd, i)=>{//Activate all products with categoryToAct 
             let objToReturn;
 
-            //console.log("filtered actos", categoryToAct)
             objToReturn={...prd, actCategory: activeCategories.some(cat=>cat.val==prd.val&&cat.act)};
             return objToReturn
          })
-         //console.log("new product list", newProductList);
+         
          return{
              ...state,
              productList: newProductList,

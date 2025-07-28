@@ -1,5 +1,4 @@
 const API_KEY= process.env.PRINTFUL_API_KEY
-import {catalogData} from "../dataSave"
 
 import fs from "fs"
 import path from "path"
@@ -42,9 +41,9 @@ export async function onlyWhenNeeded(){
 }
 
 export async function GET(){
-    if(catalogData){
+    if(global.catalogData){
         console.log("Returning cached catalog data")
-        return new Response(JSON.stringify(catalogData), {
+        return new Response(JSON.stringify(global.catalogData), {
             headers: {
                 "Content-Type": "application/json"
             }

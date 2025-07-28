@@ -1,0 +1,43 @@
+import { manualProductsInfo } from "./manualProductsInfo";
+const petProductFetch=async()=>{
+    console.log("Fetching products")
+    const response=await fetch("/api/get-products", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+    const data=await response.json()
+    console.log("response result: ", data)
+    return data
+}
+// --- Glosario de variables ---
+// petProductFetch: Función asíncrona que realiza una petición GET a "/api/get-products" para obtener la lista de productos.
+// response: Respuesta cruda de la petición fetch.
+// data: Objeto resultado de parsear la respuesta a JSON, contiene los productos provenientes del backend.
+// newProductList: Nueva lista de productos procesados a partir de los datos recibidos.
+// manualProductsInfo: Array (definido más arriba) con la información manual de productos utilizada para enriquecer o actualizar los datos obtenidos de backend.
+// prdInfo: Elemento individual de manualProductsInfo, contiene info manual de un producto.
+// prd: Producto individual obtenido del backend que tiene coincidencia con el id de prdInfo.
+// result: Propiedad de 'data' que contiene el array principal de productos retornado por la API.
+export async function newProductList(state){
+    const data=await petProductFetch()
+    console.log("data result: ", data.result, " with manualProductsInfo", manualProductsInfo)
+    const newProductList=manualProductsInfo.map((prdInfo, i) => {
+        // Busca si existe un producto obtenido del backend con el mismo nombre que el id del producto manual
+        const prdExist = data.result.find(p => p.name.toLowerCase() === prdInfo.id.toLowerCase());
+        if (prdExist) {
+            // Si hay match, pone la informacion manual de ese producto mas la conseguida desde la API directamente
+            prdInfo.title=prdExist.name
+            return{
+                
+                imgList: [{ imgUrl:prdExist.thumbnail_url, title:prdInfo.id}],
+                ...prdInfo,
+            }
+        }
+    })
+    
+    console.log("new product list", newProductList)
+   state(newProductList)
+   global.productList=newProductList
+}
