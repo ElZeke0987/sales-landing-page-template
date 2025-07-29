@@ -17,6 +17,10 @@ export async function POST(req){
         productResponses.push(data.result.sync_variants);
     }
     productResponses.forEach(variants=>variants.forEach(variant=>console.log("nombre: ", variant.name, " variantId: ", variant.variant_id)))
-    return new Response(JSON.stringify({shippingRate: 10}));
+    return new Response(JSON.stringify({shippingRate: 10}), {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
 }
    

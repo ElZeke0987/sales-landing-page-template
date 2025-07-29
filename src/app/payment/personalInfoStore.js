@@ -29,25 +29,26 @@ export const usePersonalInfoStore=create((set)=>({
     country:"",
     setCountry:(country)=>set({country}),
     getShippingPrice:async(cart)=>{
+        var bodyToSend=JSON.stringify({
+            recipient:{
+                "country-code": this.country,
+                "state-code": this.state,
+                "city": this.city,
+                "zip": this.zip,
+                "address": this.address,
+                "phone": this.phone,
+                "email": this.email,
+                "name": this.firstName+" "+this.lastName
+            }, 
+            itemsIdsToBeProccesed: getCartItemIds(cart)
+        })
         console.log("getCartItemIds: ",getCartItemIds(cart))
         const response=await fetch("/api/shipping-rate", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                recipient:{
-                    "country-code": this.country,
-                    "state-code": this.state,
-                    "city": this.city,
-                    "zip": this.zip,
-                    "address": this.address,
-                    "phone": this.phone,
-                    "email": this.email,
-                    "name": this.firstName+" "+this.lastName
-                }, 
-                itemsIdsToBeProccesed: getCartItemIds(cart)
-            })
+            body: bodyToSend
         })
         const data=await response.json()
         console.log(data)
