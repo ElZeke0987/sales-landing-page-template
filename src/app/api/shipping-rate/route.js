@@ -3,8 +3,9 @@
 export async function POST(req){
     const cartItemIds=await req.json();
     const productResponses = [];
+    const privateCatalogData=await fetchCatalogs("private")
     for (const item of cartItemIds.itemsIdsToBeProccesed) {
-        const product = global.privateCatalogData.find(product => product.external_id === item.extId);
+        const product = privateCatalogData.find(product => product.external_id === item.extId);
 
         const res = await fetch(`https://api.printful.com/store/products/${product.id}`, {
             method: "GET",

@@ -37,9 +37,9 @@ export async function newProductList(state){
     })
     
     console.log("new product list", newProductList)
-   if(state){
-    state(newProductList)
-    return
-   }
+    if(state){
+        state(newProductList)
+        return
+    }
    return newProductList
 }

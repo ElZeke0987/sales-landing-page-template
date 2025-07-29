@@ -8,7 +8,7 @@ import { newProductList } from "../filter/base/productsBase";
 
 export default function Results(){
     const { filters } = useFilterStore();
-    const [productList, setProductList]= useState(global.productList||[])
+    const [productList, setProductList]= useState([])
     useEffect(()=>{
         newProductList(setProductList)
     }, [filters])

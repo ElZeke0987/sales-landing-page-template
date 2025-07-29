@@ -1,17 +1,20 @@
-import { fetchCatalogs } from "../../serverMods/getCatalogs"
+import { readCatalogs, fetchCatalogs } from "@/serverMods/getCatalogs"
 
 export async function GET(){
-    if(global.catalogData){
-        console.log("Returning cached catalog data ")
-        return new Response(JSON.stringify(global.catalogData), {
+    
+    const publicCatalogDataJson=await readCatalogs("public")
+    if(publicCatalogDataJson){
+        return new Response(JSON.stringify(publicCatalogDataJson), {
             headers: {
                 "Content-Type": "application/json"
             }
         })
     }
-    console.log("Fetching catalog data")
-    const data = await fetchCatalogs()
-    return new Response(data, {
+
+    const {privateCatalogData, publicCatalogData}=await fetchCatalogs()
+    console.log("privateCatalogData", privateCatalogData)
+    console.log("publicCatalogData", publicCatalogData)
+    return new Response(JSON.stringify(publicCatalogData), {
         headers: {
             "Content-Type": "application/json"
         }
