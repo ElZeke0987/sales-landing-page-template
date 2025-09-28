@@ -3,7 +3,7 @@
 export async function POST(req){
     const cartItemIds=await req.json();
     const productResponses = [];
-    const privateCatalogData=await fetchCatalogs("private")
+    const privateCatalogData=await readCatalogs("private")
     for (const item of cartItemIds.itemsIdsToBeProccesed) {
         const product = privateCatalogData.find(product => product.external_id === item.extId);
 

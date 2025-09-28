@@ -1,4 +1,4 @@
-import { manualProductsInfo } from "./manualProductsInfo";
+import { manualProductsInfo } from "../../../../../../../serverMods/manualProductsInfo";
 const petProductFetch=async()=>{
     console.log("Fetching products")
     const response=await fetch("/api/get-products", {

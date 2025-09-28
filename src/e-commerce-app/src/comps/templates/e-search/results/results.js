@@ -17,6 +17,7 @@ export default function Results(){
             {
                 
                 productList?.map((prd,i)=>{
+                    console.log("testing prd: ", prd)
                     if(filters.category?.every((cat)=>!cat.act))return(
                         <div key={i}>
                             <ProductCard productObj={prd} />

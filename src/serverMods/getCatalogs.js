@@ -106,7 +106,7 @@ export async function readCatalogs(catalogSel="both") {
 
         return {privateCatalogData, publicCatalogData };
     }
-    return [];
+    return [  ];
 }
 
 export async function verifyIfCatalogsAreUpdated(catalogSel="both"){

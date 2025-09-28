@@ -1,0 +1,14 @@
+{
+  "category": [
+    {
+      "val": "oversize-shirts",
+      "act": false,
+      "title": "Remes"
+    },
+    {
+      "val": "shoes",
+      "act": false,
+      "title": "Zapas"
+    }
+  ]
+}
