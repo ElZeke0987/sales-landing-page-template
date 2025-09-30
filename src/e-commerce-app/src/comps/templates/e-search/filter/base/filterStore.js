@@ -1,16 +1,16 @@
 import { create } from "zustand";
 import { filterLists } from "./filterVars";
-import { manualProductsInfo } from "../../../../../../../serverMods/manualProductsInfo";
 //Act = activate or set something to true as well, open&close boolean
 import { newProductList } from "./productsBase";
 
 const useFilterStore = create(set=>({
     
     filters: {
-        category: filterLists.category ,
+        category: [],
         priceRange: [0, 1000],
         rate: 5,
     },
+
     setCategory: (category)=> set(state=>({filters: {...state.filters, category}})),//Filters hadlers are these 3
     setPriceRange: (range)=> set(state=>({filters: {...state.filters, priceRange: range}})),
     setRate: (rate)=> set( state=> ({...state.filters, rate})),

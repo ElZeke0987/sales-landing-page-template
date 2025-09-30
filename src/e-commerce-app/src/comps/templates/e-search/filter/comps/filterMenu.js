@@ -18,6 +18,7 @@ export default function FilterMenu(){
     const [maxHeight, setMaxHeight]=useState('auto');
     const {innerOpenState} = useOpenFilter();
     useEffect(()=>{
+        if(!contentToUseStyle.current||!minimalItem?.current)return;
         const stylesCont= window.getComputedStyle(contentToUseStyle.current);
         const minimalStylesCont = window.getComputedStyle(minimalItem?.current);
 
@@ -48,7 +49,7 @@ export default function FilterMenu(){
                                 <div onClick={e=>addCategory(objCat)}  key={i} className="multi-select-item flex items-center" ref={minimalItem}>
                                     
                                     <span className={`outline-input ${objCat.act&&"activated-inp"}`} key={i}></span>
-                                    <span>{objCat.txt}</span>
+                                    <span>{objCat.txt||objCat.title}</span>
                                 </div>
                             )
                         })
