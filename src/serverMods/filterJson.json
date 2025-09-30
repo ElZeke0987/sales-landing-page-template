@@ -3,12 +3,12 @@
     {
       "val": "oversize-shirts",
       "act": false,
-      "title": "Remes"
+      "title": "Remeras Oversize"
     },
     {
       "val": "shoes",
       "act": false,
-      "title": "Zapas"
+      "title": "Zapatillas"
     }
   ]
 }

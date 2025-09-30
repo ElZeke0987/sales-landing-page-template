@@ -7,7 +7,7 @@ import { newProductList } from "./productsBase";
 const useFilterStore = create(set=>({
     
     filters: {
-        category: [ ...filterLists.category ],
+        category: filterLists.category ,
         priceRange: [0, 1000],
         rate: 5,
     },

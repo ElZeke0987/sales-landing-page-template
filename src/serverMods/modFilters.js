@@ -30,13 +30,13 @@ import fs from "fs"
 import path from "path"
 const filterJsonPath = "D:/@ARCHIVOS_USUARIO@/Desktop/e-commerce-ce/src/serverMods/filterJson.json"
 
-function askInput(question) {
+export function askInput(question) {
     return new Promise((resolve) => {
         console.log(question);
         process.stdin.once('data', (data) => {
 
 
-            console.log("data", data.toString().trim())
+            console.log("response to asked input stdin.once", data.toString().trim())
             resolve(data.toString().trim());
         });
     });
@@ -46,7 +46,9 @@ let productsFiltersProcessed=[]
 
 function processManualProductsInfo(){
     const set = new Set();
+    productsFiltersProcessed=[]
     manualProductsInfo.forEach(prd => {
+        console.log("processing manual products info: ", prd);
         if(!set.has(prd.val)){
             set.add(prd.val);
             productsFiltersProcessed.push({
@@ -58,6 +60,7 @@ function processManualProductsInfo(){
 }
 
 async function iterateManualProductsInfo(productsFiltersProcessed){
+    filterListToSave.category=[]
     for(let i=0; i<productsFiltersProcessed?.length; i++){
         const prd=productsFiltersProcessed[i]
         const newCategory={
@@ -73,11 +76,11 @@ async function iterateManualProductsInfo(productsFiltersProcessed){
 }
 
 export const writeFilterToJson = async() => {
-    
+    processManualProductsInfo()
+    console.log(" processed filters: ", productsFiltersProcessed)
+    await iterateManualProductsInfo(productsFiltersProcessed)
     if (fs.existsSync(filterJsonPath)) {
         try {
-            const jsonData = fs.readFileSync(filterJsonPath);
-            const parsedData = JSON.parse(jsonData);
 
             console.log('FilterList is correct, writing to file...');
             fs.writeFileSync(filterJsonPath, JSON.stringify(filterListToSave, null, 2));
@@ -98,10 +101,6 @@ export const getFilterVarsJson=async()=>{
     
     const filterJson = fs.readFileSync(filterJsonPath, 'utf-8');
     const filterVars = JSON.parse(filterJson);
-    if(process.env.NODE_ENV === "development"){
-        processManualProductsInfo()
-        await iterateManualProductsInfo(productsFiltersProcessed)
-        await writeFilterToJson()
-    }
+    console.log("FilterList: ", filterVars);
     return filterVars;
 }
