@@ -1,0 +1,52 @@
+.dev-panel-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    button {
+        margin: 1rem;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+
+.dev-panel-products {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    > li, .dev-panel-product{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem;
+        border-bottom: 1px solid #ccc;
+        height: 100px;
+        width: 100%;
+
+        > img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+
+        > h2 {
+            font-size: 1rem;
+            margin: 0.25rem 0;
+        }
+
+        > p {
+            font-size: 0.75rem;
+            margin: 0.25rem 0;
+        }
+    }
+}

@@ -82,6 +82,26 @@ export async function fetchCatalogs(){//It saves 2 catalogs: public and private 
     })
 }
 
+export async function addNormalCatalog(item){
+    const publicCatalogJsonPath = path.resolve(process.cwd(), "publicCatalogData.json");
+    const publicCatalogJson = fs.readFileSync(publicCatalogJsonPath, "utf-8");
+    const publicCatalogData = JSON.parse(publicCatalogJson);
+    if(!item.price||!item.thumbnail_url||!item.external_id||!item.name){
+        console.log("Item no válido, debe ser tipo object y tener las propiedades price, thumbnail_url, external_id y name")
+        return publicCatalogData;
+    }
+    publicCatalogData.push(item);
+    fs.writeFileSync(publicCatalogJsonPath, JSON.stringify(publicCatalogData, null, 2), "utf-8");
+    return publicCatalogData;
+}
+
+export async function readNormalCatalog(){
+    const publicCatalogJsonPath = path.resolve(process.cwd(), "publicCatalogData.json");
+    const publicCatalogJson = fs.readFileSync(publicCatalogJsonPath, "utf-8");
+    const publicCatalogData = JSON.parse(publicCatalogJson);
+    return publicCatalogData;
+}
+
 export async function readCatalogs(catalogSel="both") {
     if(catalogSel=="private"){
         const privateCatalogJsonPath = path.resolve(process.cwd(), "privateCatalogData.json");
@@ -125,4 +145,17 @@ export async function verifyIfCatalogsAreUpdated(catalogSel="both"){
     return {privateCatalogData, publicCatalogData};
 }
 
-
+export function updateNormalCatalog(item){
+    const publicCatalogJsonPath = path.resolve(process.cwd(), "publicCatalogData.json");
+    const publicCatalogJson = fs.readFileSync(publicCatalogJsonPath, "utf-8");
+    const publicCatalogData = JSON.parse(publicCatalogJson);
+    const itemToChange = publicCatalogData.find(item => item.external_id === item.external_id);
+    if(!itemToChange){
+        console.log("Item no válido, debe ser tipo object y tener las propiedades price, thumbnail_url, external_id y name")
+        return publicCatalogData;
+    }
+    itemToChange.name = item.name;
+    itemToChange.price = item.price;
+    fs.writeFileSync(publicCatalogJsonPath, JSON.stringify(publicCatalogData, null, 2), "utf-8");
+    return publicCatalogData;
+}

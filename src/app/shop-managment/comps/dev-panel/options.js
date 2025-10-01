@@ -7,7 +7,7 @@ export default function Options() {
         });
         window.location.reload();
     }
-    return <div>Option
+    return <div className="dev-panel-options">
         <button onClick={logout}>Logout</button>
     </div>;
 }
