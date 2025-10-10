@@ -1,6 +1,6 @@
 "use client"
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useRef } from "react";
+import CustomInputFile from "./customInputFile";
 export default function AddProduct(){
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -8,8 +8,8 @@ export default function AddProduct(){
     const [isAdding, setIsAdding] = useState(false);
     const [category, setCategory] = useState('');
     const [categoryList, setCategoryList] = useState([]);
-    const [images, setImages] = useState([]);
-
+    const [logoImages, setLogoImages] = useState([1]);
+    const [extraImages, setExtraImages] = useState([2]);
     function handleNameChange(event) {
         setName(event.target.value);
     }
@@ -38,12 +38,14 @@ export default function AddProduct(){
                 price,
                 external_id,
                 category,
-                imageUrl: images[0].url,
+                imageUrl: logoImages[0].url,
+                extraImages: extraImages.map((image) => image.url),
             }),
         }); 
         const data = await response.json();
         setIsAdding(false);
     }
+    
     return <div className="dev-panel-add-product">
         <div className="dev-panel-add-product-buttons">
             {isAdding?
@@ -58,30 +60,14 @@ export default function AddProduct(){
         {isAdding&&<>
             <input type="text" placeholder="Name" value={name} onChange={handleNameChange}/>
             <input type="text" placeholder="Price" value={price} onChange={handlePriceChange}/>
-            <input type="file" multiple onChange={(e)=>{
-                const files = e.target.files;
-                const promises = [];
-                for (let i = 0; i < files.length; i++) {
-                    promises.push(new Promise((resolve, reject) => {
-                        const reader = new FileReader();
-                        reader.onload = () => {
-                            resolve({
-                                name: files[i].name,
-                                url: reader.result
-                            });
-                        };
-                        reader.onerror = () => {
-                            reject(new Error('Error reading file'));
-                        };
-                        reader.readAsDataURL(files[i]);
-                    }));
-                }
-                Promise.all(promises).then((imgs) => {
-                    setImages(imgs);
-                }).catch((error) => {
-                    console.error(error);
-                });
-            }}/>
+            <div className="add-product-logo">
+                <p>Logo / Preview</p>
+                <CustomInputFile images={logoImages} setImages={setLogoImages}/>
+            </div>
+            <div className="add-product-extra-images flex">
+                <p>Extra Images</p>
+                <CustomInputFile images={extraImages} setImages={setExtraImages} multipleImgs={true}/>
+            </div>
             
 
             <select value={category} onChange={handleCategoryChange} className="dev-panel-select">

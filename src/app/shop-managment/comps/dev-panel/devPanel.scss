@@ -71,8 +71,37 @@
             cursor: pointer;
         }
     }
-}
+    
 
+}
+.add-product-logo, .add-product-extra-images{
+    .preview-add-product-img{
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+    input{
+        display: none;
+    }
+    .custom-input-file-button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 100px;
+        border-radius: 5px;
+        font-size: 3.75rem;
+        background-color: #0b076583;
+        color: #ccc;
+        cursor: pointer;
+    }
+    
+}
+.on-hover-back{
+    background-color: #000000;
+    opacity: 0.7;
+}
 .dev-panel-actions-buttons{
     width: 100%;
     height: 100%;
