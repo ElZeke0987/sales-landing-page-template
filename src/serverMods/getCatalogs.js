@@ -86,13 +86,13 @@ export async function addNormalCatalog(item){
     const publicCatalogJsonPath = path.resolve(process.cwd(), "publicCatalogData.json");
     const publicCatalogJson = fs.readFileSync(publicCatalogJsonPath, "utf-8");
     const publicCatalogData = JSON.parse(publicCatalogJson);
-    if(!item.price||!item.thumbnail_url||!item.external_id||!item.name){
+    if(!item.price||!item.thumbnail_url||!item.name){
         console.log("Item no válido, debe ser tipo object y tener las propiedades price, thumbnail_url, external_id y name")
-        return publicCatalogData;
+        return {success: false, message: "Item no válido"};
     }
     publicCatalogData.push(item);
     fs.writeFileSync(publicCatalogJsonPath, JSON.stringify(publicCatalogData, null, 2), "utf-8");
-    return publicCatalogData;
+    return {success: true, message: "Item agregado exitosamente"};
 }
 
 export async function readNormalCatalog(){
@@ -159,3 +159,19 @@ export function updateNormalCatalog(item){
     fs.writeFileSync(publicCatalogJsonPath, JSON.stringify(publicCatalogData, null, 2), "utf-8");
     return publicCatalogData;
 }
+
+export function removeNormalCatalog(id){
+    const publicCatalogJsonPath = path.resolve(process.cwd(), "publicCatalogData.json");
+    const publicCatalogJson = fs.readFileSync(publicCatalogJsonPath, "utf-8");
+    const publicCatalogData = JSON.parse(publicCatalogJson);
+    const itemToRemove = publicCatalogData.find(item => item.id === id);
+    if(!itemToRemove){
+        console.log("Item no válido, debe ser tipo object y tener las propiedades price, thumbnail_url, external_id y name")
+        return publicCatalogData;
+    }
+    publicCatalogData.splice(publicCatalogData.indexOf(itemToRemove), 1);
+    fs.writeFileSync(publicCatalogJsonPath, JSON.stringify(publicCatalogData, null, 2), "utf-8");
+    return publicCatalogData;
+}
+
+
