@@ -1,8 +1,10 @@
 "use client"
 import ItemFilter from "./item-filter/ItemFilter";
+import AddCategory from "./modComps/addCategory";
 
 export default function FilterList({filters}) {
     return <ul className="dev-panel-filters">
+        <AddCategory/>
         {(filters!==undefined&&filters.length>0)&&filters.map((filter)=>{
             return <ItemFilter key={filter.id} filter={filter}/>
         })}
