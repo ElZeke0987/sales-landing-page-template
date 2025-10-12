@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
-import CustomInputFile from "./customInputFile";
+import CustomInputFile from "./modComps/customInputFile";
 export default function AddProduct(){
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -8,8 +8,8 @@ export default function AddProduct(){
     const [isAdding, setIsAdding] = useState(false);
     const [category, setCategory] = useState('');
     const [categoryList, setCategoryList] = useState([]);
-    const [logoImages, setLogoImages] = useState([1]);
-    const [extraImages, setExtraImages] = useState([2]);
+    const [logoImages, setLogoImages] = useState([]);
+    const [extraImages, setExtraImages] = useState([]);
     function handleNameChange(event) {
         setName(event.target.value);
     }
@@ -64,7 +64,7 @@ export default function AddProduct(){
                 <p>Logo / Preview</p>
                 <CustomInputFile images={logoImages} setImages={setLogoImages}/>
             </div>
-            <div className="add-product-extra-images flex">
+            <div className="add-product-extra-images flex flex-col">
                 <p>Extra Images</p>
                 <CustomInputFile images={extraImages} setImages={setExtraImages} multipleImgs={true}/>
             </div>
