@@ -7,7 +7,7 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
     async function updateProduct(){
         setIsEditing(false);
         if(!name&&!price){
-            alert("Name and price wasn't written");
+            alert("Name and/or price wasn't written / No escribiste el nombre y/o el precio");
             return;
         }
         const response = await fetch('/api/change-normal-product', {
@@ -19,6 +19,7 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
                 name,
                 price,
                 external_id: product.external_id,
+                id: product.id
             }),
         }); 
         const data = await response.json();
@@ -28,7 +29,7 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
     const [name, setName] = useState(product.name);
     const [price, setPrice] = useState(product.price);
     return <>
-        {isEditing?<div>
+        {isEditing?<div className="dev-panel-update-product">
             <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/>
             {product.price?<input type="number" value={price} onChange={(e)=>setPrice(e.target.value)}/>:<div>Sin precio local</div>}
             <button onClick={updateProduct}>Save</button>

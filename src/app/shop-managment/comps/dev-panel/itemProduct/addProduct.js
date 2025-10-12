@@ -38,8 +38,8 @@ export default function AddProduct(){
                 price,
                 external_id,
                 category,
-                imageUrl: logoImages[0].url,
-                extraImages: extraImages.map((image) => image.url),
+                logoImageUrl: logoImages[0].url,
+                extraImages,
             }),
         }); 
         const data = await response.json();
@@ -47,16 +47,7 @@ export default function AddProduct(){
     }
     
     return <div className="dev-panel-add-product">
-        <div className="dev-panel-add-product-buttons">
-            {isAdding?
-            <>
-            <button className="dev-panel-button cancel-button" onClick={()=>setIsAdding(!isAdding)}>Cancel</button>
-            <button className="dev-panel-button" onClick={addProduct}>Add</button>
-            
-            </>:
-            <button className="dev-panel-button" onClick={()=>setIsAdding(!isAdding)}>Add Product</button>
-            }
-        </div>
+        
         {isAdding&&<>
             <input type="text" placeholder="Name" value={name} onChange={handleNameChange}/>
             <input type="text" placeholder="Price" value={price} onChange={handlePriceChange}/>
@@ -81,5 +72,15 @@ export default function AddProduct(){
             
             
         </>}
+        <div className="dev-panel-add-product-buttons">
+            {isAdding?
+            <>
+            <button className="dev-panel-button cancel-button" onClick={()=>setIsAdding(!isAdding)}>Cancel</button>
+            <button className="dev-panel-button" onClick={addProduct}>Add</button>
+            
+            </>:
+            <button className="dev-panel-button" onClick={()=>setIsAdding(!isAdding)}>Add Product</button>
+            }
+        </div>
     </div>;
 }

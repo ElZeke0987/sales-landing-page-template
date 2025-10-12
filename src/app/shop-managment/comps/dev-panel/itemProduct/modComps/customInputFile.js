@@ -8,7 +8,6 @@ export default function CustomInputFile({images,setImages, multipleImgs}) {
     
     function handleImageChange(e){  
             const files = e.target.files;
-            console.log(files, "in event handler files")
             const promises = [];
             for (let i = 0; i < files.length; i++) {
                 promises.push(new Promise((resolve, reject) => {

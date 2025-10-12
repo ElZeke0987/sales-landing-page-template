@@ -149,13 +149,16 @@ export function updateNormalCatalog(item){
     const publicCatalogJsonPath = path.resolve(process.cwd(), "publicCatalogData.json");
     const publicCatalogJson = fs.readFileSync(publicCatalogJsonPath, "utf-8");
     const publicCatalogData = JSON.parse(publicCatalogJson);
-    const itemToChange = publicCatalogData.find(item => item.external_id === item.external_id);
+    console.log(item)
+    const itemToChange = publicCatalogData.find(itemTF => itemTF.id===item.id);
     if(!itemToChange){
         console.log("Item no válido, debe ser tipo object y tener las propiedades price, thumbnail_url, external_id y name")
         return publicCatalogData;
     }
     itemToChange.name = item.name;
     itemToChange.price = item.price;
+    publicCatalogData[publicCatalogData.indexOf(itemToChange)] = itemToChange;
+
     fs.writeFileSync(publicCatalogJsonPath, JSON.stringify(publicCatalogData, null, 2), "utf-8");
     return publicCatalogData;
 }

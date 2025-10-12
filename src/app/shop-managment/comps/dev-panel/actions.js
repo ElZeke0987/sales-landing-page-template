@@ -3,6 +3,8 @@
 import { useState } from "react";
 import ItemProduct from "./itemProduct/item-product";
 import AddProduct from "./itemProduct/addProduct";
+import FilterList from "./filter-list/FilterList";
+
 export default function Actions() {
     const [products, setProducts] = useState([]);
     const [filters, setFilters] = useState([]);
@@ -13,7 +15,7 @@ export default function Actions() {
         setProducts(data);
     }
     async function listFilters() {
-        const response = await fetch('/api/filters');
+        const response = await fetch('/api/get-filters');
         const data = await response.json();
         setFilters(data);
     }
@@ -32,5 +34,6 @@ export default function Actions() {
                 return <ItemProduct key={product.id||product.external_id} product={product}/>
             })}
         </ul>
+        <FilterList filters={filters}/>
     </div>;
 }

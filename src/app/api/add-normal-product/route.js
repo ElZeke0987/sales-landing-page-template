@@ -1,11 +1,10 @@
 import { addNormalCatalog } from "../../../serverMods/getCatalogs";
 export async function POST(request) {
-    const { name, price, category, imageUrl} = await request.json();
+    const { name, price, category, logoImageUrl, extraImages} = await request.json();
     const textual_id = name.toLowerCase().replace(/\s/g, "-");
     const data = await addNormalCatalog({
         name,
         price,
-        
         external_id: "",
         id: textual_id,
         category,
@@ -20,7 +19,8 @@ export async function POST(request) {
         tags: [],
         createdAt: "",
         updatedAt: "",
-        thumbnail_url: imageUrl,
+        thumbnail_url: logoImageUrl,
+        extraImages,
     });
     return Response.json(data);
 }

@@ -2,15 +2,15 @@
 import { useEffect, useState } from "react";
 
 export function MultipleImgsCell({images,setImages}){
-    const [hoveringPreviewImage, setHoveringPreviewImage] = useState(false);
+    const [hoveringPreviewImage, setHoveringPreviewImage] = useState(null);
     useEffect(()=>{
         console.log(images)
     },[images])
     return <div className="flex">
                 {images.map((image,index)=>{
-                    return <div className="relative flex justify-center items-center" key={index} onMouseEnter={()=>setHoveringPreviewImage(true)} onMouseLeave={()=>setHoveringPreviewImage(false)}>
+                    return <div className="relative flex justify-center items-center" key={index} onMouseEnter={()=>setHoveringPreviewImage(index)} onMouseLeave={()=>setHoveringPreviewImage(null)}>
                         <img className="preview-add-product-img" src={image.url} ></img>
-                        {hoveringPreviewImage&&
+                        {hoveringPreviewImage==index&&
                         <p className="absolute top-0 left-0 z-10 bg-black text-white w-full h-full flex justify-end items-start p-1 on-hover-back">
                             <button className="bg-red-500 text-white p-1 rounded" onClick={()=>setImages(images.filter((img)=>img.name!=image.name))}>X</button>
                         </p>}
