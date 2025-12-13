@@ -45,3 +45,4 @@ export const defaultFeaturesConfig = {
     cta: ctaConfig
 };
 
+export const IS_PRINTFULL_WEB = false
