@@ -34,7 +34,7 @@
 
 .dev-panel-add-product{
     display: flex;
-    max-height: 100vh;
+    //max-height: 100vh;
     padding: auto;
     overflow-y: auto;
     flex-direction: column;
@@ -42,7 +42,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    input{
+    input, textarea{
+        width: 60%;
         margin: 1rem;
         padding: 0.5rem;
         border: none;
@@ -50,6 +51,9 @@
         background-color: #ccc;
         color: black;
         cursor: pointer;
+    }
+    .dev-panel-desc-textarea{
+        
     }
     .dev-panel-add-product-buttons{
         margin: 1rem 0;
@@ -124,12 +128,10 @@
     width: 100%;
     > li, .dev-panel-product{
         display: flex;
-        flex-direction: row;
         align-items: center;
         justify-content: space-between;
         padding: 0.5rem;
         border-bottom: 1px solid #ccc;
-        height: 100px;
         width: 100%;
 
         > img {
@@ -152,7 +154,7 @@
 
 .item-product{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     max-width: 100%;
 }
 
@@ -160,6 +162,9 @@
     display: flex;
     flex-direction: column;
     max-width: 100%;
+    textarea{
+        color: black;
+    }
 }
 .dev-panel-update-product{
     display: flex;

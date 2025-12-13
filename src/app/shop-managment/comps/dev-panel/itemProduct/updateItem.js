@@ -36,10 +36,11 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
         <div className="update-product-container">
             <div className="dev-panel-update-product">
                 <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/>
-                <textarea value={desc} onChange={(e)=>setDesc(e.target.value)}></textarea>
+                
                 {product.price?<input type="number" value={price} onChange={(e)=>setPrice(e.target.value)}/>:<div>Sin precio local</div>}
                 
             </div>
+            <textarea value={desc} onChange={(e)=>setDesc(e.target.value)}></textarea>
             <button className="update-save-button" onClick={updateProduct}>Save</button>
         </div>:
         <div className="dev-panel-product">
