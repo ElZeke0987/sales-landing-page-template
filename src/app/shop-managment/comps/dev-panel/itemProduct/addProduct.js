@@ -4,6 +4,7 @@ import CustomInputFile from "./modComps/customInputFile";
 export default function AddProduct(){
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
+    const [desc, setDesc] = useState('');
     const [external_id, setExternal_id] = useState('');
     const [isAdding, setIsAdding] = useState(false);
     const [category, setCategory] = useState('');
@@ -18,6 +19,9 @@ export default function AddProduct(){
     }
     function handleCategoryChange(event) {
         setCategory(event.target.value);
+    }
+    function handleDescChange(event) {
+        setDesc(event.target.value);
     }
     useEffect(() => {
         const fetchCategories = async () => {
@@ -36,6 +40,7 @@ export default function AddProduct(){
             body: JSON.stringify({
                 name,
                 price,
+                desc,
                 external_id,
                 category,
                 logoImageUrl: logoImages[0].url,
@@ -51,6 +56,7 @@ export default function AddProduct(){
         {isAdding&&<>
             <input type="text" placeholder="Name" value={name} onChange={handleNameChange}/>
             <input type="text" placeholder="Price" value={price} onChange={handlePriceChange}/>
+            <textarea className="dev-panel-desc-textarea" placeholder="Description" value={desc} onChange={handleDescChange}/>
             <div className="add-product-logo">
                 <p>Logo / Preview</p>
                 <CustomInputFile images={logoImages} setImages={setLogoImages}/>

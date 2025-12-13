@@ -150,14 +150,13 @@ export function updateNormalCatalog(item){
     const publicCatalogJson = fs.readFileSync(publicCatalogJsonPath, "utf-8");
     const publicCatalogData = JSON.parse(publicCatalogJson);
     console.log(item)
-    const itemToChange = publicCatalogData.find(itemTF => itemTF.id===item.id);
+    let itemToChange = publicCatalogData.find(itemTF => itemTF.id===item.id);
     if(!itemToChange){
         console.log("Item no válido, debe ser tipo object y tener las propiedades price, thumbnail_url, external_id y name")
         return publicCatalogData;
     }
-    itemToChange.name = item.name;
-    itemToChange.price = item.price;
-    publicCatalogData[publicCatalogData.indexOf(itemToChange)] = itemToChange;
+
+    publicCatalogData[publicCatalogData.indexOf(itemToChange)] = {...item, thumbnail_url: itemToChange.thumbnail_url};
 
     fs.writeFileSync(publicCatalogJsonPath, JSON.stringify(publicCatalogData, null, 2), "utf-8");
     return publicCatalogData;

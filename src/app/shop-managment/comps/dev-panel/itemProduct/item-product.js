@@ -6,7 +6,7 @@ import { deleteProduct } from "./deleteProduct";
 export default function ItemProduct({product}) {
 
     const [isEditing, setIsEditing] = useState(false);
-    return <li>
+    return <li className="item-product"> 
         <UpdateItem product={product} setIsEditing={setIsEditing} isEditing={isEditing}/>
         <div>
             <button onClick={()=>setIsEditing(!isEditing)} className={"dev-panel-button "+isEditing?"dev-panel-button-active":""}>{isEditing?"Cancel":"Update"}</button>

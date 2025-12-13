@@ -150,8 +150,21 @@
     }
 }
 
+.item-product{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+.update-product-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
 .dev-panel-update-product{
- 
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
     input{
         border: none;
         border-radius: 5px;
@@ -159,7 +172,10 @@
         color: black;
         cursor: pointer;
     }
-    button{
+    
+}
+
+.update-save-button{
         padding: 0.5rem;
         border: none;
         border-radius: 5px;
@@ -167,5 +183,3 @@
         color: black;
         cursor: pointer;
     }
-}
-

@@ -41,15 +41,15 @@ export async function newProductList(state){
             }
         })
     }else{
-        newProductList = data.map((prdInfo, i)=>{
-            if(prdInfo.external_id&&prdInfo.id&&prdInfo.thumbnail_url){
-                return{
-                        extId: prdExist.external_id,
-                        imgList: [{ imgUrl: `/images/products/${prdInfo.id}/${prdInfo.id}-preview.png` || prdExist.thumbnail_url, title: prdInfo.id }],
-                        ...prdInfo,
-                    }
-            }
-        })
+        newProductList = data//.map((prdInfo, i)=>{
+        //     if(prdInfo.external_id&&prdInfo.id&&prdInfo.thumbnail_url){
+        //         return{
+        //                 extId: prdExist.external_id,
+        //                 imgList: [{ imgUrl: `/images/products/${prdInfo.id}/${prdInfo.id}-preview.png` || prdExist.thumbnail_url, title: prdInfo.id }],
+        //                 ...prdInfo,
+        //             }
+        //     }
+        // })
     }
     console.log("new product list", newProductList)
     if(state){
