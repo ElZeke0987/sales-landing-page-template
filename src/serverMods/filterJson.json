@@ -1,16 +1,9 @@
 {
   "category": [
     {
-      "val": "oversize-shirts",
-      "act": false,
-      "title": "Remeras Oversize"
-    },
-    {
-      "val": "shoes",
-      "act": false,
-      "title": "Zapatillas"
-    },
-    "FF",
-    "Raro"
+      "val": "hello-world",
+      "title": "hola Mundo",
+      "act": false
+    }
   ]
 }
