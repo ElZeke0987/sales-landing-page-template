@@ -29,6 +29,7 @@ export default function AddProduct(){
             const data = await response.json();
             setCategoryList(data);
         };
+        console.log("categoryList", categoryList)
         fetchCategories();
     }, []);
     async function addProduct(){
@@ -70,8 +71,8 @@ export default function AddProduct(){
             <select value={category} onChange={handleCategoryChange} className="dev-panel-select">
                 <option value="">-- Select Category --</option>
                 {categoryList.map((category) => (
-                    <option key={category.id} value={category.name}>
-                        {category.name}
+                    <option key={category.val} value={category.val} title={category.val}>
+                        {category.title}
                     </option>
                 ))}
             </select>

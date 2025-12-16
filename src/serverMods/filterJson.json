@@ -4,6 +4,11 @@
       "val": "hello-world",
       "title": "hola Mundo",
       "act": false
+    },
+    {
+      "val": "strass-cadenas",
+      "title": "Cadenas con strass",
+      "act": false
     }
   ]
 }
