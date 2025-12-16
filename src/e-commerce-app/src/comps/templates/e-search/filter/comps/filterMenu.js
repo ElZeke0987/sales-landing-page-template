@@ -7,7 +7,7 @@ import "./styles/filterMenu.scss";
 import { useOpenFilter } from "./buttonFilter";
 
 
-export default function FilterMenu(){
+export default function FilterMenu( categories){
     const content=useRef(null);
     const contentToUseStyle=useRef(null)
     const minimalItem=useRef(null)
@@ -38,6 +38,7 @@ export default function FilterMenu(){
     },[])
     
     const {filters, addCategory}=useFilterStore();
+    console.log("testing filters: ", filters)
     return(
         <div className={`visualizer-field overflow-hidden ${!innerOpenState&&"close-anim"} flex justify-center`} ref={content} style={{maxHeight, height: maxHeight}}>
             <aside className="filter-menu flex justify-center" ref={contentToUseStyle}>
@@ -45,6 +46,7 @@ export default function FilterMenu(){
                     {
                         
                         filters.category?.map((objCat, i)=>{
+                            console.log("testing objCat: ", objCat)
                             return(
                                 <div onClick={e=>addCategory(objCat)}  key={i} className="multi-select-item flex items-center" ref={minimalItem}>
                                     

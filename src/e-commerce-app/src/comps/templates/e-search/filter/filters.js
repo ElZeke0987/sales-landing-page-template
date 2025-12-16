@@ -3,12 +3,14 @@ import FilterButton, { useOpenFilter } from "./comps/buttonFilter";
 import FilterMenu from "./comps/filterMenu";
 import FilterList from "./comps/filterList";
 import { useEffect } from "react";
-import { fetchFilters } from "./base/filterVars";
+import { fetchCategories } from "./base/filterVars";
+import useFilterStore from "./base/filterStore";
 
 export default function Filters(){
+    const {setCategory}=useFilterStore();
     const {openState}=useOpenFilter();
     useEffect(()=>{
-        fetchFilters()
+        fetchCategories(setCategory)
     },[])
     return(
         <section className="w-full">

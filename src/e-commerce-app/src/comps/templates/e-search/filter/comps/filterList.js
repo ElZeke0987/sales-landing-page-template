@@ -2,7 +2,7 @@ import TypeItem from "../../typeItem/typeItem";
 import useFilterStore from "../base/filterStore"
 import { useEffect } from "react";
 import "./styles/filterList.scss";
-import { fetchFilters } from "../base/filterVars";
+import { fetchCategories } from "../base/filterVars";
 export default function FilterList(){
     const {filters, setCategory} = useFilterStore();
     
@@ -10,7 +10,7 @@ export default function FilterList(){
     useEffect(() => {
         
         console.log("FilterList: ", filters)
-        fetchFilters(setCategory);
+        fetchCategories(setCategory);
        
     }, []);
    

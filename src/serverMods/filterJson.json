@@ -1,13 +1,8 @@
 {
   "category": [
     {
-      "val": "hello-world",
-      "title": "hola Mundo",
-      "act": false
-    },
-    {
-      "val": "strass-cadenas",
-      "title": "Cadenas con strass",
+      "val": "strass-chain",
+      "title": "Cadena con strass",
       "act": false
     }
   ]
