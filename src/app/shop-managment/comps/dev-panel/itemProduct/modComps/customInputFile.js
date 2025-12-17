@@ -14,6 +14,7 @@ export default function CustomInputFile({images,setImages, multipleImgs}) {
                     const reader = new FileReader();
                     reader.onload = () => {
                         resolve({
+                            id: i,
                             name: files[i].name,
                             url: reader.result
                         });

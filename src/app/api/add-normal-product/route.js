@@ -20,7 +20,7 @@ export async function POST(request) {
         createdAt: "",
         updatedAt: "",
         thumbnail_url: logoImageUrl,
-        extraImages,
+        extraImages: [{id: 0, name: "catalog-logo",url: logoImageUrl}, extraImages],
     });
     return Response.json(data);
 }

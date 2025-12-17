@@ -4,6 +4,11 @@
       "val": "strass-cadenas",
       "title": "Cadena con strass",
       "act": false
+    },
+    {
+      "val": "rings",
+      "title": "Anillos",
+      "act": false
     }
   ]
 }

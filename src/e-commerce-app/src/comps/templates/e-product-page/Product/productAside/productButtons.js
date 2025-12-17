@@ -16,7 +16,15 @@ import { useCart } from "@/app/cartProvider";
 //en el select de stock, y que se utiliza para llamar a la funcion addToCart.
 
 export default function ProductButtons({objOpt}){
-    const stockNumbers=Array.from({length: objOpt?.stock<objOpt.buyLimit?objOpt.stock:objOpt.buyLimit}, (_,i)=>{return {val:i+1, txt: `${i+1} unidades`}});
+    const maxSelectableUnits = Math.max(
+        0,
+        Math.min(
+            Number.isFinite(objOpt?.stock) ? objOpt.stock : 0,
+            objOpt?.buyLimit ?? 10
+        )
+        )
+    const stockNumbers=Array.from({length: maxSelectableUnits }, (_,i)=>{return {val:i+1, txt: `${i+1} unidades`}});
+    console.log("Stock numbers: ", stockNumbers)
     const [quantitySel, setQuantitySel]=useState({val: 1});
     const { addToCart, cart } = useCart()
     function changeStockQuantity(e){
@@ -25,9 +33,14 @@ export default function ProductButtons({objOpt}){
     return(
         <div className="product-buy-cont flex flex-col">
             {
-                objOpt.stock<=3&&<div className="low-stock-msg">There's only  {objOpt.stock} in stock <span className="stock-highlighted-cta">¡Buy Now!</span> </div>
+                (objOpt.stock<=3&&objOpt>0)&&<div className="low-stock-msg">There's only  {objOpt.stock} in stock <span className="stock-highlighted-cta">¡Buy Now!</span> </div>
             }
-            <CustomSelect opts={stockNumbers} defaultText="1 unidad" defaultValue={1} clases="stock-select cus-select-open-natural" onSelect={changeStockQuantity} onEffectPar={objOpt} handleEffectPar={(_, setQuantTo0)=>setQuantTo0({val: 1, txt: "1 unidad"})}/>
+            {
+                objOpt.stock==0?
+                <div className="low-stock-msg">There's no stock </div>:
+                <CustomSelect opts={stockNumbers} defaultText="1 unidad" defaultValue={1} clases="stock-select cus-select-open-natural" onSelect={changeStockQuantity} onEffectPar={objOpt} handleEffectPar={(_, setQuantTo0)=>setQuantTo0({val: 1, txt: "1 unidad"})}/>
+            }
+            
             <BuyBenefits/>
             <div className="flex flex-col items-center product-buy-buttons">
                 <button className="buy-now button-buy">Buy Now</button>

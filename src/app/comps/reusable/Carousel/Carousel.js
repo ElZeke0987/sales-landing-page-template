@@ -13,6 +13,11 @@ function getTranslateX(carouselId){
     }
 }
 
+/**
+ * objOpt es esencial para manejar, mas que nada desde el click sobre las miniaturas del carrusel, los objetos
+ * determinar cual es el objeto que se clickeo y tomar sus datos.
+ */
+
 export default function Carousel({
     objList, //Lista iterable en el carrusel
     Element, //Elemento modelo de cada item
