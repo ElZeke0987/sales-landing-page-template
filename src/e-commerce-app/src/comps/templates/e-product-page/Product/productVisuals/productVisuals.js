@@ -11,7 +11,7 @@ function handleItemClick(e, objecto, index, objOptItem, setObjOptElement, carous
 export default function ProductVisuals({objOpt, imgSel, setImgSel}){
 
 
-
+    console.log("Testing array of all images: ", [objOpt.thumbnail_url,...objOpt.extraImages])
     return(
         <div className="flex flex-col product-visuals">
             <div className="product-image-cont flex justify-center items-center">
@@ -19,7 +19,7 @@ export default function ProductVisuals({objOpt, imgSel, setImgSel}){
             </div>
             
             <div className="products-types-carousel">
-                <Carousel objList={objOpt.imgList} Element={ImageSelectFrame} objOpt={imgSel} setObjOpt={setImgSel} carouselListContClasses={"scroll-modern-mini-x no-hover-scroll"} selControls={true} centerAlwaysItems={false} onItemClick={handleItemClick}/>
+                <Carousel objList={[objOpt.thumbnail_url,...objOpt.extraImages]} Element={ImageSelectFrame} objOpt={imgSel} setObjOpt={setImgSel} carouselListContClasses={"scroll-modern-mini-x no-hover-scroll"} selControls={true} centerAlwaysItems={false} onItemClick={handleItemClick}/>
             </div>
         </div>
     )

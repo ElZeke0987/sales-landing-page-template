@@ -21,7 +21,7 @@ export default function Product(){
         if(prodObj){
             console.log("prodObj: ", prodObj)
             setObjOpt(prodObj)
-            setImgSel(prodObj.imgList[0])
+            setImgSel(prodObj.thumbnail_url)
         }
     },[prodObj])
 
