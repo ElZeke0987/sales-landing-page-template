@@ -23,7 +23,6 @@ export default function Product(){
     useEffect(()=>{
         if(prodObj){
             let imageListToShow = [];
-
             [{name: "catalog-logo",url: prodObj?.thumbnail_url},...prodObj?.extraImages].forEach((item, ind)=>{
                 const newItem = {
                     id: ind,

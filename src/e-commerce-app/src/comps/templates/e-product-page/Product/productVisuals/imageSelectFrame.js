@@ -21,8 +21,12 @@ explico mejor la dinamica del objOpt (que en este proyecto que usa el template q
 en el archivo de Carousel.js
 */
 export default function ImageSelectFrame({obj, objOpt, setObjOpt, onClick}){//obj son los otros elementos en general iterados, objOpt es el objeto actual, el que se ponga en foco, le das funcionalidad individual digamos.
+    if(!obj||obj==[]||obj.length==0){
+        return
+    }
+    
     return(
-        <div className={"type-item "+(obj.id==objOpt.id?"type-selected":"")} onClick={onClick}>
+        <div className={"type-item "+(obj.id==objOpt?.id?"type-selected":"")} onClick={onClick}>
             <div className="glass-abs">
 
             </div>

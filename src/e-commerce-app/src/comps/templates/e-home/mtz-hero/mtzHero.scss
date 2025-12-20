@@ -40,3 +40,29 @@
       }
     }
 }
+
+
+.rotate-effect-and-center {
+    --hero-overlay-transform: translate(#{$hero-overlay-translate-x}, #{$hero-overlay-translate-y}) rotate(#{$hero-overlay-rotate});
+    transform-origin: $hero-overlay-transform-origin;
+    transform: var(--hero-overlay-transform);
+}
+
+.size-hero-red-element{
+    backdrop-filter: blur($hero-overlay-blur);
+    transition: all $hero-overlay-transition;
+    width: $hero-overlay-width;
+    height: $hero-overlay-height;
+    z-index: 0;
+}
+.red-item-on-hover{
+    transform: var(--hero-overlay-transform) scale($hero-overlay-scale-hover);
+}
+.transition-all-custom{
+    transition: all $hero-bg-image-onhover-transition;
+}
+
+.bg-image-onh{
+  
+  filter: brightness(0.2);
+}

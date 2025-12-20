@@ -12,16 +12,18 @@ function handleItemClick(e, objecto, index, objOptItem, setObjOptElement, carous
 }
 
 export default function ProductVisuals({objOpt, imgSel, setImgSel}){
-
-
+    
+    console.log("testing again, objop:", objOpt.extraImages[1].length)
     return(
         <div className="flex flex-col product-visuals">
             <div className="product-image-cont flex justify-center items-center">
-                <Image src={objOpt.extraImages[imgSel?.id||0].imgUrl||objOpt.extraImages[imgSel?.id||0].url} width={500} height={500} alt="Imagen del Producto" className="rounded-lg shadow-lg bg-gray-100"/>
+                <Image src={objOpt.extraImages[imgSel?.id||0].imgUrl||objOpt.extraImages[imgSel?.id||0].url} width={1000} height={1000} alt="Imagen del Producto" className="rounded-lg shadow-lg bg-gray-100" quality={1000}/>
             </div>
             
             <div className="products-types-carousel">
-                <Carousel objList={objOpt.extraImages} Element={ImageSelectFrame} objOpt={imgSel} setObjOpt={setImgSel} carouselListContClasses={"scroll-modern-mini-x no-hover-scroll"} selControls={true} centerAlwaysItems={false} onItemClick={handleItemClick}/>
+                {(objOpt.extraImages[1].length!=0)&&
+                    <Carousel objList={objOpt.extraImages} Element={ImageSelectFrame} objOpt={imgSel} setObjOpt={setImgSel} carouselListContClasses={"scroll-modern-mini-x no-hover-scroll"} selControls={true} centerAlwaysItems={false} onItemClick={handleItemClick}/>
+                }
             </div>
         </div>
     )

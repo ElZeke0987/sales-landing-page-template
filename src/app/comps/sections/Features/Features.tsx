@@ -35,7 +35,7 @@ export default function Features({
 
     return (
         <section 
-            className={`${finalStyles.section} ${styles["features-section"]}`}
+            className={`${finalStyles.section} ${styles["features-section"]} z-50`}
             id="features"
         >
             {title && (

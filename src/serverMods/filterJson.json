@@ -9,6 +9,11 @@
       "val": "rings",
       "title": "Anillos",
       "act": false
+    },
+    {
+      "val": "cadenas-cubanas-var",
+      "title": "Cadenas cubanas o variaciones",
+      "act": false
     }
   ]
 }
