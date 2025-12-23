@@ -17,6 +17,31 @@ export const infoHero=[
     }
 ]
 
+export const outStandingProducts =[
+    {
+        imgUrl: "https://picsum.photos/id/1005/200/300",
+        name: "Product 1",
+        price: "$10"
+    },
+    {
+        imgUrl: "https://picsum.photos/id/1006/200/300",
+        name: "Product 2",
+        price: "$15"
+    },
+    {
+        imgUrl: "https://picsum.photos/id/1026/200/300",
+        name: "Product 3",
+        price: "$20"
+    },
+    {
+        imgUrl: "https://picsum.photos/id/1009/200/300",
+        name: "Product 4",
+        price: "$30"
+    },
+    
+
+
+];
 
 
 export const titlesObj={

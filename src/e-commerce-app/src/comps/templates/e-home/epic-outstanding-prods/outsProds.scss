@@ -1,0 +1,23 @@
+.outs-prods{
+    .outs-prods-list{
+        gap: 15vw;
+        overflow-y: hidden ;
+        overflow-x: auto;
+        .out-prod-item{
+            height: 100vh;
+            flex-direction: column;
+            .floating-image{
+                transform: rotate(-30deg) translate(-10vw, 10vh);
+                width: 300%;
+                height: 150vh;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+        }
+    }
+
+}
