@@ -9,7 +9,7 @@ export default function OutsProdsList(){
 
 
     return(
-        <div className="outs-prods-list flex w-full justify-center">
+        <div className="outs-prods-list flex w-full justify-center"> 
             {outStandingProducts.map((obj, ind) => {
                 return (
                     <div key={ind} className="out-prod-item bg-center bg-no-repeat bg-cover flex justify-center relative "  >

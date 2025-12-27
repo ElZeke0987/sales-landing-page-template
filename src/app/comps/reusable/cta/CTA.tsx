@@ -1,4 +1,5 @@
 import "./cta.scss";
+import {CTAProps} from "./types";
 
 export default function CTA({text= "¡Comienza Ahora!", href="#product-section", ctaStyles}: CTAProps){
     return (
