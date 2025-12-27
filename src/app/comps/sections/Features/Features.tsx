@@ -60,7 +60,7 @@ export default function Features({
                     <CTA 
                         text={cta.text}
                         href={cta.href}
-                        styles={styles["cta-button"]}
+                        ctaStyles={styles["cta-button"]}
                     />
                 )}
             </div>

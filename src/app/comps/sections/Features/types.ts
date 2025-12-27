@@ -38,6 +38,7 @@ export interface CTAConfig {
     text: string;
     /** URL de destino del botón */
     href: string;
+    /** Estilos */
 }
 
 export interface FeatureItemProps {
