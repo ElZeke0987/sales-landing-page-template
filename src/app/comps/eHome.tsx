@@ -1,9 +1,6 @@
 import MtzHero from "./mtz-hero/mtzHero";
-import Features from "@/app/comps/sections/Features/Features";
-import { featuresList, ctaConfig } from "@/globalVars/features";
-import { titlesObj } from "@/global-vars";
 import OutsProds from "./epic-outstanding-prods/outsProds"
-import LazyFrame from "../../../../../app/comps/reusable/LazyLoad/LazyFrame"
+import LazyFrame from "./reusable/LazyLoad/LazyFrame"
 
 
 export default function EHome(){

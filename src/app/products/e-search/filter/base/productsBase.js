@@ -1,5 +1,5 @@
-import { manualProductsInfo } from "../../../../../../../serverMods/manualProductsInfo";
-import { IS_PRINTFULL_WEB } from "../../../../../../../globalVars/features";
+import { manualProductsInfo } from "../../../../../serverMods/manualProductsInfo";
+import { IS_PRINTFULL_WEB } from "../../../../../globalVars/features";
 
 const petProductFetch=async()=>{
     console.log("Fetching products")

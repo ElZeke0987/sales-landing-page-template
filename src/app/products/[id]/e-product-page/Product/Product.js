@@ -3,7 +3,7 @@ import { addToCartSystem, typesList } from "@/global-vars";
 import Carousel from "@/app/comps/reusable/Carousel/Carousel";
 import Image from "next/image";
 import "./product.scss";
-import "../../general.scss";
+import "../general.scss";
 import { useEffect, useState } from "react";
 import { useProductIdStore } from "@/app/products/[id]/productStore";
 import ProductVisuals from "./productVisuals/productVisuals";

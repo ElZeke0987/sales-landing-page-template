@@ -1,7 +1,7 @@
 import Nav from "./Nav";
 import Offers from "./Offers";
 import { ImgTransNavBG } from "@/global-vars";
-
+ 
 export default function Header({extraClass, classForNav}){
 
     return(

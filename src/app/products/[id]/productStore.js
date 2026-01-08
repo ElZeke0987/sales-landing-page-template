@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { newProductList } from "@/e-commerce-app/src/comps/templates/e-search/filter/base/productsBase"
+import { newProductList } from "@/app/products/e-search/filter/base/productsBase"
 
 export const useProductIdStore = create(set => ({
     id: undefined,
