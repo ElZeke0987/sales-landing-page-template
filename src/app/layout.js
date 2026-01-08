@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Product Template Landing Page",
-  description: "Created By Sebastian S.",
+  title: "2110s Store",
+  description: "",
 };
 
 export default function RootLayout({ children }) {

@@ -6,8 +6,11 @@
         .out-prod-item{
             height: 100vh;
             flex-direction: column;
+
             .floating-image{
-                transform: rotate(-30deg) translate(-10vw, 10vh);
+                transition: all 0.3;
+                animation: float 2s ease-in-out;
+                transform: rotate(-30deg) translate(-10vw, -60vh);
                 width: 300%;
                 height: 150vh;
                 img{
@@ -17,7 +20,25 @@
                 }
             }
 
+            @for $i from 1 through 10 {
+                .floating-image-#{$i} {
+                    animation-delay: #{$i * 0.5}s;
+                }
+            }
+
+            .floating-image.loaded{
+                transform: rotate(-30deg) translate(-10vw, 10vh);
+            }
+            @keyframes float {
+                0% {
+                    transform: rotate(-30deg) translate(-10vw, -30vh);
+                }
+                100% {
+                    transform: rotate(-30deg) translate(-10vw, 10vh);
+                }
+            }
+
         }
     }
-
+    
 }
