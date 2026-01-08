@@ -25,12 +25,15 @@ export default function OutsProdsList(){
                                 <Image src={obj.imgUrl} alt={obj.name} width={60000} height={60000} className="" onLoad={handleImageLoad} />
                             
                             </div>
-                            <div className={"static-bg-fimage absolute bottom-0 left-0 overflow-hidden flex " } onMouseEnter={handleHoverBehindImgs}>
+                            <div className={"interactuable-part absolute bottom-0 left-0 flex " } onMouseEnter={handleHoverBehindImgs}>
                                 <div className="inside-content flex items-center justify-center">
                                     <button className="bg-white text-black px-4 py-2 rounded">Ver más</button>
                                 </div>
                             </div>
         
+                        </div>
+                        <div className={"static-bg-fimage absolute bottom-0 left-0 overflow-hidden"}>
+                            
                         </div>
                         
                         <div className="out-prod-name z-50">{obj.name}</div>

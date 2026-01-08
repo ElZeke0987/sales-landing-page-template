@@ -10,7 +10,7 @@ $rotation: -30deg;
 $translate-x: -10vw;
 $translate-y-start: -30vh;
 $translate-y-end: 10vh;
-$translate-y-hover: -25%;
+$translate-y-hover: -30%;
 
 // Animation variables
 $animation-duration: 2s;
@@ -23,11 +23,21 @@ $max-items: 10;
 $item-z-index: 100;
 $image-z-index: 50;
 $static-bg-z-index: 49;
-
+ 
 // Title variables
 $title-font-size: 2rem;
 $title-color: #eee;
 $title-bg-color: #111;
 
+// Button section background color
+$button-section-bg: rgba(255, 255, 255, 0.5);
+
 // Background color
-$static-bg-color: none;
+$static-bg-color: $button-section-bg;
+
+// Inside content variables
+$inside-content-height: 36.5%;
+$inside-content-width: 58%;
+$inside-content-translate-x: -20%;
+$inside-content-translate-y: 170%;
+$inside-content-rotate: 30deg;

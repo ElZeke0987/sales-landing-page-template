@@ -11,7 +11,7 @@ export default function MtzHero() {
     const [ctaHovered, setCtaHovered] = useState(false);
 
     return (
-        <section className="relative min-h-screen bg-gradient-to-b from-black to-gray-900 mtz-hero overflow-hidden w-full h-full">
+        <section className="relative  bg-gradient-to-b from-black to-gray-900 mtz-hero overflow-hidden w-full h-full">
             <div className="container mx-auto px-4 py-16 z-50  inset-0">
                 <div className=" flex flex-col items-center text-center mb-12 z-50 ">
                     <h1 className="text-6xl font-bold mb-4 z-50 ">

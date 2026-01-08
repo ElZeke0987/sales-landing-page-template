@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+
 import "./lazyFrame.scss";
 
 /**
@@ -48,6 +49,8 @@ export default function LazyFrame({ children, fullViewport = true, threshold=0.2
         "flex justify-center items-center",
         fullViewport && "full-viewport"
     ].filter(Boolean).join(" ");
+
+    
 
     return (
         <div 

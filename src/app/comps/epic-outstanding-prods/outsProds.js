@@ -13,7 +13,7 @@ export default function OutsProds(){
     const [activeList, setActiveList]=useState(null);
 
     return(
-        <div className="outs-prods w-full">
+        <div className="outs-prods w-full h-full">
             <OutsProdsTitle/>
             <OutsProdsList/>
             

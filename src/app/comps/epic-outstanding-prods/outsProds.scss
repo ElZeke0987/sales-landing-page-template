@@ -3,8 +3,7 @@
 .outs-prods{
     .outs-prods-list{
         gap: $gap-size;
-        overflow-y: hidden ;
-        overflow-x: hidden;
+        overflow: hidden;
         .out-prod-item{
             height: $item-height;
             flex-direction: column;
@@ -22,9 +21,15 @@
                 width: $image-width;
                 height: $image-height;
                 z-index: $image-z-index;
-                
-                
             }
+            .static-bg-fimage{
+                background-color: $static-bg-color;
+                z-index: 10;
+                transform: rotate($rotation) translate($translate-x, $translate-y-end);
+                width: $image-width;
+                height: $image-height;
+            }
+
             .floating-image{
                 transition: all $transition-duration;
                 //animation: float $animation-duration $animation-easing;
@@ -40,17 +45,16 @@
                
 
             }
-            .static-bg-fimage{
+            .interactuable-part{
                 z-index: $static-bg-z-index;
-                background-color: $static-bg-color;
                 //transform: rotate($rotation) translate($translate-x, $translate-y-end);
                 width: $static-bg-width;
                 height: $image-height;
                 .inside-content{
-                    height: 35%;
-                    width: 60%;
-                    transform: translate(-20%,190%) rotate(30deg);
-                    background-color: royalblue;
+                    height: $inside-content-height;
+                    width: $inside-content-width;
+                    transform: translate($inside-content-translate-x, $inside-content-translate-y) rotate($inside-content-rotate);
+                    background-color: $button-section-bg;
                 }
             }
 
