@@ -25,7 +25,7 @@ export function FeatureItem({ item, index, itemStyles}: FeatureItemProps) {
             
             {item.title && (
                 <h3 className={finalStyles.title}>
-                    <LazyFrame fullViewport={false}>
+                    <LazyFrame fullViewport={false} threshold={0.2}>
                         <span>{item.title}</span>
                         <div className={"anim-" + index} />
                     </LazyFrame>
