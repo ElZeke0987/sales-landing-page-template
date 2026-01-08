@@ -1,0 +1,33 @@
+// Layout variables
+$gap-size: 15vw;
+$item-height: 100vh;
+$image-width: 300%;
+$image-height: 150vh;
+$static-bg-width: 299%;
+
+// Transform variables
+$rotation: -30deg;
+$translate-x: -10vw;
+$translate-y-start: -30vh;
+$translate-y-end: 10vh;
+$translate-y-hover: -25%;
+
+// Animation variables
+$animation-duration: 2s;
+$animation-easing: ease-in-out;
+$transition-duration: 0.3s;
+$animation-delay-base: 0.23s;
+$max-items: 10;
+
+// Z-index variables
+$item-z-index: 100;
+$image-z-index: 50;
+$static-bg-z-index: 49;
+
+// Title variables
+$title-font-size: 2rem;
+$title-color: #eee;
+$title-bg-color: #111;
+
+// Background color
+$static-bg-color: none;

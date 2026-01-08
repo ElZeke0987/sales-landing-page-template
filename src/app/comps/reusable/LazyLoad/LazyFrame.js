@@ -7,9 +7,10 @@ import "./lazyFrame.scss";
  * @param {Object} props
  * @param {React.ReactNode} props.children - Contenido a mostrar cuando sea visible
  * @param {boolean} props.fullViewport - Si es true, el componente ocupará todo el viewport
+ * @param {number} props.threshold - Umbral de visibilidad (0-1)
  * @returns {JSX.Element}
  */
-export default function LazyFrame({ children, fullViewport = true }) {
+export default function LazyFrame({ children, fullViewport = true, threshold=0.2 }) {
     // Estado para controlar la visibilidad del contenido
     const [isVisible, setIsVisible] = useState(false);
     const lazyElementRef = useRef(null);
@@ -17,7 +18,7 @@ export default function LazyFrame({ children, fullViewport = true }) {
     useEffect(() => {
         // Configuración del IntersectionObserver
         const observerOptions = {
-            threshold: 0.2 // El elemento se considera visible cuando el 20% es visible
+            threshold: threshold // El elemento se considera visible cuando el umbral es visible
         };
 
         // Crear el observer

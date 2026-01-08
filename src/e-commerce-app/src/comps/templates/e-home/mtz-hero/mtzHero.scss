@@ -1,4 +1,4 @@
-@import './mtzHeroVars.scss';
+@use 'mtzHeroVars' as *;
 
 .mtz-hero .mtz-cta-button {
     position: relative;
