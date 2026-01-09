@@ -5,15 +5,17 @@ import styles from "./Features.module.scss";
 import { FeatureItemProps, FeatureItemStyles } from "./types";
 import { defaultItemStyles } from "./defaultStyles";
 
+
 export function FeatureItem({ item, index, itemStyles}: FeatureItemProps) {
     const finalStyles = { ...defaultItemStyles, ...itemStyles };
-
+    const Icon = item.icon
     return (
         <div className={`${finalStyles.container} anim-${index + 1}`}>
-            {item.imgUrl && (
+            
+            {(item.imgUrl||item.icon) && (
                 <div className={finalStyles.imageContainer}>
                     <Image 
-                        src={item.imgUrl} 
+                        src={item.imgUrl||item.icon.src} 
                         className={finalStyles.image}
                         width={500} 
                         height={500} 

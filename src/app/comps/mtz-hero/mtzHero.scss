@@ -49,7 +49,11 @@
 }
 
 .size-hero-red-element{
-    backdrop-filter: blur($hero-overlay-blur);
+    background: linear-gradient(
+      135deg,
+      rgba(159, 3, 3, 0.5),
+      rgba(159, 3, 3, 0.25)
+    );
     transition: all $hero-overlay-transition;
     width: $hero-overlay-width;
     height: $hero-overlay-height;

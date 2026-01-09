@@ -1,0 +1,56 @@
+// Mobile media query variables
+$mobile-breakpoint: 768px;
+
+// Mobile item card dimensions
+$mobile-item-card-width: 40vw;
+$mobile-item-card-height: 40vh;
+
+// Mobile size image styles
+$mobile-size-image-bg: rgba(112, 5, 5, 0.625);
+$mobile-size-image-padding: 2vw;
+$mobile-size-image-border-radius: 10%;
+$mobile-size-image-width: 100%;
+$mobile-size-image-height: 60%;
+
+// Mobile item info styles
+$mobile-item-info-bg: rgba(112, 5, 5, 0.625);
+$mobile-item-info-padding: 2vw;
+$mobile-item-info-border-radius: 10%;
+$mobile-item-info-height: 40%;
+$mobile-item-info-font-size: 1rem;
+$mobile-item-info-font-weight: bold;
+$mobile-item-info-color: black;
+
+// Desktop/PC item card dimensions
+$desktop-item-card-width: 15vw;
+
+// Desktop size image styles
+$desktop-size-image-width: 100%;
+$desktop-size-image-height: 15vw;
+
+$CategoriesGridGap: 6vw;
+
+// Category item styles
+$category-item-width: 30%;
+$category-item-gap: 3px;
+$category-item-hover-transform: translateY(-5px);
+
+// Category icon container styles
+$category-icon-container-padding: 8px;
+$category-icon-container-bg: rgba(80, 0, 0, 0.9);
+
+// Category title styles
+$category-title-color: white;
+$category-title-bg: rgba(80, 0, 0, 0.8);
+
+// Categories section styles
+$categories-section-bg: #111;
+$categories-section-padding: 1vw;
+$categories-section-width: 100vw;
+$categories-section-height: none;
+$selected-menu-color: black;
+$categories-title-text-align: center;
+$categories-title-font-size: 2rem;
+$categories-title-font-weight: bold;
+$categories-title-margin-bottom: 20px;
+$categories-title-color: #fff;

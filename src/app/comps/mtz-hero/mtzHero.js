@@ -46,7 +46,7 @@ export default function MtzHero() {
             />
             <div
                 className={`absolute bottom-0 left-0 w-full h-32 rotate-effect-and-center 
-                    size-hero-red-element bg-red-800/50 
+                    size-hero-red-element 
                     ${ ctaHovered ? "red-item-on-hover" : ""}`}
             ></div>
         </section>

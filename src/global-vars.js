@@ -42,6 +42,38 @@ export const outStandingProducts =[
 
 
 ];
+import RingLogo from "@/categories/blacked-ring.svg"
+import NecklaceLogo from "@/categories/necklace-1.svg"
+import EarringsLogo from "@/categories/earrings-jewelry-svgrepo-com.svg"
+
+import catalogData from "../publicCatalogData.json"
+
+
+export const categoryList=[
+    {
+        val: "rings",
+        title: "Anillos",
+        icon: RingLogo,
+        list: [
+            catalogData[1]
+        ]
+    },
+    {
+        val: "necklace",
+        title: "Cadenitas",
+        icon: NecklaceLogo,
+        list: [
+            catalogData[0],
+            catalogData[2]
+        ]
+    },
+    {
+        val: "earrings",
+        title: "Aritos",
+        icon: EarringsLogo,
+        list: []
+    }
+]
 
 
 export const titlesObj={

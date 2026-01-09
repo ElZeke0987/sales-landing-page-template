@@ -25,6 +25,10 @@ export interface FeaturesStyles {
 }
 
 export interface FeatureItem {
+
+    icon: any;
+    val: string;
+    list: Array<any>;
     /** URL de la imagen del elemento */
     imgUrl: string;
     /** Título del elemento */
@@ -46,8 +50,14 @@ export interface FeatureItemProps {
     item: FeatureItem;
     /** Indice del item para animaciones */
     index: number;
-    /** Estilos personalizados para el item */
-    itemStyles: FeatureItemStyles;
+    /** Función para manejar el click en el item */
+    changeStateFunc: (value: string) => void;
+    /** Clases CSS adicionales */
+    className?: string;
+    /** Ancho de la imagen */
+    widthIcon?: number;
+    /** Alto de la imagen */
+    heightIcon?: number;
 }
 
 export interface FeaturesProps {

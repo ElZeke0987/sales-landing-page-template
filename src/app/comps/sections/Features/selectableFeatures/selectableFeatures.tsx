@@ -1,13 +1,14 @@
 "use client";
-import styles from "./Features.module.scss";
-import "../general.scss";
+import "./selStyles.scss";
+import "../../general.scss";
 import Image from "next/image";
-import CTA from "../../reusable/cta/CTA";
-import LazyFrame from "../../reusable/LazyLoad/LazyFrame";
-import { FeatureItem } from "./FeatureItem";
-import { FeaturesProps, FeaturesStyles } from "./types";
-import { defaultFeaturesStyles } from "./defaultStyles";
-
+import CTA from "../../../reusable/cta/CTA";
+import LazyFrame from "../../../reusable/LazyLoad/LazyFrame";
+import  SelectableFeatureItem  from "./selFeatureItem";
+import { FeaturesProps, FeaturesStyles } from "../types";
+import { defaultFeaturesStyles } from "../defaultStyles";
+import { useState } from "react"
+import SelectedMenu from "./selMenu";
 
 /**
  * Componente FeatureItem - Representa un elemento individual de características
@@ -24,46 +25,46 @@ import { defaultFeaturesStyles } from "./defaultStyles";
  * @param {string} props.itemStyles.description - Clases para la descripción
  */
 
-export default function Features({ 
+export default function SelectableFeatures({ 
     items = [],
     title = "Nuestras Características",
     cta = { text: "Ver más", href: "#" },
-    styles: customStyles = {}
+    
 }: FeaturesProps) {
 
-    const finalStyles = { ...defaultFeaturesStyles, ...customStyles };
-    
+
+    const [categorySelected, setCategorySelected] = useState("rings")
 
     return (
-        <section 
-            className={`${finalStyles.section} ${styles["features-section"]} z-50`}
-            id="features"
-        >
+        <section
+            className={`categories-section flex flex-col justify-center`}
+            id="categories">
             {title && (
-                <h2 className={finalStyles.title}>
+                <h2 className={"categories-title"}>
                     {title}
                 </h2>
             )}
             
-            <div className={styles["features-cont"]}>
-                <div className={finalStyles.grid}>
+            <div className={"categories-container flex items-center flex-col w-full"}>
+                <div className={"categories-grid flex justify-center"}>
                     {items.map((item, index) => (
-                        <FeatureItem 
+                        
+                        <SelectableFeatureItem
                             key={index}
                             item={item}
                             index={index}
-                            itemStyles={finalStyles.item || {}}
+                            changeStateFunc={setCategorySelected}
+                            className={"category-item"}
+
+                            
                         />
+                        
                     ))}
                 </div>
+            <div className="decorative-line w-full flex items-center justify-center">
                 
-                {cta && (
-                    <CTA 
-                        text={cta.text}
-                        href={cta.href}
-                        ctaStyles={styles["cta-button"]}
-                    />
-                )}
+            </div> 
+                
             </div>
         </section>
     );
