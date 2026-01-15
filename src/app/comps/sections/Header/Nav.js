@@ -8,23 +8,23 @@ const styless = {
     "nav-transp-item": "nav-transp-item-2",
     "nav-logo": "nav-logo-2",
 }
-import styles from "./Nav.module.scss";
+import styles from "./Nav.scss";
 import { titlesObj } from "@/global-vars";
 import { useCart } from "@/app/cartProvider";
 import LinksList from "./comps/LinksList";
 import ResponsiveButton from "./comps/ResponsiveButton";
-
+ 
 
 export default function Nav({classForNav}){
     const [openNavbar, setOpenNavbar]=useState(false);
     const { cart }=useCart()
     return (
         <div className="w-full">
-            <nav className={" w-full"+ styles["nav-toggler-height"]}>
-                <div className={"p-4  flex justify-between items-center " + styles["nav-toggler"] + " " + styles["wi-full"] + " " + styles["nav-transp-item"] + " " + classForNav}>
-                    <a href="#" className={"text-white text-lg font-bold " + styles["nav-logo"]}>{titlesObj.logoTitle}</a>
+            <nav className={" w-full nav-toggler-height"}>
+                <div className={"p-4  flex justify-between items-center nav-toggler nav-transp-ite  "  + classForNav}>
+                    <a href="#" className={"text-white text-lg font-bold nav-logo"}>{titlesObj.logoTitle}</a>
                     <LinksList responsive={false}/>
-                    <ResponsiveButton/>
+                    <ResponsiveButton navOpen={openNavbar} setNavOpen={setOpenNavbar}/>
                 </div>
                 <LinksList responsive={true}/>
             </nav>

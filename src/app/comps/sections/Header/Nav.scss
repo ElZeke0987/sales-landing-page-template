@@ -71,6 +71,7 @@
 @media (max-width: 768px){
     .nav-hy{
         height: $NavHY;
+        z-index: 1000;
     }
     .nav-toggler-height{
         z-index: 1000 !important;

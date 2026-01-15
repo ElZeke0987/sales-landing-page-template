@@ -23,9 +23,17 @@ $hero-bg-image-onhover-transition: 1500ms;
 $hero-overlay-transition: 0.7s;
 
 // Elemento decorativo del hero
-$hero-overlay-translate-x: -10vw;
-$hero-overlay-translate-y: 6.5vw;
+$hero-overlay-translate-x: -20%;
+$hero-overlay-translate-y: -30vh;
+
+$hero-overlay-translate-x-br: -20%;
+$hero-overlay-translate-y-br: -50%;
+
+
 $hero-overlay-rotate: 30deg;
+
+$hero-overlay-rotate-br: 25deg;
+
 $hero-overlay-transform-origin: center center;
 $hero-overlay-width: 200vw;
 $hero-overlay-height: 60vh;

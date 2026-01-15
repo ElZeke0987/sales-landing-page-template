@@ -48,6 +48,14 @@
     transform: var(--hero-overlay-transform);
 }
 
+@media (max-width:450px) {
+    .rotate-effect-and-center {
+      --hero-overlay-transform: translate(#{$hero-overlay-translate-x-br}, #{$hero-overlay-translate-y-br}) rotate(#{$hero-overlay-rotate-br});
+      transform-origin: $hero-overlay-transform-origin;
+      transform: var(--hero-overlay-transform);
+    }
+}
+
 .size-hero-red-element{
     background: linear-gradient(
       135deg,

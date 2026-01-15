@@ -2,9 +2,9 @@ import { useCart } from "@/app/cartProvider"
 import { useOpenNavStore } from "./openNavStore";
 import { navLinks } from "../headerVars";
 
-export default function LinksList({responsive = false}){
+export default function LinksList({responsive = false, openNavBar}){
     const { cart }=useCart();
-    const { navOpen, setNavOpen } = useOpenNavStore()
+    const { navOpen, setNavOpen } = useOpenNavStore() 
     //if(!responsive)
     return(
         <ul className={ responsive?`${navOpen?" open-nav":"  closed-nav"} md:hidden nav-toggler-list bg-gray-800 nav-transp-item nav-links-list`:`hidden md:flex space-x-4 nav-links-list`}>

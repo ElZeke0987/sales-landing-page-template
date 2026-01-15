@@ -77,7 +77,7 @@ export const categoryList=[
 
 
 export const titlesObj={
-    logoTitle: "My Landing Page Template",
+    logoTitle: "2110's Store",
     benefits: "Benefits of our headphones",
     testimonials: "Testimonials",
 }

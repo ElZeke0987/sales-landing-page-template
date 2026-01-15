@@ -11,7 +11,7 @@ import "./lazyFrame.scss";
  * @param {number} props.threshold - Umbral de visibilidad (0-1)
  * @returns {JSX.Element}
  */
-export default function LazyFrame({ children, fullViewport = true, threshold=0.2 }) {
+export default function LazyFrame({ children, fullViewport = true, threshold=0.2, className="" }) {
     // Estado para controlar la visibilidad del contenido
     const [isVisible, setIsVisible] = useState(false);
     const lazyElementRef = useRef(null);
@@ -46,7 +46,7 @@ export default function LazyFrame({ children, fullViewport = true, threshold=0.2
     // Determinar las clases CSS basadas en el estado y props
     const containerClasses = [
         isVisible ? "lazy-load-visible" : "lazy-loading-invisible",
-        "flex justify-center items-center",
+        "flex justify-center items-center overflow-hidden",
         fullViewport && "full-viewport"
     ].filter(Boolean).join(" ");
 
@@ -55,7 +55,7 @@ export default function LazyFrame({ children, fullViewport = true, threshold=0.2
     return (
         <div 
             ref={lazyElementRef} 
-            className={containerClasses}
+            className={containerClasses + " " + className}
         >
             {isVisible ? children : "Cargando..."}
         </div>
