@@ -26,9 +26,9 @@ export default function Sections(){
             <LazyFrame>
                 <Product/>
             </LazyFrame>
-            <LazyFrame>
+            {/* <LazyFrame>
                 <Features/>
-            </LazyFrame>
+            </LazyFrame> */}
             <LazyFrame>
                 <Testimonials/>
             </LazyFrame>

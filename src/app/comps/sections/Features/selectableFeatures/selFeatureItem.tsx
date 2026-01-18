@@ -2,11 +2,11 @@
 import Image from "next/image";
 import LazyFrame from "../../../reusable/LazyLoad/LazyFrame";
 import styles from "./Features.module.scss";
-import { FeatureItemProps, FeatureItemStyles } from "../types";
+import { SelectableFeatureItemProps, FeatureItemStyles } from "../types";
 import { defaultItemStyles } from "../defaultStyles";
 import Link from "next/link";
 
-export default function SelectableFeatureItem({ item, index, changeStateFunc, className, widthIcon, heightIcon }: FeatureItemProps) {
+export default function SelectableFeatureItem({ item, index, changeStateFunc, className, widthIcon, heightIcon }: SelectableFeatureItemProps) {
 
     const Icon = item.icon
     return (

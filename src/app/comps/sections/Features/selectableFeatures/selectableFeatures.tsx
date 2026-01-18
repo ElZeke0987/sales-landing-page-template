@@ -44,7 +44,7 @@ export default function SelectableFeatures({
                     {title}
                 </h2>
             )}
-            
+             
             <div className={"categories-container flex items-center flex-col w-full"}>
                 <div className={"categories-grid flex justify-center"}>
                     {items.map((item, index) => (

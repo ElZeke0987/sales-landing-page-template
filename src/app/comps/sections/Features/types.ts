@@ -11,6 +11,8 @@ export interface FeatureItemStyles {
     descriptionContainer?: string;
     /** Clases CSS para el texto de la descripción */
     description?: string;
+
+    
 }
 
 export interface FeaturesStyles {
@@ -45,7 +47,7 @@ export interface CTAConfig {
     /** Estilos */
 }
 
-export interface FeatureItemProps {
+export interface SelectableFeatureItemProps {
     /** Item a mostrar en forma de carta */
     item: FeatureItem;
     /** Indice del item para animaciones */
@@ -58,6 +60,19 @@ export interface FeatureItemProps {
     widthIcon?: number;
     /** Alto de la imagen */
     heightIcon?: number;
+
+    /** Estilos personalizados */
+    itemStyles?: FeatureItemStyles;
+}
+
+
+export interface FeatureItemProps {
+    /** Item a mostrar en forma de carta */
+    item: FeatureItem;
+    /** Indice del item para animaciones */
+    index: number;
+    /** Estilos personalizados */
+    itemStyles?: FeatureItemStyles;
 }
 
 export interface FeaturesProps {
