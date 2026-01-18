@@ -1,16 +1,25 @@
 // Layout variables
 $gap-size: 15vw;
-$item-height: 100vh;
-$image-width: 300%;
-$image-height: 150vh;
-$static-bg-width: 299%;
+$item-height: 100%;
+$image-width: 100%;
+$image-height: 100%;
+$static-bg-width: 100%;
 
 // Transform variables
 $rotation: -30deg;
-$translate-x: -10vw;
-$translate-y-start: -30vh;
-$translate-y-end: 10vh;
+$translate-x: 300%;
+$translate-y-start: -5%;
+$translate-y-end: 5%;
 $translate-y-hover: -30%;
+
+$rotation-mobile: 0deg;
+$translate-x-mobile: 0%;
+$translate-y-start-mobile: 0%;
+$translate-y-end-mobile: 0%;
+$translate-y-hover-mobile: -50%;//Negative to set the hover effect to the top
+$inside-content-translate-x-mobile: 0%;
+$inside-content-translate-y-mobile: 100%;
+$inside-content-rotate-mobile: 0deg;
 
 // Animation variables
 $animation-duration: 2s;
@@ -39,5 +48,5 @@ $static-bg-color: $button-section-bg;
 $inside-content-height: 36.5%;
 $inside-content-width: 58%;
 $inside-content-translate-x: -20%;
-$inside-content-translate-y: 170%;
+$inside-content-translate-y: 100%;
 $inside-content-rotate: 30deg;

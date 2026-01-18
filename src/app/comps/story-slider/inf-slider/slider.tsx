@@ -5,8 +5,9 @@
  * if you need more, contact the dev
  */
 
-import { useState, useRef, useEffect, useCallback, useImperativeHandle, forwardRef } from "react";
+import { useState, useRef, useEffect, useCallback, useImperativeHandle, forwardRef, JSX, FC } from "react";
 import "./styles.css"//Comment if you actually use tailwind or scss
+import DefaultSlide from "./comps&mods/defaultSlide";
 
 interface SliderProps  {
   slidesList: {image: string, title: string, description: string}[], 
@@ -21,6 +22,24 @@ interface SliderProps  {
   animationDuration?: number
   animationType?: string
   isContinous?: boolean
+  
+  classNameContainer?: string
+  className?: string
+
+  classNameTrack?: string
+  classNameSlide?: string
+  classNameSlideContent?: string
+  classNameSlideTitle?: string
+  classNameSlideDescription?: string
+  classNameIndicator?: string
+  classNameNavButton?: string
+  classNameNavButtonPrev?: string
+  classNameNavButtonNext?: string
+  classNameWrapper?: string
+  classNameIndicatorsContainer?: string
+  classNameOverflow?: string
+
+  customElementSlide?: FC<any>,
 }
 
 
@@ -44,6 +63,20 @@ const InfiniteCarouselSlider = forwardRef((props: SliderProps, refP: any) => {
   const ref = refP
   const [animationDuration, setAnimationDuration] = useState<number>(props.animationDuration != undefined ? props.animationDuration : 500)
   
+  const classNameContainer = props.classNameContainer || props.className ||""
+  const classNameTrack = props.classNameTrack || ""
+  const classNameSlide = props.classNameSlide || ""
+  const classNameSlideContent = props.classNameSlideContent || ""
+  const classNameSlideTitle = props.classNameSlideTitle || ""
+  const classNameSlideDescription = props.classNameSlideDescription || ""
+  const classNameNavButton = props.classNameNavButton || ""
+  const classNameNavButtonPrev = props.classNameNavButtonPrev || ""
+  const classNameNavButtonNext = props.classNameNavButtonNext || ""
+  const classNameIndicator = props.classNameIndicator || ""
+  const classNameWrapper = props.classNameWrapper || ""
+  const classNameIndicatorsContainer = props.classNameIndicatorsContainer || ""
+  const classNameOverflow = props.classNameOverflow || ""
+
   let listeners = useRef(new Map<string, Set<Function>>());
   useImperativeHandle(ref, ()=>({
       next,
@@ -72,7 +105,7 @@ const InfiniteCarouselSlider = forwardRef((props: SliderProps, refP: any) => {
     listeners.current.get(event)?.forEach(cb => cb(...args));
   }
   
-  
+  const CustomElementSlide: FC<any> | undefined = props.customElementSlide
 
   const slides = props.slidesList
   const rtl = props.rtl || false
@@ -97,6 +130,12 @@ const InfiniteCarouselSlider = forwardRef((props: SliderProps, refP: any) => {
   const autoPlayDelay = props.autoPlayDelay!==undefined && props.autoPlayDelay ? props.autoPlayDelay : 5000
   //const direction = props.direction || "horizontal"
   const isContinous = props.isContinous!==undefined ? props.isContinous : false
+  
+  
+
+  const SlideToShow = CustomElementSlide ? CustomElementSlide : DefaultSlide
+  
+
   
   // Translate infinite slides: One clon of the last slide at the start and viceversa
   const infiniteSlides = [
@@ -322,12 +361,12 @@ const InfiniteCarouselSlider = forwardRef((props: SliderProps, refP: any) => {
   };
 
   return (
-    <div className="carousel-container">
-      <div className="carousel-wrapper">
-        <div className="carousel-overflow ">
+    <div className={"carousel-container " + classNameContainer}>
+      <div className={"carousel-wrapper " + classNameWrapper}>
+        <div className={"carousel-overflow "+classNameOverflow}>
           <div
             ref={trackRef}
-            className={`${isDraggable?isDragging ? 'cursor-grabbing' : 'cursor-grab': ''}  carousel-track`}
+            className={`${isDraggable?isDragging ? 'cursor-grabbing' : 'cursor-grab': ''}  carousel-track ${classNameTrack}`}
             style={{
               transform: `translateX(${currentTranslate}px)`,
               transition: hasAnimation ?
@@ -348,19 +387,14 @@ const InfiniteCarouselSlider = forwardRef((props: SliderProps, refP: any) => {
             infiniteSlides.map((slide, index) => (
               <div
                 key={index}
-                className="carousel-slide"
-                style={{ backgroundImage: `url(${slide.image})` }}
+                className={"carousel-slide-default "+classNameSlide}
                 onDragStart={(e) => e.preventDefault()}
               >
-                <div className=" slide-content " />
-                <div className="">
-                  <h2 className="slide-title">
-                    {slide.title}
-                  </h2>
-                  <p className="slide-description">
-                    {slide.description}
-                  </p>
-                </div>
+                {<SlideToShow 
+                slide={slide} 
+                classNameSlideContent={classNameSlideContent} 
+                classNameSlideTitle={classNameSlideTitle} 
+                classNameSlideDescription={classNameSlideDescription}/>}
               </div>
             ))
             }
@@ -369,24 +403,24 @@ const InfiniteCarouselSlider = forwardRef((props: SliderProps, refP: any) => {
           {/* Navigation buttons */}
           <button
             onClick={()=>prev()}
-            className="nav-button prev"
+            className={"nav-button prev " + classNameNavButton + " " + classNameNavButtonPrev}
           >
             ‹
           </button>
           <button
             onClick={()=>next()}
-            className="nav-button next"
+            className={"nav-button next " + classNameNavButton + " " + classNameNavButtonNext}
           >
             ›
           </button>
 
           {/* Indicators */}
-          <div className="indicators-container">
+          <div className={"indicators-container " + classNameIndicatorsContainer}>
             {slides.map((_:any, index:number) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`indicator ${
+                className={`indicator ${classNameIndicator} ${
                   index === getRealIndex()
                     ? 'active'
                     : ''

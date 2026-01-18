@@ -1,9 +1,28 @@
 @use 'outsProdsVars' as *;
 
+@keyframes float {
+    0% {
+        transform: rotate($rotation) translate($translate-x, $translate-y-start);
+    }
+    100% {
+        transform: rotate($rotation) translate($translate-x, $translate-y-end);
+    }
+}
+
+@keyframes float_mobile {
+    0% {
+        transform: rotate($rotation-mobile) translate($translate-x-mobile, $translate-y-start-mobile);
+    }
+    100% {
+        transform: rotate($rotation-mobile) translate($translate-x-mobile, $translate-y-end-mobile);
+    }
+}
+
 .outs-prods{
     .outs-prods-list{
         gap: $gap-size;
         overflow: hidden;
+        height: 100%;
         .out-prod-item{
             height: $item-height;
             flex-direction: column;
@@ -63,14 +82,7 @@
                     animation-delay: #{$i * $animation-delay-base}s;
                 }
             }
-            @keyframes float {
-                0% {
-                    transform: rotate($rotation) translate($translate-x, $translate-y-start);
-                }
-                100% {
-                    transform: rotate($rotation) translate($translate-x, $translate-y-end);
-                }
-            }
+            
 
         }
     }
@@ -81,5 +93,46 @@
         width: 100%;
         text-align: center;
         background-color: $title-bg-color;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .outs-prods{
+        .outs-prods-list{
+            gap: 1rem;
+            .out-prod-item{
+                &:hover{
+                    .floating-image{
+                        transform: translateY($translate-y-hover-mobile);
+                    }
+                }
+                .rotation-handler{
+                    
+                animation: float_mobile $animation-duration $animation-easing forwards;
+                    transform: rotate($rotation-mobile) translate($translate-x-mobile, $translate-y-start-mobile);
+                    // width: $image-width;
+                    // height: $image-height;
+                    // z-index: $image-z-index;
+                }
+                .static-bg-fimage{
+                    background-color: $static-bg-color;
+                    z-index: 10;
+                    transform: rotate($rotation-mobile) translate($translate-x-mobile, $translate-y-end-mobile);
+                }
+                .interactuable-part{
+                    z-index: $static-bg-z-index;
+                    //transform: rotate($rotation) translate($translate-x, $translate-y-end);
+                    width: $static-bg-width;
+                    height: $image-height;
+                    .inside-content{
+                        height: $inside-content-height;
+                        width: $inside-content-width;
+                        transform: translate($inside-content-translate-x-mobile, $inside-content-translate-y-mobile) rotate($inside-content-rotate-mobile);
+                        background-color: $button-section-bg;
+                    }
+                }
+            }
+        } 
+              
     }
 }
