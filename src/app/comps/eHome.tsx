@@ -16,9 +16,9 @@ export default function EHome(){
             
                 { <LazyFrame fullViewport threshold={0.2}><Categories/></LazyFrame> }
             
-                { /*<LazyFrame fullViewport threshold={0.2}><OutsProds/></LazyFrame> */}
+                { process.env.NODE_ENV === "development" && <LazyFrame fullViewport threshold={0.2}><OutsProds/></LazyFrame> }
 
-                {/*<LazyFrame fullViewport threshold={0.2} ><StorySlider/></LazyFrame>*/}
+                { process.env.NODE_ENV === "development" && <LazyFrame fullViewport threshold={0.2} ><StorySlider/></LazyFrame>}
         </div>
     ) 
 }
