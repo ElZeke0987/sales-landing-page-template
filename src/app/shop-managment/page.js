@@ -12,7 +12,7 @@ export default async function ShopManagment(){
         <>
         <Header/>
         <div className="flex h-screen items-center justify-center">
-            {isAuth ? <Logged/> : <Unlogged/>}
+            {process.env.NODE_ENV === "development"? (isAuth ? <Logged/> : <Unlogged/> ) : "SOLO SE PUEDE VER EN DESARROLLO"}
         </div>
         </>
     )
