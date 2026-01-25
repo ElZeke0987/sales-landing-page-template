@@ -19,18 +19,26 @@
 }
 
 .outs-prods{
+    .outs-prods-title{
+        height: 20%;
+    }
     .outs-prods-list{
         gap: $gap-size;
-        overflow: hidden;
-        height: 100%;
+        overflow: auto;
+        height: 80%;
         .out-prod-item{
             height: $item-height;
             flex-direction: column;
             z-index: $item-z-index;
+            width: $image-width;
             &:hover{
                 .floating-image{
                     transform: translateY($translate-y-hover);
                 }
+            }
+            .out-prod-name{
+                z-index: $item-z-index;
+                
             }
             .rotation-handler{
                 cursor: pointer;
@@ -125,8 +133,6 @@
                     width: $static-bg-width;
                     height: $image-height;
                     .inside-content{
-                        height: $inside-content-height;
-                        width: $inside-content-width;
                         transform: translate($inside-content-translate-x-mobile, $inside-content-translate-y-mobile) rotate($inside-content-rotate-mobile);
                         background-color: $button-section-bg;
                     }
