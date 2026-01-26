@@ -10,7 +10,7 @@ import { useEffect, useRef } from "react"
 export default function EHome(){
   
     return(
-        <div className="flex flex-col">
+        <div className="flex flex-col w-screen">
             
                 {<LazyFrame fullViewport threshold={0.2}><MtzHero/></LazyFrame>}
             

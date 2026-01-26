@@ -1,7 +1,7 @@
 // Layout variables
 $gap-size: 1vw;
 $item-height: 100%;
-$image-width: 20vw;
+$image-width: 300px;
 $image-height: 100%;
 $static-bg-width: 100%;
 
@@ -10,7 +10,7 @@ $rotation: 0deg;
 $translate-x: 0%;
 $translate-y-start: -25%;
 $translate-y-end: 0%;
-$translate-y-hover: -25%;
+$translate-y-hover: -20%;
 
 $rotation-mobile: 0deg;
 $translate-x-mobile: 0%;
@@ -35,6 +35,7 @@ $static-bg-z-index: 49;
 $title-font-size: 2rem;
 $title-color: #eee;
 $title-bg-color: #111;
+$title-font-weight: bold;
 
 // Button section background color
 $button-section-bg: rgba(255, 255, 255, 0.5);

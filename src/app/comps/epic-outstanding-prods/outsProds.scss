@@ -22,7 +22,16 @@
     .outs-prods-title{
         height: 20%;
     }
+    .justify-custom-br{
+        justify-content: center;
+    }
+    @media screen and (max-width: 1200px) {
+        .justify-custom-br{
+            justify-content: start;
+        }
+    }
     .outs-prods-list{
+        
         gap: $gap-size;
         overflow: auto;
         height: 80%;
@@ -38,7 +47,9 @@
             }
             .out-prod-name{
                 z-index: $item-z-index;
-                
+                font-size: $title-font-size;
+                font-weight: $title-font-weight;
+                color: $title-color;
             }
             .rotation-handler{
                 cursor: pointer;
