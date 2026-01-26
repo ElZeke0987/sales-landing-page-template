@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./comps/sections/Header/Header";
 import { CartProvider } from "./cartProvider";
-
+import { Analytics } from '@vercel/analytics/react';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
 
 
   return (
+    <Analytics>
     <CartProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}> 
@@ -33,5 +34,6 @@ export default function RootLayout({ children }) {
         </body>
       </html>
     </CartProvider>
+    </Analytics>
   );
 }
