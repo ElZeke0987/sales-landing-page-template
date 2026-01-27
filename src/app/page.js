@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="">
         <Header extraClass={styles["mtz-header"]} classForNav={styles["mtz-nav"]}/>
-        {<EHome/>}
+        <EHome/>
 
     </div>
   );

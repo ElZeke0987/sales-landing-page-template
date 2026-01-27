@@ -1,4 +1,7 @@
-import { readCatalogs, fetchCatalogs, readNormalCatalog } from "@/serverMods/getCatalogs"
+
+import { readCatalogs, fetchCatalogs } from "@/serverMods/getCatalogs"
+import ProductService from "@/server/services/product.service"
+
 
 export async function GET(){
     
@@ -19,8 +22,10 @@ export async function GET(){
             }
         })
     }else if(process.env.IS_PRINTFUL=="f"){
-        const publicCatalogDataJson=await readNormalCatalog()
-        return new Response(JSON.stringify(publicCatalogDataJson), {
+        const productService = new ProductService()
+        const products=await productService.getAllProducts()
+        console.log("products in api", products)
+        return new Response(JSON.stringify(products), {
             headers: {
                 "Content-Type": "application/json"
             }

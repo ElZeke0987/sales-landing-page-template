@@ -25,15 +25,15 @@ export default function RootLayout({ children }) {
 
 
   return (
-    <Analytics>
-    <CartProvider>
-      <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}> 
-          
-        {children}
-        </body>
-      </html>
-    </CartProvider>
-    </Analytics>
+    <html lang="es">
+      <head />
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        
+          <CartProvider>
+            <Analytics  />
+            {children}
+          </CartProvider>
+      </body>
+    </html>
   );
 }
