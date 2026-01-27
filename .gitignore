@@ -40,3 +40,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+*.sql
+*.psql
+src/server/test-db.js
+src/server/typed/db.ts
