@@ -17,13 +17,13 @@ export default function Results(){
             {
                 
                 productList?.map((prd,i)=>{
-                    console.log("testing prd: ", prd)
+                    console.log("testing prd in results comp iteration/map: ", prd)
                     if(filters?.category?.every((cat)=>!cat.act))return(
                         <div key={i}>
                             <ProductCard productObj={prd} />
                         </div>
                     )
-                    if(filters?.category?.some(cat=>cat.val==prd.val&&cat.act==true))return ( 
+                    if(filters?.category?.some(cat=>cat.id==prd.category_id&&cat.act==true))return ( 
                     <div key={i}>
                         <ProductCard productObj={prd} />
                     </div>

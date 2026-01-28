@@ -29,7 +29,7 @@ export default function ProductCard({productObj}){
    }
     return(
         <article className="flex md:flex-row flex-col product-wh">
-            <Image src={productObj.thumbnail_url == null ? defaultImage : productObj?.thumbnail_url||productObj?.imgList[0].imgUrl} width={200} height={200} alt={productObj.name||productObj.title}/>
+            <Image src={productObj.thumbnail_url == null || productObj.thumbnail_url == "" ? defaultImage : productObj?.thumbnail_url||productObj?.imgList[0].imgUrl} width={200} height={200} alt={productObj.name||productObj.title}/>
             <div className="product-card-info flex h-full w-full flex-col justify-center" onClick={handleProductCardClick}>
                 <Link href={`/products/${productObj.name_id}`} key={productObj.name_id}>
                     <div className="price ">${productObj.price} USD</div>

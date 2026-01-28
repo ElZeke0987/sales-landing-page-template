@@ -24,9 +24,9 @@ function TypeItem({typeObj, propVal="name_id", propTxt="name", propAct="act"}) {
             <>
             <span className="relative category-name">{typeObj[propTxt]||typeObj.category||typeObj[propVal] || "cargando..."}</span>
             
-            <span className={`anim-block absolute w-full h-full text-center flex items-center justify-center ${typeObj[propAct]?"anim-bg-remove":"anim-bg-filter"}`} >
+            <span className={`anim-block absolute w-full h-full text-center flex items-center justify-center ${typeObj.act?"anim-bg-remove":"anim-bg-filter"}`} >
                 
-                    {typeObj[propAct]?"Remover filtro": "Filtrar por categoria"}
+                    {typeObj.act?"Remover filtro": "Filtrar por categoria"}
             </span>
             </>
             : "Cargando filtro..."}

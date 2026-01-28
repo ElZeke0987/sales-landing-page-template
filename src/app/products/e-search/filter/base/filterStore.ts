@@ -17,6 +17,7 @@ const useFilterStore = create(set=>({
     setPriceRange: (range: [number, number])=> set((state:any)=>({filters: {...state.filters, priceRange: range}})),
     setRate: (rate: number)=> set((state:any)=> ({...state.filters, rate})),
     
+    
     productListByState:(state:any)=> newProductList(state),
 
     setCategoryActProducts: (state:any)=>{
