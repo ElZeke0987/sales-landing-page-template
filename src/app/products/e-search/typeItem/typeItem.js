@@ -1,6 +1,6 @@
 import useFilterStore from "../filter/base/filterStore";
 import "./typeItem.scss";
-function TypeItem({typeObj, propVal="val", propTxt="title", propAct="act"}) {
+function TypeItem({typeObj, propVal="name_id", propTxt="name", propAct="act"}) {
 
     const { addCategory} =useFilterStore()
 

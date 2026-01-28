@@ -1,17 +1,10 @@
-export interface Product {
+export interface ProductForClient {
+    id: number;
     name_id: string;
     name: string;
     price: number;
-    category: string;
     description: string;
     thumbnail_url: string;
     category_id: number;
     outstanding: boolean;
-    stock: number;
-}
-
-export interface Category {
-    name_id: string;
-    name: string;
-    act: boolean;
 }

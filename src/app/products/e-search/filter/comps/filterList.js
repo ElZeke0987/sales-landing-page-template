@@ -20,7 +20,7 @@ export default function FilterList(){
         {filters?.category.map((catObj, i)=>{
                 return(
                 <div key={i}>
-                    <TypeItem typeObj={catObj}/>
+                    <TypeItem typeObj={catObj} propVal="name_id" propTxt="name" propAct="act"/>
                 </div>
                    
                 )

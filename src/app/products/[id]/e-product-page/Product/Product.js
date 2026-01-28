@@ -15,15 +15,17 @@ export default function Product(){
     const {prodObj, setNewId}=useProductIdStore()
     const [objOpt, setObjOpt]=useState()//Item a nivel objeto en programacion
     const [imgSel, setImgSel]=useState(defaultImg)//Item a nivel imagen
-    const urlPaths = window.location.pathname.split("/")[2]
+    const [urlPaths, setUrlPaths] = useState();
     useEffect(()=>{
+        setUrlPaths(window.location.pathname.split("/")[2])
         setNewId(urlPaths)
     },[])
     
     useEffect(()=>{
         if(prodObj){
+            
             let imageListToShow = [];
-            [{name: "catalog-logo",url: prodObj?.thumbnail_url},...prodObj?.extraImages].forEach((item, ind)=>{
+            [{name: "catalog-logo",url: prodObj.thumbnail_url || ""},...prodObj?.extraImages || ["", "", ""]].forEach((item, ind)=>{
                 const newItem = {
                     id: ind,
                     ...item

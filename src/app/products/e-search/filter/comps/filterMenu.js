@@ -51,7 +51,7 @@ export default function FilterMenu( categories){
                                 <div onClick={e=>addCategory(objCat)}  key={i} className="multi-select-item flex items-center" ref={minimalItem}>
                                     
                                     <span className={`outline-input ${objCat.act&&"activated-inp"}`} key={i}></span>
-                                    <span>{objCat.txt||objCat.title}</span>
+                                    <span>{objCat.txt||objCat.title||objCat.name}</span>
                                 </div>
                             )
                         })
