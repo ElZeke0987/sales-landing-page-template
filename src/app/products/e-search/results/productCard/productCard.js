@@ -4,10 +4,20 @@ import useFilterStore from "../../filter/base/filterStore";
 import TypeItem from "../../typeItem/typeItem";
 import Link from "next/link";
 import { useProductIdStore } from "@/app/products/[id]/productStore";
+import { useEffect, useState } from "react";
 
 export default function ProductCard({productObj}){
     const { addCategory, filters, productList }=useFilterStore();
     const { setNewId } = useProductIdStore();
+    const [categoryOfThisProduct, setCategoryOfThisProduct] = useState(null);
+
+    useEffect(()=>{
+        console.log("testing categories: ", filters.category, productList)
+        // Find the category object that matches the product's category_id
+        const category = filters.category.find(cat => cat.id === productObj.category_id);
+        setCategoryOfThisProduct(category);
+    }, [filters])
+
     const defaultImage = "";
    // console.log("testing categories: ", filters.category, productList)
 
@@ -26,7 +36,7 @@ export default function ProductCard({productObj}){
                     <div className="title counter-color">{productObj.name||productObj.title}</div>
                     <div className="desc counter-color">{productObj.description||productObj.desc}</div>
                 </Link>
-                <TypeItem typeObj={productObj} propAct="actCategory"/>
+                <TypeItem typeObj={categoryOfThisProduct} propAct="actCategory"/>
             </div>
                 
         </article>

@@ -7,7 +7,7 @@ function TypeItem({typeObj, propVal="name_id", propTxt="name", propAct="act"}) {
     function handleCategorySelect(e){
         console.log("Usando este objeto: ", typeObj)
         e.stopPropagation();
-        addCategory({val: typeObj[propVal], act: typeObj[propAct]} );
+        addCategory(typeObj);
     }
     //El objeto typeObj contiene la informaci n de la categoria que se va a renderizar.
     //Contiene 3 propiedades: val, txt y act.
@@ -18,12 +18,18 @@ function TypeItem({typeObj, propVal="name_id", propTxt="name", propAct="act"}) {
     //Si act es false, el bot n de la interfaz de usuario muestra el texto "Filtrar por categoria" y el background del bot n es azul.
     //Cuando el usuario hace clic en el bot n, se llama a la funci n handleCategorySelect que se encarga de agregar o eliminar la categoria del state del filter.
     return ( 
+
         <div className="type-item text-center relative overflow-hidden counter-color" onClick={handleCategorySelect}>
-            <span className="relative category-name">{typeObj[propTxt]||typeObj.category||typeObj[propVal]}</span>
+            {typeObj ?
+            <>
+            <span className="relative category-name">{typeObj[propTxt]||typeObj.category||typeObj[propVal] || "cargando..."}</span>
+            
             <span className={`anim-block absolute w-full h-full text-center flex items-center justify-center ${typeObj[propAct]?"anim-bg-remove":"anim-bg-filter"}`} >
                 
                     {typeObj[propAct]?"Remover filtro": "Filtrar por categoria"}
             </span>
+            </>
+            : "Cargando filtro..."}
         </div>
      );
 }

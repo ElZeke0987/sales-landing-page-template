@@ -10,7 +10,7 @@ export default function FilterList(){
     useEffect(() => {
         
         console.log("FilterList: ", filters)
-        fetchCategories(setCategory);
+       // fetchCategories(setCategory);
        
     }, []);
    

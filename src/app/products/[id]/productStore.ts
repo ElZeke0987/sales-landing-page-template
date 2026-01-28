@@ -1,6 +1,6 @@
 import { create } from "zustand"
 import { newProductList } from "@/app/products/e-search/filter/base/productsBase"
-import { ProductForClient } from "@/types/global"
+import { ProductForClient } from "@/types/privateTypes";
 
 export const useProductIdStore = create(set => ({
     id: undefined,

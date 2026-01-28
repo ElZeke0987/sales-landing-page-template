@@ -10,7 +10,12 @@ export default function Filters(){
     const {setCategory}=useFilterStore();
     const {openState}=useOpenFilter();
     useEffect(()=>{
-        fetchCategories(setCategory)
+        
+        const result = async () => {
+            const categories = await fetchCategories(setCategory)
+            setCategory(categories)
+        }
+        result()
     },[])
     return(
         <section className="w-full">
