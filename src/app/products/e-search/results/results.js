@@ -11,7 +11,7 @@ export default function Results(){
     const [productList, setProductList]= useState([])
     useEffect(()=>{
         newProductList(setProductList)
-    }, [filters])
+    }, [])
     return(
         <div className="flex flex-col items-center justify-center results-gap">
             {
