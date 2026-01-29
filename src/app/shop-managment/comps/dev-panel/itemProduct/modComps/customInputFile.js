@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import {MultipleImgsCell, SingleImgCell} from "./ImgsCell";
 
-export default function CustomInputFile({images,setImages, multipleImgs}) {
+export default function CustomInputFile({images,setImages, multipleImgs, defaultImg}) {
     const fileInputRef = useRef(null);
     
     

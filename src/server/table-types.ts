@@ -1,4 +1,5 @@
 export interface Product {
+    id: number;
     name_id: string;
     name: string;
     price: number;
@@ -11,6 +12,7 @@ export interface Product {
 }
 
 export interface Category {
+    id: number;
     name_id: string;
     name: string;
     act: boolean;

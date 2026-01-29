@@ -2,11 +2,14 @@
 
 "use client"
 import { useState } from "react";
-
+import Image from "next/image";
+import CustomInputFile from "./modComps/customInputFile";
 export default function UpdateItem({product, setIsEditing, isEditing}){
     const [name, setName] = useState(product.name);
     const [price, setPrice] = useState(product.price);
     const [desc, setDesc] = useState(product.description);
+    const [updatedThumbnail, setUpdatedThumbnail] = useState([product.thumbnail_url]);
+    const [updatedExtraImages, setUpdatedExtraImages] = useState(["", "", ""]);
     async function updateProduct(){
         setIsEditing(false);
         if(!name&&!price){
@@ -24,6 +27,8 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
                 external_id: product.external_id,
                 id: product.id,
                 desc,
+                thumbnail_url: updatedThumbnail[0].url,
+                extra_images: updatedExtraImages,
             }),
         }); 
         const data = await response.json();
@@ -34,6 +39,10 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
     return <>
         {isEditing?
         <div className="update-product-container">
+            <h2>Thumbnail</h2>
+            <CustomInputFile images={updatedThumbnail} setImages={setUpdatedThumbnail}/>
+            <h2>Extra Images</h2>
+            <CustomInputFile images={updatedExtraImages} setImages={setUpdatedExtraImages} multipleImgs={true}/>
             <div className="dev-panel-update-product">
                 <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/>
                 
@@ -44,7 +53,7 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
             <button className="update-save-button" onClick={updateProduct}>Save</button>
         </div>:
         <div className="dev-panel-product">
-            <img src={product.thumbnail_url} alt={product.name} />
+            
             <h2>{name}</h2>
             <p>{price}</p>
         </div>

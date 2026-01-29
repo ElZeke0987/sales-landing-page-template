@@ -1,9 +1,12 @@
-
+import { ProductService } from "@/server/services/product.service";
 import { updateNormalCatalog } from "@/serverMods/getCatalogs";
 
 export async function POST(request) {
     const body = await request.json();
-    const { name, desc, price, id } = body;
-    const response = await updateNormalCatalog({name, desc, price, id});
-    return new Response(JSON.stringify(response));
+    try{
+        const response = await ProductService.updateProduct(body);
+        return new Response(JSON.stringify(response));
+    }catch(err){
+        return new Response(JSON.stringify(err), {status: err.code});
+    }
 }
