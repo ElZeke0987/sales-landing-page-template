@@ -22,4 +22,31 @@ export const useProductIdStore = create(set => ({
     }
 }))
 
+type ProductListStore = {
+  products: ProductForClient[];
+  setProducts: () => Promise<ProductForClient[]>;
+  getProductByNameId: (nameId: string) => Promise<ProductForClient | undefined>;
+};
 
+export const useProductListStore = create<ProductListStore>((set, get) => ({
+  products: [],
+
+  setProducts: async () => {
+    
+    const products = await newProductList();
+    console.log("Setting products...", products);
+    set({ products });
+    return products;
+  },
+
+  getProductByNameId: async (nameId) => {
+    const products = get().products;
+    console.log("Getting products: ", products);
+    if(!products||products.length === 0) {
+      console.log("No products found\n Fetching again");
+      const newProductsFetched: ProductForClient[] = await get().setProducts();
+      return newProductsFetched.find(p => p.name_id === nameId) ;
+    };
+    return products.find(p => p.name_id === nameId);
+  }
+}));

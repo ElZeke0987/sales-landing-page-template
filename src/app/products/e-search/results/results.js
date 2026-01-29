@@ -6,11 +6,20 @@ import "./results.scss";
 import { useEffect, useState } from "react";
 import { newProductList } from "../filter/base/productsBase";
 
+import { useProductListStore } from "../../[id]/productStore";
+
 export default function Results(){
     const { filters } = useFilterStore();
     const [productList, setProductList]= useState([])
-    useEffect(()=>{
+    const productStore = useProductListStore()
+
+    useEffect(async()=>{
+        
+        console.log("FFetching products...");
+        await productStore.setProducts()
+        setProductList(productStore.products)
         newProductList(setProductList)
+        
     }, [])
     return(
         <div className="flex flex-col items-center justify-center results-gap">
