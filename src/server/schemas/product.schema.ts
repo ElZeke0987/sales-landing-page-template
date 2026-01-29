@@ -10,7 +10,7 @@ export const BaseProductSchema = z.object({
     category_id: z.number(),
     outstanding: z.boolean(),
     stock: z.number(),
-    extra_images: z.array(z.string()),
+    extra_images: z.array(z.string()).default([]),
 })
 
 export const UpdateProductSchema = BaseProductSchema.partial()

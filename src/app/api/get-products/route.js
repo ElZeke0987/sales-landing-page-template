@@ -23,7 +23,7 @@ export async function GET(){
         })
     }else if(process.env.IS_PRINTFUL=="f"){
         const products=await ProductService.getAllProducts()
-        console.log("products in api", products)
+        //console.log("products in api", products)
         return new Response(JSON.stringify(products), {
             headers: {
                 "Content-Type": "application/json"
