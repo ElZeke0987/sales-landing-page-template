@@ -2,7 +2,6 @@ import { ProductRepository } from "../repositories/products.repo";
 import { Product } from "../table-types";
 import { AddProductSchema, UpdateProductSchema, UpdateProductType, AddProductType } from "../schemas/product.schema";
 import { ZodSafeParseResult } from "zod";
-import { error } from "console";
 
 
 interface ProductServiceResponse {
@@ -18,10 +17,8 @@ interface ProductServiceError {
 }
 
 
-export default class ProductService {
-    constructor(private productRepository: ProductRepository) {
-        this.productRepository = productRepository ?? new ProductRepository();
-    }
+class ProductService {
+    constructor(private productRepository: ProductRepository = new ProductRepository() ) {}
     async getAllProducts() {
         return this.productRepository.getAllProducts();
     }
@@ -39,14 +36,16 @@ export default class ProductService {
     }
     async updateProduct(body: Product) {
         // TODO: Implementar lógica para actualizar un producto
-
+        console.log("testing product to update in service: ",body);
         const resultProduct: ZodSafeParseResult<UpdateProductType> = UpdateProductSchema.safeParse(body); //Some values are optional, it refines the schema to ensure at least one value is provided
         if (!resultProduct.success) {
             throw { code: 400, error: resultProduct.error.message } as ProductServiceError;//Should handle this from frontend
 
         }
+        
         const productUpdated: UpdateProductType = await this.productRepository.updateProduct(resultProduct.data);
         return { success: true, data: productUpdated } as ProductServiceResponse;
     }
 }
-    
+
+export default new ProductService() ;

@@ -16,7 +16,7 @@ export default function CustomInputFile({images,setImages, multipleImgs, default
                         resolve({
                             id: i,
                             name: files[i].name,
-                            url: reader.result
+                            url: reader.result||""
                         });
                     };
                     reader.onerror = () => {

@@ -13,10 +13,8 @@ export const BaseProductSchema = z.object({
     extra_images: z.array(z.string()),
 })
 
-export const UpdateProductSchema = BaseProductSchema.omit({
-    id: true,
-    name_id: true,
-}).partial().refine((data)=>Object.keys(data).length>0, {message: "No data provided in update product parsing"})
+export const UpdateProductSchema = BaseProductSchema.partial()
+.refine((data)=>Object.keys(data).length>0, {message: "No data provided in update product parsing"})
 
 export const AddProductSchema = BaseProductSchema.omit({
     id: true,

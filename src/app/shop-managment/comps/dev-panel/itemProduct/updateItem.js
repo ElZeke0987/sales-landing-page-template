@@ -8,7 +8,7 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
     const [name, setName] = useState(product.name);
     const [price, setPrice] = useState(product.price);
     const [desc, setDesc] = useState(product.description);
-    const [updatedThumbnail, setUpdatedThumbnail] = useState([product.thumbnail_url]);
+    const [updatedThumbnail, setUpdatedThumbnail] = useState([product.thumbnail_url||""]);
     const [updatedExtraImages, setUpdatedExtraImages] = useState(["", "", ""]);
     async function updateProduct(){
         setIsEditing(false);
@@ -26,9 +26,9 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
                 price,
                 external_id: product.external_id,
                 id: product.id,
-                desc,
-                thumbnail_url: updatedThumbnail[0].url,
-                extra_images: updatedExtraImages,
+                description: desc,
+                thumbnail_url: updatedThumbnail[0]?.url||"",
+                extra_images: updatedExtraImages||[],
             }),
         }); 
         const data = await response.json();

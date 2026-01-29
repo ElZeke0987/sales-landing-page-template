@@ -20,9 +20,10 @@ export class ProductRepository{
         return product;
     }
     async updateProduct(product: UpdateProductType): Promise<UpdateProductType> {
+        console.log("testing product to update in repo: ",product);
         const result = await dbPool.query("UPDATE products SET name = $1, description = $2, price = $3, thumbnail_url = $4 WHERE id = $5", [product.name, product.description, product.price, product.thumbnail_url, product.id]);
         
-        
+
         
         return result.rows[0];
     }
