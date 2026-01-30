@@ -1,5 +1,5 @@
 import { IS_PRINTFULL_WEB } from "@/globalVars/features";
-import { manualProductsInfo } from "@/serverMods/manualProductsInfo";
+
 import { supabase } from "@/app/supabaseClient.config"
 import { ProductForClient } from "@/types/privateTypes";
 

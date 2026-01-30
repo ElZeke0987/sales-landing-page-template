@@ -1,4 +1,4 @@
-import { addNormalCatalog } from "../../../serverMods/getCatalogs";
+import { addNormalCatalog } from "@/serverMods/getCatalogs";
 export async function POST(request) {
     const { name, price, desc, category, logoImageUrl, extraImages} = await request.json();
     const textual_id = name.toLowerCase().replace(/\s/g, "-");
