@@ -4,6 +4,7 @@ import { AddProductSchema, UpdateProductSchema, UpdateProductType, AddProductTyp
 import { ZodSafeParseResult } from "zod";
 import { z } from "zod";
 import cloudinary from "../media.config";
+import { authenticateAdmin } from "@/server/middleware/auth";
 
 interface ProductServiceResponse {
     success: boolean;
@@ -26,18 +27,24 @@ class ProductService {
     async addProduct(body: Product) {
         // TODO: Implementar lógica para agregar un producto
 
+        
+
         const resultProduct = await this.validateBody(AddProductSchema,body);
+
+        const {supabase} = await authenticateAdmin();
+
         const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
         resultProduct.thumbnail_url = thumbnail.secure_url;
         const extraImages = await this.uploadExtraImages(resultProduct.extra_images);
         resultProduct.extra_images = extraImages.map(extraImage=>extraImage.secure_url);
-        const productAdded = await this.productRepository.addProduct(resultProduct);
+        const productAdded = await this.productRepository.addProduct(resultProduct, supabase);
         return { success: true, data: productAdded } as ProductServiceResponse;
     }
     async updateProduct(body: Product) {
         // TODO: Implementar lógica para actualizar un producto
         
         const resultProduct = await this.validateBody(UpdateProductSchema,body);
+        const {supabase} = await authenticateAdmin();
         try{
             if(resultProduct.thumbnail_url){
                 const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
@@ -56,7 +63,7 @@ class ProductService {
             console.log("ERROR UPLOADING IMAGES TO CLOUDINARY: ",err);
             throw err;
         }
-        const productUpdated = await this.productRepository.updateProduct(resultProduct);
+        const productUpdated = await this.productRepository.updateProduct(resultProduct, supabase);
         return { success: true, data: productUpdated } as ProductServiceResponse;
     }
 

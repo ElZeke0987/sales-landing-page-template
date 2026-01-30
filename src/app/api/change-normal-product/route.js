@@ -9,7 +9,7 @@ export async function POST(request) {
         console.log("testing response in route: ",response);
         return new Response(JSON.stringify(response));
     }catch(err){
-        console.log("testing error in route: ",err?.error||err?.message||err);
-        return new Response(JSON.stringify(err), {status: err.code});
+        console.log("Error updating product ",err);
+        return new Response(JSON.stringify(err), {status: 500});
     }
 }

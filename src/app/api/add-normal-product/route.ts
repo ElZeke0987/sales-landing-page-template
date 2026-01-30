@@ -1,5 +1,21 @@
 import { addNormalCatalog } from "@/serverMods/getCatalogs";
-export async function POST(request) {
+import { NextResponse } from "next/server";
+
+import ProductService from "@/server/services/product.service";
+
+
+export async function POST(request: Request) {
+
+    const body = await request.json()
+    try{
+        const response = await ProductService.addProduct(body)
+        return new Response(JSON.stringify(response), {status: 200});
+    }catch(err){
+        console.log("Error adding product ",err);
+        return new Response(JSON.stringify(err), {status: 500});
+    }
+
+/*
     const { name, price, desc, category, logoImageUrl, extraImages} = await request.json();
     const textual_id = name.toLowerCase().replace(/\s/g, "-");
     const data = await addNormalCatalog({
@@ -22,5 +38,5 @@ export async function POST(request) {
         thumbnail_url: logoImageUrl,
         extraImages: [{id: 0, name: "catalog-logo",url: logoImageUrl}, extraImages],
     });
-    return Response.json(data);
+    return Response.json(data);*/
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
 
@@ -12,11 +13,12 @@ export default function Login() {
     const res = await fetch("/api/enter-shop-managment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
+      body: JSON.stringify({ email, password }),
     });
 
     const data = await res.json();
     if (data?.success==false) {
+        
         alert("Clave incorrecta");
         setPassword("");
         return;
@@ -27,6 +29,13 @@ export default function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+
+      />
       <input
         type="password"
         value={password}

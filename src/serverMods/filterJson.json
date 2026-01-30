@@ -14,6 +14,11 @@
       "val": "cadenas-cubanas-var",
       "title": "Cadenas cubanas o variaciones",
       "act": false
+    },
+    {
+      "val": "navajas",
+      "title": "Navajas",
+      "act": false
     }
   ]
 }

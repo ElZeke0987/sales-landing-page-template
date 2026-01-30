@@ -1,6 +1,8 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
 import CustomInputFile from "./modComps/customInputFile";
+import { fetchCategories } from "@/globalMods/categoryBase";
+
 export default function AddProduct(){
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -11,6 +13,11 @@ export default function AddProduct(){
     const [categoryList, setCategoryList] = useState([]);
     const [logoImages, setLogoImages] = useState([]);
     const [extraImages, setExtraImages] = useState([]);
+    const [stock, setStock] = useState(0);
+
+    function handleStockChanges(event){
+        setStock(event.target.value);
+    }
     function handleNameChange(event) {
         setName(event.target.value);
     }
@@ -24,28 +31,33 @@ export default function AddProduct(){
         setDesc(event.target.value);
     }
     useEffect(() => {
-        const fetchCategories = async () => {
-            const response = await fetch('/api/get-categories');
-            const data = await response.json();
-            setCategoryList(data);
-        };
-        console.log("categoryList", categoryList)
-        fetchCategories();
+        const categoryList = async () => {
+            const data = await fetchCategories(setCategoryList);
+            console.log("categoryList", data)
+        }
+        categoryList();
     }, []);
     async function addProduct(){
+
+
+        const searchCategoryId = categoryList.find((categoryToSearch) => categoryToSearch.name_id === category);
+        console.log("searchCategoryId", searchCategoryId, categoryList)
         const response = await fetch('/api/add-normal-product', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+
             },
             body: JSON.stringify({
                 name,
-                price,
-                desc,
+                price: parseInt(price),
+                description: desc,
                 external_id,
-                category,
-                logoImageUrl: logoImages[0].url,
-                extraImages,
+                category_id: parseInt(searchCategoryId.id),
+                thumbnail_url: logoImages[0].url,
+                extra_images: extraImages,
+                stock: parseInt(stock),
+                outstanding: false
             }),
         }); 
         const data = await response.json();
@@ -56,7 +68,7 @@ export default function AddProduct(){
         
         {isAdding&&<>
             <input type="text" placeholder="Name" value={name} onChange={handleNameChange}/>
-            <input type="text" placeholder="Price" value={price} onChange={handlePriceChange}/>
+            <input type="number" placeholder="Price" value={price} onChange={handlePriceChange}/>
             <textarea className="dev-panel-desc-textarea" placeholder="Description" value={desc} onChange={handleDescChange}/>
             <div className="add-product-logo">
                 <p>Logo / Preview</p>
@@ -71,11 +83,12 @@ export default function AddProduct(){
             <select value={category} onChange={handleCategoryChange} className="dev-panel-select">
                 <option value="">-- Select Category --</option>
                 {categoryList.map((category) => (
-                    <option key={category.val} value={category.val} title={category.val}>
-                        {category.title}
+                    <option key={category.name_id} value={category.name_id} title={category.name_id}>
+                        {category.name||category.name_id}
                     </option>
                 ))}
             </select>
+            <input type="number" placeholder="Stock" value={stock} onChange={handleStockChanges}/>
             
             
         </>}

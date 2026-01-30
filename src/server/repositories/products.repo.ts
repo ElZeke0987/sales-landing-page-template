@@ -2,7 +2,8 @@
 import { Product } from "../table-types";
 import { UpdateProductType, AddProductType, BaseProductType } from "../schemas/product.schema";
 import { dbPool } from "../db";
-import { z } from "zod";
+
+import { PostgrestSingleResponse, SupabaseClient } from "@supabase/supabase-js";
 
 
 
@@ -15,16 +16,37 @@ export class ProductRepository{
         return result.rows;
     }
     
-    async addProduct(product: AddProductType): Promise<AddProductType> {
+    async addProduct(product: AddProductType, supabase: SupabaseClient): Promise<PostgrestSingleResponse<null>> {
         // TODO: Implementar lógica para agregar un producto
-        return product;
-    }
-    async updateProduct(product: UpdateProductType): Promise<UpdateProductType> {
-        console.log("testing product to update in repo: ",product);
-        const result = await dbPool.query("UPDATE products SET name = $1, description = $2, price = $3, thumbnail_url = $4 WHERE id = $5", [product.name, product.description, product.price, product.thumbnail_url, product.id]);
-        
+        console.log("ESTE ES EL PRODUCTO: ", product)
+        const filteredPropsProduct = {
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            thumbnail_url: product.thumbnail_url,
+            stock: product.stock,
+            outstanding: product.outstanding,
+            category_id: product.category_id,
+        };
+        const result = await supabase.from("products").insert(filteredPropsProduct);
+        console.log("result of adding a product: ", result)
 
+        return result;
+    }
+    async updateProduct(product: UpdateProductType, supabase: SupabaseClient): Promise<PostgrestSingleResponse<null>> {
+        console.log("testing product to update in repo: ",product);
+        const result = await supabase.from("products").update({
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            thumbnail_url: product.thumbnail_url,
+            stock: product.stock,
+            outstanding: product.outstanding,
+            category_id: product.category_id,
+        }).eq("id", product.id);
         
-        return result.rows[0];
+        console.log("result of update: ",result);
+        
+        return result;
     }
 }
