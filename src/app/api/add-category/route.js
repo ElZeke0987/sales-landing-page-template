@@ -1,4 +1,4 @@
-import { addCategory } from "../../../serverMods/modFilters";
+import { addCategory } from "@/serverMods/modFilters";
 export async function POST(request) {
     const body = await request.json();
     const { val, title } = body;
