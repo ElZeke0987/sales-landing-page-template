@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { filterLists } from "./filterVars";
 //Act = activate or set something to true as well, open&close boolean
-import { newProductList } from "./productsBase";
+import { newProductList } from "@/globalMods/productBase";
 import { ProductForClient, Category } from "@/types/privateTypes";
 
 const useFilterStore = create(set=>({

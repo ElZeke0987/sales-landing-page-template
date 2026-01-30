@@ -45,3 +45,5 @@ next-env.d.ts
 *.psql
 src/server/test-db.js
 src/server/typed/db.ts
+
+*.todo.txt

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import ItemProduct from "./itemProduct/item-product";
 import AddProduct from "./itemProduct/addProduct";
 import FilterList from "./filter-list/FilterList";
+import { newProductList } from "@/globalMods/productBase";
 
 export default function Actions() {
     const [products, setProducts] = useState([]);
@@ -11,8 +12,7 @@ export default function Actions() {
 
     const [menu, setMenu] = useState("products");
     async function listProducts() {
-        const response = await fetch('/api/get-products');
-        const data = await response.json();
+        const data = await newProductList();
         console.log(data.length);
         setProducts(data);
     }

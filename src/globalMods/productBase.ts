@@ -1,9 +1,9 @@
-import { manualProductsInfo } from "../../../../../serverMods/manualProductsInfo";
-import { IS_PRINTFULL_WEB } from "../../../../../globalVars/features";
-import { supabase } from "../../../../../app/supabaseClient.config";
+import { IS_PRINTFULL_WEB } from "@/globalVars/features";
+import { manualProductsInfo } from "@/serverMods/manualProductsInfo";
+import { supabase } from "@/app/supabaseClient.config"
+import { ProductForClient } from "@/types/privateTypes";
 
-
-const petProductFetch=async()=>{
+const petProductFetch=async(): Promise<ProductForClient[]> =>{
     console.log("Fetching products")
     const { data, error } = await supabase.from("products").select("*")
     
@@ -23,25 +23,25 @@ const petProductFetch=async()=>{
 // prdInfo: Elemento individual de manualProductsInfo, contiene info manual de un producto.
 // prd: Producto individual obtenido del backend que tiene coincidencia con el id de prdInfo.
 // result: Propiedad de 'data' que contiene el array principal de productos retornado por la API.
-async function newProductList(state){
+export async function newProductList(state?: React.Dispatch<React.SetStateAction<ProductForClient[]>>){
     const data=await petProductFetch()
     let newProductList;
     console.log("Process env printfull", IS_PRINTFULL_WEB)
-    if(IS_PRINTFULL_WEB){
-        newProductList=manualProductsInfo.map((prdInfo, i) => {
-            // Busca si existe un producto obtenido del backend con el mismo nombre que el id del producto manual
-            const prdExist = data.find(p => p.name.replace(/\s+/g, "-").toLowerCase() === prdInfo.id.toLowerCase());
-            if (prdExist) {
-                // Si hay match, pone la informacion manual de ese producto mas la conseguida desde la API directamente
-                prdInfo.title=prdExist.name
-                return{
-                    extId: prdExist.external_id,
-                    imgList: [{ imgUrl: `/images/products/${prdInfo.id}/${prdInfo.id}-preview.png` || prdExist.thumbnail_url, title: prdInfo.id }],
-                    ...prdInfo,
-                }
-            }
-        })
-    }else{
+    // if(IS_PRINTFULL_WEB){
+    //     newProductList=manualProductsInfo.map((prdInfo, i) => {
+    //         // Busca si existe un producto obtenido del backend con el mismo nombre que el id del producto manual
+    //         const prdExist = data.find(p => p.name.replace(/\s+/g, "-").toLowerCase() === prdInfo.id.toLowerCase());
+    //         if (prdExist) {
+    //             // Si hay match, pone la informacion manual de ese producto mas la conseguida desde la API directamente
+    //             prdInfo.title=prdExist.name
+    //             return{
+    //                 extId: prdExist.external_id,
+    //                 imgList: [{ imgUrl: `/images/products/${prdInfo.id}/${prdInfo.id}-preview.png` || prdExist.thumbnail_url, title: prdInfo.id }],
+    //                 ...prdInfo,
+    //             }
+    //         }
+    //     })
+    // }else{
         newProductList = data//.map((prdInfo, i)=>{
         //     if(prdInfo.external_id&&prdInfo.id&&prdInfo.thumbnail_url){
         //         return{
@@ -51,7 +51,7 @@ async function newProductList(state){
         //             }
         //     }
         // })
-    }
+    // }
     console.log("new product list", newProductList)
     if(state){
         state(newProductList)

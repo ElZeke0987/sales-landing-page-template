@@ -4,7 +4,7 @@ import useFilterStore from "../filter/base/filterStore"
 import ProductCard from "./productCard/productCard"
 import "./results.scss";
 import { useEffect, useState } from "react";
-import { newProductList } from "../filter/base/productsBase";
+import { newProductList } from "@/globalMods/productBase";
 
 import { useProductListStore } from "../../[id]/productStore";
 

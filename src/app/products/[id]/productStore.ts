@@ -1,5 +1,5 @@
 import { create } from "zustand"
-import { newProductList } from "@/app/products/e-search/filter/base/productsBase"
+import { newProductList } from "@/globalMods/productBase"
 import { ProductForClient } from "@/types/privateTypes";
 
 export const useProductIdStore = create(set => ({
@@ -34,6 +34,10 @@ export const useProductListStore = create<ProductListStore>((set, get) => ({
   setProducts: async () => {
     
     const products = await newProductList();
+    if(!products) {
+      console.error("No se encontraron productos en la peticion")
+      return []
+    };
     console.log("Setting products...", products);
     set({ products });
     return products;
