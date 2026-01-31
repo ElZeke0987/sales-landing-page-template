@@ -15,7 +15,7 @@ export default async function ShopManagment(){
         <>
         <Header/>
         <div className="flex h-screen items-center justify-center">
-            {process.env.NODE_ENV === "development"? (cookieDevAuth?.success === "ok" ? <Logged/> : <Unlogged/> ) : "SOLO SE PUEDE VER EN DESARROLLO"}
+           {cookieDevAuth?.success === "ok" ? <Logged/> : <Unlogged/> }
         </div>
         </>
     )

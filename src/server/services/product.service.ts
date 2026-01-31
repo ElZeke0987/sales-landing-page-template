@@ -1,7 +1,6 @@
 import { ProductRepository } from "../repositories/products.repo";
 import { Product } from "../table-types";
-import { AddProductSchema, UpdateProductSchema, UpdateProductType, AddProductType } from "../schemas/product.schema";
-import { ZodSafeParseResult } from "zod";
+import { AddProductSchema, UpdateProductSchema, UpdateProductType, AddProductType, DeleteProductSchema, DeleteProductType } from "../schemas/product.schema";
 import { z } from "zod";
 import cloudinary from "../media.config";
 import { authenticateAdmin } from "@/server/middleware/auth";
@@ -25,7 +24,6 @@ class ProductService {
         return this.productRepository.getAllProducts();
     }
     async addProduct(body: Product) {
-        // TODO: Implementar lógica para agregar un producto
 
         
 
@@ -41,8 +39,7 @@ class ProductService {
         return { success: true, data: productAdded } as ProductServiceResponse;
     }
     async updateProduct(body: Product) {
-        // TODO: Implementar lógica para actualizar un producto
-        
+
         const resultProduct = await this.validateBody(UpdateProductSchema,body);
         const {supabase} = await authenticateAdmin();
         try{
@@ -67,7 +64,18 @@ class ProductService {
         return { success: true, data: productUpdated } as ProductServiceResponse;
     }
 
-
+    private async deleteProduct(productId: number|{id: number}){
+        const id = typeof productId === "number" ? {id: productId} : productId;
+        const resultProduct = await this.validateBody(DeleteProductSchema, id);
+        const {supabase} = await authenticateAdmin();
+        try{
+            const productDeleted = await this.productRepository.deleteProduct(resultProduct.id, supabase);
+            return { success: true, data: productDeleted } as ProductServiceResponse;
+        }catch(err){
+            console.log("ERROR DELETING PRODUCT: ",err);
+            throw err;
+        }
+    }
     private async uploadThumbnail(imageUrl: string){
         console.log("testing thumbnail to upload in service: ",imageUrl.slice(0, 15));
         const result = await cloudinary.uploader.upload(imageUrl, {folder: "thumbnails"})
@@ -87,7 +95,7 @@ class ProductService {
         }))
         return results;
     }
-    private async validateBody<T extends AddProductType | UpdateProductType>(schema: z.ZodType<T>, body: Product): Promise<T>{
+    private async validateBody<T extends AddProductType | UpdateProductType | DeleteProductType>(schema: z.ZodType<T>, body: Product | {id: number}): Promise<T>{
         const resultProduct = schema.safeParse(body); 
         if (!resultProduct.success) {
             throw { code: 400, error: resultProduct.error.message } as ProductServiceError;//Should handle this from frontend

@@ -21,6 +21,9 @@ export const AddProductSchema = BaseProductSchema.omit({
     name_id: true,
 }).refine((data)=>Object.keys(data).length>0, {message: "No data provided in add product parsing"})
 
+export const DeleteProductSchema = z.object({id: z.number()}).refine((data)=>Object.keys(data).length>0, {message: "No data provided in delete product parsing"});
+
 export type UpdateProductType = z.infer<typeof UpdateProductSchema>;
 export type AddProductType = z.infer<typeof AddProductSchema>;
 export type BaseProductType = z.infer<typeof BaseProductSchema>;
+export type DeleteProductType= z.infer<typeof DeleteProductSchema>;

@@ -49,4 +49,9 @@ export class ProductRepository{
         
         return result;
     }
+    async deleteProduct(id: number, supabase: SupabaseClient){
+
+        const result = await supabase.from("products").delete().eq("id", id);
+        return result;
+    }
 }
