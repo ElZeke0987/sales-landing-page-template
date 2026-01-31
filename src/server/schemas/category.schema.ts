@@ -6,7 +6,7 @@ export const CategorySchema = z.object({
     name_id: z.string(),
 })
 
-export const AddCategorySchema = CategorySchema.refine((data)=>Object.keys(data).length>0, {message: "No data provided in add category parsing"})
+export const AddCategorySchema = CategorySchema.omit({id: true}).refine((data)=>Object.keys(data).length>0, {message: "No data provided in add category parsing"})
 
 export const UpdateCategorySchema = CategorySchema.partial()
 .refine((data)=>Object.keys(data).length>0, {message: "No data provided in update category parsing"})

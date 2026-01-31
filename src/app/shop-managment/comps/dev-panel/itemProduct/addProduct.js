@@ -3,14 +3,13 @@ import { useState, useEffect, useRef } from "react";
 import CustomInputFile from "./modComps/customInputFile";
 import { fetchCategories } from "@/globalMods/categoryBase";
 
-export default function AddProduct(){
+export default function AddProduct({categoryList}){
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [desc, setDesc] = useState('');
     const [external_id, setExternal_id] = useState('');
     const [isAdding, setIsAdding] = useState(false);
     const [category, setCategory] = useState('');
-    const [categoryList, setCategoryList] = useState([]);
     const [logoImages, setLogoImages] = useState([]);
     const [extraImages, setExtraImages] = useState([]);
     const [stock, setStock] = useState(0);
@@ -30,13 +29,7 @@ export default function AddProduct(){
     function handleDescChange(event) {
         setDesc(event.target.value);
     }
-    useEffect(() => {
-        const categoryList = async () => {
-            const data = await fetchCategories(setCategoryList);
-            console.log("categoryList", data)
-        }
-        categoryList();
-    }, []);
+
     async function addProduct(){
 
 

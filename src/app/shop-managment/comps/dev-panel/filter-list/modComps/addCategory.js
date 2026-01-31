@@ -10,15 +10,19 @@ export default function AddCategory() {
     function handleValChange(event) {
         setVal(event.target.value);
     }
-    async function addFilter(){
+    async function addFilter(e){
+        console.log("ADDING THIS: ", {
+                name: title,
+                name_id: val,
+            })
         const response = await fetch('/api/add-category', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                title,
-                val,
+                name: title,
+                name_id: val,
             }),
         }); 
         const data = await response.json();

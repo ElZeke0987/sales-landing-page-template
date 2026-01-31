@@ -26,10 +26,10 @@ class ProductService {
     async addProduct(body: Product) {
 
         
-
+        const {supabase} = await authenticateAdmin();
         const resultProduct = await this.validateBody(AddProductSchema,body);
 
-        const {supabase} = await authenticateAdmin();
+        
 
         const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
         resultProduct.thumbnail_url = thumbnail.secure_url;
@@ -39,9 +39,8 @@ class ProductService {
         return { success: true, data: productAdded } as ProductServiceResponse;
     }
     async updateProduct(body: Product) {
-
-        const resultProduct = await this.validateBody(UpdateProductSchema,body);
         const {supabase} = await authenticateAdmin();
+        const resultProduct = await this.validateBody(UpdateProductSchema,body);
         try{
             if(resultProduct.thumbnail_url){
                 const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
@@ -66,8 +65,9 @@ class ProductService {
 
     private async deleteProduct(productId: number|{id: number}){
         const id = typeof productId === "number" ? {id: productId} : productId;
-        const resultProduct = await this.validateBody(DeleteProductSchema, id);
         const {supabase} = await authenticateAdmin();
+        const resultProduct = await this.validateBody(DeleteProductSchema, id);
+        
         try{
             const productDeleted = await this.productRepository.deleteProduct(resultProduct.id, supabase);
             return { success: true, data: productDeleted } as ProductServiceResponse;

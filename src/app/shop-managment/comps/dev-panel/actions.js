@@ -5,6 +5,8 @@ import ItemProduct from "./itemProduct/item-product";
 import AddProduct from "./itemProduct/addProduct";
 import FilterList from "./filter-list/FilterList";
 import { newProductList } from "@/globalMods/productBase";
+import {fetchCategories} from "@/globalMods/categoryBase";
+
 
 export default function Actions() {
     const [products, setProducts] = useState([]);
@@ -17,13 +19,15 @@ export default function Actions() {
         setProducts(data);
     }
     async function listFilters() {
-        const response = await fetch('/api/get-filters');
-        const data = await response.json();
-        setFilters(data);
+        const data = await fetchCategories(setFilters);
+        console.log("categoryList", data)
+        setFilters(data)
     }
     useEffect(()=>{
+        
         listProducts();
         listFilters();
+        
     }, []);
     
     
@@ -33,7 +37,7 @@ export default function Actions() {
             <button onClick={()=>setMenu("products")} className="dev-panel-button">List Products</button>
             <button onClick={()=>setMenu("filters")} className="dev-panel-button">List Filters</button>
             <div className="dev-panel-add">
-                {(menu==="products")&&<AddProduct/>}
+                {(menu==="products")&&<AddProduct categoryList={filters}/>}
                 {(menu==="filters")&&<FilterList filters={filters}/>}
             </div>
         </div>

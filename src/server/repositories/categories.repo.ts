@@ -1,19 +1,29 @@
 import { Category } from "../table-types";
 import { dbPool } from "../db";
 import { AddCategoryType, CategoryType, UpdateCategoryType } from "../schemas/category.schema";
+import { SupabaseClient } from "@supabase/supabase-js";
 
 export class CategoriesRepository {
     constructor(){}
-    async getAllCategories(){
-        const queryResult = await dbPool.query("SELECT * FROM categories");
-        return queryResult.rows;
+    async getAllCategories(supabase: SupabaseClient){
+        const queryResult = await supabase.from("categories").select("*");
+        if(queryResult.error){
+            throw queryResult.error;
+        }
+        return queryResult.data;
     }
-    async addCategory(category: AddCategoryType){
-        const queryResult = await dbPool.query("INSERT INTO categories (name_id, name) VALUES ($1, $2)", [category.name_id, category.name]);
-        return queryResult.rows;
+    async addCategory(category: AddCategoryType, supabase: SupabaseClient){
+        const queryResult = await supabase.from("categories").insert(category);
+        if(queryResult.error){
+            throw queryResult.error;
+        }
+        return queryResult.data;
     }
-    async updateCategory(category: UpdateCategoryType){
-        const queryResult = await dbPool.query("UPDATE categories SET name = $1, name_id = $2 WHERE id = $3", [category.name, category.name_id, category.id]);
-        return queryResult.rows;
+    async updateCategory(category: UpdateCategoryType, supabase: SupabaseClient){
+        const queryResult = await supabase.from("categories").update(category).eq("id", category.id);
+        if(queryResult.error){
+            throw queryResult.error;
+        }
+        return queryResult.data;
     }
 }

@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     const email = body.email;
 
     console.log("Request: ", body.password, " - dev password: ", process.env.SHOP_MANAGMENT_PASSWORD);
-    if (password === process.env.SHOP_MANAGMENT_PASSWORD && email === process.env.ADMIN_EMAIL) {
+    //if (password === process.env.SHOP_MANAGMENT_PASSWORD && email === process.env.ADMIN_EMAIL) {
       console.log("Enviando signIn: ", email, " ", password);
         const { data: tokenData } = await supabaseAdmin.auth.signInWithPassword({
           email: email,
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
             })
         }
       });
-    }
+    //}
     
     return new Response(JSON.stringify({ success: false }));
 }
