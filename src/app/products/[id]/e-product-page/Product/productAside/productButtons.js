@@ -43,9 +43,9 @@ export default function ProductButtons({objOpt}){
             
             {/* <BuyBenefits/> */}
             <div className="flex flex-col items-center product-buy-buttons">
-                <button className="buy-now button-buy">Comprar</button>
-                {addToCartSystem&& <button className="add-to-cart button-buy" onClick={()=>addToCart(objOpt, quantitySel.val)}>Añadir al carrito</button>}
-            </div>
+                <button className="buy-now button-buy"><a href="https://ig.me/m/2110s_storee" target="_blank">Consultar en Instagram</a></button>
+                {/* {addToCartSystem&& <button className="add-to-cart button-buy" onClick={()=>addToCart(objOpt, quantitySel.val)}>Añadir al carrito</button>}*/}
+            </div> 
             
         </div>
     )
