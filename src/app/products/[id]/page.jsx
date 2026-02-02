@@ -1,8 +1,8 @@
 "use client";
-import EProductPage from "@/app/products/[id]/e-product-page/eProductPage"
 import { useProductIdStore } from "./productStore"
 import { use, useEffect } from "react";
 import Header from "@/app/comps/sections/Header/Header";
+import Product from "./e-product-page/Product/Product";
 
 export default function Products({ params }){
     const {setNewId}=useProductIdStore();
@@ -13,7 +13,7 @@ export default function Products({ params }){
     return(
         <>
             <Header/>
-            <EProductPage/>
+            <Product/>
         </>
     )
 }

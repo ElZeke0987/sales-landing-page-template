@@ -14,8 +14,6 @@ export default function Results(){
     const productStore = useProductListStore()
 
     useEffect(()=>{
-        
-        console.log("FFetching products...");
         async function fetchProducts(){
             const settedNewProducts = await productStore.setProducts()
             setProductList(productStore.products)

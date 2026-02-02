@@ -7,10 +7,10 @@ import { SetStateAction } from "react";
 export const filterLists = {
     category: [] as Category[]
 }
-let actuallySendedFetch=false
+//let actuallySendedFetch=false
 export const fetchCategories=async(setCategory?:(value:SetStateAction<Category[]>)=>void)=>{
-    if(actuallySendedFetch)return;
-    actuallySendedFetch=true;
+   // if(actuallySendedFetch)return;
+   // actuallySendedFetch=true;
     const res = await supabase.from("categories").select("*");
     const data = res.data
     if(!data){
@@ -25,7 +25,7 @@ export const fetchCategories=async(setCategory?:(value:SetStateAction<Category[]
         }
     })
 
-    console.log("fetched categoreis", categories)
+    //console.log("fetched categoreis", categories)
     if(setCategory)setCategory(categories)
     return categories
 }

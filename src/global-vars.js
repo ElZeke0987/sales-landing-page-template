@@ -11,6 +11,8 @@ export const heroBG="";
 
 export const generalCurrency="ARS";
 
+export const stockUrgencyLimit=3;
+
 export const infoHero=[
     {
         principalTitle: "Best durable-economic relation headphones",

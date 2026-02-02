@@ -13,7 +13,6 @@ export default function ProductCard({productObj}){
     const [categoryOfThisProduct, setCategoryOfThisProduct] = useState(null);
 
     useEffect(()=>{
-        console.log("testing categories: ", filters.category)
         // Find the category object that matches the product's category_id
         const category = filters.category.find(cat => cat.id === productObj.category_id);
         setCategoryOfThisProduct(category);
@@ -30,10 +29,11 @@ export default function ProductCard({productObj}){
    }
     return(
         <article className="flex md:flex-row flex-col product-wh overflow-hidden">
-            <div className="product-image-cont overflow-hidden">
-                <Image className="product-image" src={productObj.thumbnail_url == null || productObj.thumbnail_url == "" ? defaultImage : productObj?.thumbnail_url||productObj?.imgList[0].imgUrl} width={200} height={200} alt={productObj.name||productObj.title}/>
+            <div className="product-image-contenedor overflow-hidden flex items-center justify-center h-full">
+                <Image className="product-image" src={productObj.thumbnail_url == null || productObj.thumbnail_url == "" ? defaultImage : productObj?.thumbnail_url||productObj?.imgList[0].imgUrl} 
+                width={20000} height={20000} alt={productObj.name||productObj.title}/>
             </div>
-            <div className="product-card-info flex h-full w-full flex-col justify-center" onClick={handleProductCardClick}>
+            <div className="product-card-info flex md:h-full flex-col justify-center" onClick={handleProductCardClick}>
                 <Link href={`/products/${productObj.name_id}`} key={productObj.name_id}>
                     <div className="price ">${productObj.price} {productObj.currency||generalCurrency|| ""}</div>
                     <div className="title counter-color">{productObj.name||productObj.title}</div>

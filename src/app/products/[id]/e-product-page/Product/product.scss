@@ -29,12 +29,7 @@
 .product-visuals{
     gap: $ProductVisualsGap;
 }
-@media(max-width: 768px){
-    .product-principal{
-        width: 100%;
-        //height: $ProductVisuals768WX;
-    }
-}
+
 .product-image-cont{
     width: $ProductImageContWX;
     height: $ProductImageContHY;
@@ -44,6 +39,7 @@
         height: $ProductImageHY;
         min-height: $ProductImageHY;
     }
+
 }
 
 .products-types-carousel{
@@ -219,7 +215,7 @@
 
 @media (max-width: 1024px){
     .product-visuals{
-        height: 100vh;
+        //height: 100vh;
     }
     .products-types-carousel{
         .carousel-arrow{

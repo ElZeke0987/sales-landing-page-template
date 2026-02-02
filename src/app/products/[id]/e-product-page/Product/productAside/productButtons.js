@@ -5,7 +5,7 @@ import BuyBenefits from "./buyBenefits";
 import CustomSelect from "@/app/comps/reusable/customSelect/customSelect";
 import {useState} from "react";
 import { useCart } from "@/app/cartProvider";
-
+import { stockUrgencyLimit } from "@/global-vars";
 
 //objOpt es el objeto que se pasa como prop desde el archivo product.jsx,
 //que es el principal archivo de este componente, y que contiene toda la informacion
@@ -23,7 +23,7 @@ export default function ProductButtons({objOpt}){
             objOpt?.buyLimit ?? 10
         )
         )
-    const stockNumbers=Array.from({length: maxSelectableUnits }, (_,i)=>{return {val:i+1, txt: `${i+1} unidades`}});
+    const stockNumbers=Array.from({length: maxSelectableUnits }, (_,i)=>{return {val:i+1, txt: `${i+1} unidad${i+1>1?'es':''}`}});
     console.log("Stock numbers: ", stockNumbers)
     const [quantitySel, setQuantitySel]=useState({val: 1});
     const { addToCart, cart } = useCart()
@@ -33,18 +33,18 @@ export default function ProductButtons({objOpt}){
     return(
         <div className="product-buy-cont flex flex-col">
             {
-                (objOpt.stock<=3&&objOpt>0)&&<div className="low-stock-msg">There's only  {objOpt.stock} in stock <span className="stock-highlighted-cta">¡Buy Now!</span> </div>
+                (objOpt.stock<=stockUrgencyLimit&&objOpt.stock>0)&&<div className="low-stock-msg">Solo hay {objOpt.stock} en stock <span className="stock-highlighted-cta">¡Comprá Ya!</span> </div>
             }
             {
                 objOpt.stock==0?
                 <div className="low-stock-msg">There's no stock </div>:
-                <CustomSelect opts={stockNumbers} defaultText="1 unidad" defaultValue={1} clases="stock-select cus-select-open-natural" onSelect={changeStockQuantity} onEffectPar={objOpt} handleEffectPar={(_, setQuantTo0)=>setQuantTo0({val: 1, txt: "1 unidad"})}/>
+                <CustomSelect opts={stockNumbers} defaultText="1 unidad" defaultValue={1} clases="stock-select cus-select-open-natural"  onSelect={changeStockQuantity} onEffectPar={objOpt} handleEffectPar={(_, setQuantTo0)=>setQuantTo0({val: 1, txt: "1 unidad"})}/>
             }
             
-            <BuyBenefits/>
+            {/* <BuyBenefits/> */}
             <div className="flex flex-col items-center product-buy-buttons">
-                <button className="buy-now button-buy">Buy Now</button>
-                {addToCartSystem&& <button className="add-to-cart button-buy" onClick={()=>addToCart(objOpt, quantitySel.val)}>Add to cart</button>}
+                <button className="buy-now button-buy">Comprar</button>
+                {addToCartSystem&& <button className="add-to-cart button-buy" onClick={()=>addToCart(objOpt, quantitySel.val)}>Añadir al carrito</button>}
             </div>
             
         </div>

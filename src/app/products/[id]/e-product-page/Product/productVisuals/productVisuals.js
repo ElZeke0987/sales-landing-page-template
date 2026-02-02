@@ -17,14 +17,12 @@ export default function ProductVisuals({objOpt, imgSel, setImgSel}){
     return(
         <div className="flex flex-col product-visuals">
             <div className="product-image-cont flex justify-center items-center">
-                <Image src={imgSel.url||objOpt.thumbnail_url} width={1000} height={1000} quality={100} alt="Imagen del Producto" className="rounded-lg shadow-lg bg-gray-100"/>
+                <Image src={imgSel.url||objOpt.thumbnail_url} width={10000} height={10000} quality={100} alt="Imagen del Producto" className="rounded-lg shadow-lg bg-gray-100"/>
             </div>
             
-            <div className="products-types-carousel">
-                {(objOpt.extraImages&&objOpt.extraImages?.length!=0)&&
+            {(objOpt.extraImages&&objOpt.extraImages?.length!=0)&&<div className="products-types-carousel">
                     <Carousel objList={objOpt.extraImages} Element={ImageSelectFrame} objOpt={imgSel} setObjOpt={setImgSel} carouselListContClasses={"scroll-modern-mini-x no-hover-scroll"} selControls={true} centerAlwaysItems={false} onItemClick={handleItemClick}/>
-                }
-            </div>
+                </div>}
         </div>
     )
 }

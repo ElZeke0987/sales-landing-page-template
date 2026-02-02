@@ -2,15 +2,31 @@
 
 .product-wh{
     height: $Product-HY;
+    
     width: $Product-WX;
+    @media (max-width: 1280px) {
+        height: $Product-HY-XL;
+        width: $Product-WX-XL;
+    }
+    @media (max-width: 768px) {
+        height: $Product-HY-MD;
+        width: $Product-WX-MD;
+    }
     border-radius: $ProductCard-Radius;
     -webkit-box-shadow: 0px 10px 6px 0px rgba(0,0,0,0.15);
     -moz-box-shadow: 0px 10px 6px 0px rgba(0,0,0,0.15);
     box-shadow: 0px 10px 6px 0px rgba(0,0,0,0.15);
 }
 
+.product-image-contenedor{
+    width: 70%;
+    @media (max-width: 768px) {
+        width: $Product-WX-MD;
+    }
+}
 .product-image{
     object-fit: cover;
+
     width: 100%;
     height: 100%;
     

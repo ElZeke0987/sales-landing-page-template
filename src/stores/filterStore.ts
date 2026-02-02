@@ -21,13 +21,13 @@ const useFilterStore = create(set=>({
     productListByState:(state:any)=> newProductList(state),
 
     setCategoryActProducts: (state:any)=>{
-       console.log("testing to filter product by category: ", state.filters.category)
+       //console.log("testing to filter product by category: ", state.filters.category)
  
 
         const activeCategories=state.filters.category.filter((cat:Category)=>cat.act);
         
         const newProductList= state.productList?.map((prd: ProductForClient)=>{//Activate all products with categoryToAct 
-            console.log("NEW PRODUCT LIST ITEM: ", {...prd, actCategory: activeCategories.some((cat: Category)=>cat.id==prd.category_id&&cat.act)})
+            //console.log("NEW PRODUCT LIST ITEM: ", {...prd, actCategory: activeCategories.some((cat: Category)=>cat.id==prd.category_id&&cat.act)})
             return{...prd, actCategory: activeCategories.some((cat: Category)=>cat.id==prd.category_id&&cat.act)}
          })
          
@@ -38,7 +38,7 @@ const useFilterStore = create(set=>({
        },
 
     addCategory (categoryToAdd: Category) {
-        console.log("ADDING CATEGORY: ", categoryToAdd)
+        //console.log("ADDING CATEGORY: ", categoryToAdd)
         set((state:any)=>{
             
             return{
@@ -48,7 +48,7 @@ const useFilterStore = create(set=>({
                         
                         if(cat.id==categoryToAdd.id){
                             objToReturn={...cat, act: !categoryToAdd.act};
-                            console.log("obj to return in a new state: ", objToReturn)//cambia el activo e inactivo de una categoria
+                            //console.log("obj to return in a new state: ", objToReturn)//cambia el activo e inactivo de una categoria
                         }
                        
                         
@@ -66,14 +66,14 @@ const useFilterStore = create(set=>({
     },
 
     removeCategory: (categoryToRemove: Category) => {
-        console.log("New Delete")
+        //console.log("New Delete")
         
         set((state:any)=>{
             state.setCategoryActProducts( categoryToRemove, false)
             return{filters: {...state.filters,
                 category: filterLists.category.map((cat:Category) => {
                     if(cat.id==categoryToRemove.id){
-                        console.log("Setting false to this: ", cat.id)
+                        //console.log("Setting false to this: ", cat.id)
                         let objToReturn=cat;
                         if(objToReturn.id==categoryToRemove.id){
                             objToReturn={...cat, act: false};

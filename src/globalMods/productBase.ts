@@ -4,14 +4,14 @@ import { supabase } from "@/app/supabaseClient.config"
 import { ProductForClient } from "@/types/privateTypes";
 
 const petProductFetch=async(): Promise<ProductForClient[]> =>{
-    console.log("Fetching products")
+    //console.log("Fetching products")
     const { data, error } = await supabase.from("products").select("*")
     
     if (error) {
         console.error("Error fetching products:", error)
         return []
     }
-    console.log("response result from db: ", data)
+    //console.log("response result from db: ", data)
     return data
 }
 // --- Glosario de variables ---
@@ -26,7 +26,7 @@ const petProductFetch=async(): Promise<ProductForClient[]> =>{
 export async function newProductList(state?: React.Dispatch<React.SetStateAction<ProductForClient[]>>){
     const data=await petProductFetch()
     let newProductList;
-    console.log("Process env printfull", IS_PRINTFULL_WEB)
+    //console.log("Process env printfull", IS_PRINTFULL_WEB)
     // if(IS_PRINTFULL_WEB){
     //     newProductList=manualProductsInfo.map((prdInfo, i) => {
     //         // Busca si existe un producto obtenido del backend con el mismo nombre que el id del producto manual
@@ -52,7 +52,7 @@ export async function newProductList(state?: React.Dispatch<React.SetStateAction
         //     }
         // })
     // }
-    console.log("new product list", newProductList)
+    //console.log("new product list", newProductList)
     if(state){
         state(newProductList)
         return

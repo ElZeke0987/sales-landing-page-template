@@ -1,6 +1,5 @@
 export const navLinks=[
-    {href:"/", text:"Home"},
+    {href:"/", text:"Inicio"},
     {href:"/products", text:"Catalogo"},
-    
-    {href:"/cart", text:"Cart", itsCart: true},
+    {href:"/cart", text:"Carrito", itsCart: true},
 ]
