@@ -1,4 +1,5 @@
-import useFilterStore from "../filter/base/filterStore";
+import useFilterStore from "@/stores/filterStore";
+import { useOpenFilter } from "@/stores/filterStore";
 import "./typeItem.scss";
 function TypeItem({typeObj, propVal="name_id", propTxt="name", propAct="act"}) {
 
@@ -19,7 +20,7 @@ function TypeItem({typeObj, propVal="name_id", propTxt="name", propAct="act"}) {
     //Cuando el usuario hace clic en el bot n, se llama a la funci n handleCategorySelect que se encarga de agregar o eliminar la categoria del state del filter.
     return ( 
 
-        <div className="type-item text-center relative overflow-hidden counter-color" onClick={handleCategorySelect}>
+        <div className={`${typeObj?.act?" category-activated ":""} type-item text-center relative overflow-hidden counter-color`} onClick={handleCategorySelect}>
             {typeObj ?
             <>
             <span className="relative category-name">{typeObj[propTxt]||typeObj.category||typeObj[propVal] || "cargando..."}</span>

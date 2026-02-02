@@ -1,11 +1,13 @@
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import {MultipleImgsCell, SingleImgCell} from "./ImgsCell";
 
 export default function CustomInputFile({images,setImages, multipleImgs, defaultImg}) {
     const fileInputRef = useRef(null);
     
-    
+    useEffect(()=>{
+        console.log("images",images)
+    },[images])
     function handleImageChange(e){  
             const files = e.target.files;
             const promises = [];
@@ -26,10 +28,21 @@ export default function CustomInputFile({images,setImages, multipleImgs, default
                 }));
             }
             Promise.all(promises).then((imgs) => {
-                setImages(images.concat(imgs));
+                console.log("imgs in promise",imgs)
+
+
+                const filteredImgs = new Array(imgs.length);
+                for(let i=0;i<imgs.length;i++){
+                    if(imgs[i].url!=""){
+                        filteredImgs[i] = imgs[i].url;
+                    }
+                }
+                console.log("filteredImgs ",filteredImgs)
+                multipleImgs?setImages(images.concat(filteredImgs)):setImages(filteredImgs[0]);
             }).catch((error) => {
                 console.error(error);
             });
+
         }
     
     return <div className="">

@@ -37,8 +37,8 @@ export default function Actions() {
             <button onClick={()=>setMenu("products")} className="dev-panel-button">List Products</button>
             <button onClick={()=>setMenu("filters")} className="dev-panel-button">List Filters</button>
             <div className="dev-panel-add">
-                {(menu==="products")&&<AddProduct categoryList={filters}/>}
-                {(menu==="filters")&&<AddCategory/>}
+                {(menu==="products")&&<AddProduct categoryList={filters} setter={setProducts}/>}
+                {(menu==="filters")&&<AddCategory setter={setFilters}/>}
             </div>
         </div>
         

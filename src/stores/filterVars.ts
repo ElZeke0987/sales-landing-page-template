@@ -25,7 +25,7 @@ export const fetchCategories=async(setCategory?:(value:SetStateAction<Category[]
         }
     })
 
-    console.log("data test", categories)
+    console.log("fetched categoreis", categories)
     if(setCategory)setCategory(categories)
     return categories
 }

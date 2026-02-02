@@ -1,6 +1,9 @@
 
 @use "./typeItemVars.scss" as *;
-
+.category-activated{
+    background-color: $ProductType-Activated-BG !important;
+    color: $ProductType-Activated-Color !important;
+}
 .type-item{
     border-radius: $ProductType-Radius;
     background: $ProductType-BG;
@@ -10,6 +13,7 @@
     font-weight: $ProductType-Weight;
     padding: $ProductType-Padding;
     cursor: pointer;
+    
     .category-name{
         transition: opacity $ProductTypeAnim-AnimS;
     }

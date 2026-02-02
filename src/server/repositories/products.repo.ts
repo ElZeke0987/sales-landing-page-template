@@ -20,6 +20,7 @@ export class ProductRepository{
         // TODO: Implementar lógica para agregar un producto
         console.log("ESTE ES EL PRODUCTO: ", product)
         const filteredPropsProduct = {
+            name_id: product.name_id,
             name: product.name,
             description: product.description,
             price: product.price,
@@ -35,7 +36,8 @@ export class ProductRepository{
     }
     async updateProduct(product: UpdateProductType, supabase: SupabaseClient): Promise<PostgrestSingleResponse<null>> {
         console.log("testing product to update in repo: ",product);
-        const result = await supabase.from("products").update({
+        const toUpdateObjFiltered = {
+            name_id: product.name_id,
             name: product.name,
             description: product.description,
             price: product.price,
@@ -43,7 +45,8 @@ export class ProductRepository{
             stock: product.stock,
             outstanding: product.outstanding,
             category_id: product.category_id,
-        }).eq("id", product.id);
+        }
+        const result = await supabase.from("products").update(toUpdateObjFiltered).eq("id", product.id);
         
         console.log("result of update: ",result);
         

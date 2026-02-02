@@ -17,7 +17,14 @@ interface ProductServiceError {
     error: string;
 }
 
-
+function sanitizeSlug(str: String) {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9-]/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 class ProductService {
     constructor(private productRepository: ProductRepository = new ProductRepository() ) {}
     async getAllProducts() {
@@ -30,7 +37,7 @@ class ProductService {
         const resultProduct = await this.validateBody(AddProductSchema,body);
 
         
-
+        resultProduct.name_id = sanitizeSlug(resultProduct.name);
         const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
         resultProduct.thumbnail_url = thumbnail.secure_url;
         const extraImages = await this.uploadExtraImages(resultProduct.extra_images);

@@ -1,6 +1,6 @@
 "use client";
 
-import useFilterStore from "../filter/base/filterStore"
+import useFilterStore from "@/stores/filterStore"
 import ProductCard from "./productCard/productCard"
 import "./results.scss";
 import { useEffect, useState } from "react";
@@ -13,31 +13,40 @@ export default function Results(){
     const [productList, setProductList]= useState([])
     const productStore = useProductListStore()
 
-    useEffect(async()=>{
+    useEffect(()=>{
         
         console.log("FFetching products...");
-        await productStore.setProducts()
-        setProductList(productStore.products)
-        newProductList(setProductList)
+        async function fetchProducts(){
+            const settedNewProducts = await productStore.setProducts()
+            setProductList(productStore.products)
+            newProductList(setProductList)
+        }
+        fetchProducts()
         
     }, [])
+    const filteredProducts = productList?.filter((prd) => {
+        const categories = filters?.category;
+
+        // si no hay filtros activos → mostrar todo
+        if (!categories || categories.every(cat => !cat.act)) {
+            return true;
+        }
+
+        // si hay alguno activo → match por categoría
+        return categories.some(
+            cat => cat.id === prd.category_id && cat.act === true
+        );
+    });
     return(
         <div className="flex flex-col items-center justify-center results-gap">
             {
                 
-                productList?.map((prd,i)=>{
-                    console.log("testing prd in results comp iteration/map: ", prd)
-                    if(filters?.category?.every((cat)=>!cat.act))return(
-                        <div key={i}>
-                            <ProductCard productObj={prd} />
-                        </div>
-                    )
-                    if(filters?.category?.some(cat=>cat.id==prd.category_id&&cat.act==true))return ( 
-                    <div key={i}>
-                        <ProductCard productObj={prd} />
-                    </div>
-                    )
-                })
+                filteredProducts?.map((prd) => (
+                    <ProductCard
+                        key={prd.id}        // 🔥 key estable
+                        productObj={prd}
+                    />
+                ))
             }
         </div>
     )

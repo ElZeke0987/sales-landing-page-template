@@ -1,15 +1,16 @@
 
 
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import CustomInputFile from "./modComps/customInputFile";
-export default function UpdateItem({product, setIsEditing, isEditing}){
+import { deleteProduct } from "./deleteProduct";
+export default function UpdateItem({product, setIsEditing, isEditing, setter}){
     const [name, setName] = useState(product.name);
     const [price, setPrice] = useState(product.price);
     const [desc, setDesc] = useState(product.description);
-    const [updatedThumbnail, setUpdatedThumbnail] = useState([product.thumbnail_url||""]);
-    const [updatedExtraImages, setUpdatedExtraImages] = useState(["", "", ""]);
+    const [updatedThumbnail, setUpdatedThumbnail] = useState(product.thumbnail_url);
+    const [updatedExtraImages, setUpdatedExtraImages] = useState(product.extra_images||[]);
     const [stock, setStock] = useState(product.stock);
     console.log("updating product", product)
     async function updateProduct(){
@@ -38,10 +39,19 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
         setIsEditing(false);
     }
    
-    
+    async function handleDeleteProduct(){
+        const data = await deleteProduct(product.id);
+        setIsEditing(false);
+        setter(true);
+    }
+
+    useEffect(()=>{
+        console.log("updated thumbnail", updatedThumbnail)
+        console.log("updated extra images", updatedExtraImages)
+    },[updatedThumbnail, updatedExtraImages])
     return <>
         {isEditing?
-        <form className="update-product-container">
+        <div className="update-product-container">
             <h2>Thumbnail</h2>
             <CustomInputFile images={updatedThumbnail} setImages={setUpdatedThumbnail}/>
             <h2>Extra Images</h2>
@@ -57,8 +67,8 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
                 <button className="update-cancel-button" onClick={()=>setIsEditing(!isEditing)}>Cancel</button>
                 
             </div>
-            <button className="update-delete-button" onClick={()=>deleteProduct(product.id)}>Delete Product</button>
-        </form>:
+            <button className="update-delete-button" onClick={handleDeleteProduct}>Delete Product</button>
+        </div>:
         <div className="dev-panel-product">
             
             <h2>{name}</h2>

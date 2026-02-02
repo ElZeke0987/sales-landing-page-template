@@ -1,6 +1,6 @@
 import Image from "next/image";
 import "./productCard.scss";
-import useFilterStore from "../../filter/base/filterStore";
+import useFilterStore from "@/stores/filterStore";
 import TypeItem from "../../typeItem/typeItem";
 import Link from "next/link";
 import { useProductIdStore } from "@/app/products/[id]/productStore";
@@ -29,8 +29,10 @@ export default function ProductCard({productObj}){
         }
    }
     return(
-        <article className="flex md:flex-row flex-col product-wh">
-            <Image src={productObj.thumbnail_url == null || productObj.thumbnail_url == "" ? defaultImage : productObj?.thumbnail_url||productObj?.imgList[0].imgUrl} width={200} height={200} alt={productObj.name||productObj.title}/>
+        <article className="flex md:flex-row flex-col product-wh overflow-hidden">
+            <div className="product-image-cont overflow-hidden">
+                <Image className="product-image" src={productObj.thumbnail_url == null || productObj.thumbnail_url == "" ? defaultImage : productObj?.thumbnail_url||productObj?.imgList[0].imgUrl} width={200} height={200} alt={productObj.name||productObj.title}/>
+            </div>
             <div className="product-card-info flex h-full w-full flex-col justify-center" onClick={handleProductCardClick}>
                 <Link href={`/products/${productObj.name_id}`} key={productObj.name_id}>
                     <div className="price ">${productObj.price} {productObj.currency||generalCurrency|| ""}</div>

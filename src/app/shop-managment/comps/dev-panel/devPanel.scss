@@ -52,15 +52,32 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: end;
         width: 100%;
         background-color: #212121;
-        overflow: scroll;
+        //overflow: auto;
+        z-index: 100;
+        gap: 1rem;
+        .name-input{
+            width: 80%;
+            padding: 0.5rem;
+            
+        }
+        .add-basic-fields{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            width: 80%;
+
+        }
+    }
+    .disabled{
+        opacity: 0.5;
+        cursor: not-allowed;
     }
     input{
-        width: 60%;
-        margin: 1rem;
-        padding: 0.5rem;
         border: none;
         border-radius: 5px;
         background-color: #ccc;
@@ -69,8 +86,6 @@
     }
     textarea{
         width: 80%;
-        margin-bottom: 1rem;
-        padding: 0.5rem;
         border: none;
         border-radius: 5px;
         background-color: #ccc;
@@ -80,7 +95,6 @@
    
     .dev-panel-add-product-buttons{
         
-        margin: 1rem 0;
         width: 100%;
         display: flex;
         justify-content: center;

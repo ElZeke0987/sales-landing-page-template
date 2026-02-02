@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import useFilterStore from "../base/filterStore"
-import { filterLists } from "../base/filterVars";
+import useFilterStore from "@/stores/filterStore"
+import { filterLists } from "@/stores/filterVars";
 import "./styles/filterMenu.scss";
 import { useOpenFilter } from "./buttonFilter";
 

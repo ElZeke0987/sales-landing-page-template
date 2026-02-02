@@ -1,21 +1,21 @@
 import TypeItem from "../../typeItem/typeItem";
-import useFilterStore from "../base/filterStore"
+import useFilterStore from "@/stores/filterStore"
 import { useEffect } from "react";
 import "./styles/filterList.scss";
-import { fetchCategories } from "../base/filterVars";
+import { fetchCategories } from "@/stores/filterVars";
 export default function FilterList(){
-    const {filters, setCategory} = useFilterStore();
-    
-    
-    useEffect(() => {
-        
-        console.log("FilterList: ", filters)
-       // fetchCategories(setCategory);
-       
-    }, []);
+    const {filters, setCategory}=useFilterStore();
+    useEffect(()=>{
+        console.log("now filters: ", filters)
+        const result = async () => {
+            const categories = await fetchCategories(setCategory)
+            setCategory(categories)
+        }
+        result()
+    },[])
    
     return(
-    <div className="flex filter-list">
+    <div className="flex filter-list w-full flex-wrap gap-2 justify-center">
     
         {filters?.category.map((catObj, i)=>{
                 return(

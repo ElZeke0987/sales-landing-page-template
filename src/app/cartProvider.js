@@ -9,7 +9,7 @@ export const useCart = ()=>useContext(CartContext);
 export function CartProvider({children}){
 
     const [cart, setCart]=useState([]);
-    console.log("rendering cart: ", cart)
+    // console.log("rendering cart: ", cart)
 
     useEffect(()=>{
         const savedCart = JSON.parse(localStorage.getItem('cart'));

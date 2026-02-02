@@ -44,7 +44,7 @@ export default function Product(){
         if(prodObj){
             
             let imageListToShow = [];
-            [{name: "catalog-logo",url: prodObj.thumbnail_url || ""},...(prodObj?.extraImages || ["", "", ""])].forEach((item, ind)=>{
+            [{id: 0,url: prodObj.thumbnail_url || ""},...(prodObj?.extraImages||[])].forEach((item, ind)=>{
                 const newItem = {
                     id: ind,
                     ...item
@@ -52,7 +52,7 @@ export default function Product(){
                 imageListToShow.push(newItem)
             })
 
-            setImgSel(defaultImages)
+            setImgSel({id: 0,url: prodObj.thumbnail_url || ""})
         }
     },[prodObj])
     if(!prodObj){
