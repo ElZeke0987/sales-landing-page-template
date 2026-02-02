@@ -34,7 +34,6 @@ class ProductService {
 
         
         const {supabase} = await authenticateAdmin();
-        console.log("testing product added in service: ",body);
         if(body.name&&typeof body.name === "string"){
             body.name_id = sanitizeSlug(body.name);
         }
@@ -46,17 +45,17 @@ class ProductService {
         resultProduct.thumbnail_url = thumbnail.secure_url;
         const extraImages = await this.uploadExtraImages(resultProduct.extra_images);
         resultProduct.extra_images = extraImages.map(extraImage=>extraImage.secure_url);
-        console.log("testing product added in service: ",resultProduct);
         const productAdded = await this.productRepository.addProduct(resultProduct, supabase);
         return { success: true, data: productAdded } as ProductServiceResponse;
     }
     async updateProduct(body: Product) {
         const {supabase} = await authenticateAdmin();
+
         const resultProduct = await this.validateBody(UpdateProductSchema,body);
+
         try{
             if(resultProduct.thumbnail_url){
                 const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
-                console.log("testing thumbnail uploaded in service: ",thumbnail);
                 resultProduct.thumbnail_url = thumbnail.secure_url;
             }
             resultProduct.extra_images?.map(async extraImage=>{
@@ -64,7 +63,6 @@ class ProductService {
                     return;
                 }
                 const extraImageResult = await this.uploadExtraImages([extraImage]);
-                console.log("testing extra image uploaded in service: ",extraImageResult);
                 resultProduct.extra_images = extraImageResult.map(extraImage=>extraImage.secure_url);
             })
         }catch(err){
@@ -89,7 +87,6 @@ class ProductService {
         }
     }
     private async uploadThumbnail(imageUrl: string){
-        console.log("testing thumbnail to upload in service: ",imageUrl.slice(0, 15));
         const result = await cloudinary.uploader.upload(imageUrl, {folder: "thumbnails"})
         return result;
     }

@@ -64,14 +64,14 @@ export default function AddProduct({categoryList, setter}){
     return <div className={`dev-panel-add-product`}>
         
         {isAdding&&<div className="dev-on-adding fixed top-0 left-0 right-0 bottom-0 z-50 flex">
-            <input className="w-full border border-gray-300 rounded name-input" title="Name" type="text" placeholder="Name" value={name} onChange={handleNameChange}/>
+            <input className="w-full border border-gray-300 rounded name-input" required title="Name" type="text" placeholder="Name" value={name} onChange={handleNameChange}/>
             <div className="add-basic-fields flex">
                 
-                <input className="w-full border border-gray-300 rounded" title="Price" type="number" placeholder="Price" value={price} onChange={handlePriceChange}/>
-                <input className="w-full border border-gray-300 rounded" title="Stock" type="number" placeholder="Stock" value={stock} onChange={handleStockChanges}/>
+                <input className="w-full border border-gray-300 rounded" required title="Price" type="number" placeholder="Price" value={price} onChange={handlePriceChange}/>
+                <input className="w-full border border-gray-300 rounded" required title="Stock" type="number" placeholder="Stock" value={stock} onChange={handleStockChanges}/>
             </div>
 
-            <textarea className="dev-panel-desc-textarea w-full" placeholder="Description" value={desc} onChange={handleDescChange}/>
+            <textarea className="dev-panel-desc-textarea w-full" required placeholder="Description" value={desc} onChange={handleDescChange}/>
             <select value={category} onChange={handleCategoryChange} className="dev-panel-select">
                 <option value="">-- Select Category --</option>
                 {categoryList.map((category) => (

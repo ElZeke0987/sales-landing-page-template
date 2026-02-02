@@ -26,13 +26,13 @@ export default function UpdateItem({product, setIsEditing, isEditing, setter}){
             },
             body: JSON.stringify({
                 name,
-                price,
-                stock,
+                price: parseInt(price),
+                stock: parseInt(stock),
                 external_id: product.external_id,
                 id: product.id,
                 description: desc,
-                thumbnail_url: updatedThumbnail[0]?.url||"",
-                extra_images: updatedExtraImages||[],
+                thumbnail_url: updatedThumbnail[0]?.url,
+                extra_images: updatedExtraImages,
             }),
         }); 
         const data = await response.json();
