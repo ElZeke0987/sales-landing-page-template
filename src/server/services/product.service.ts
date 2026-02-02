@@ -34,14 +34,19 @@ class ProductService {
 
         
         const {supabase} = await authenticateAdmin();
+        console.log("testing product added in service: ",body);
+        if(body.name&&typeof body.name === "string"){
+            body.name_id = sanitizeSlug(body.name);
+        }
         const resultProduct = await this.validateBody(AddProductSchema,body);
 
         
-        resultProduct.name_id = sanitizeSlug(resultProduct.name);
+        
         const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
         resultProduct.thumbnail_url = thumbnail.secure_url;
         const extraImages = await this.uploadExtraImages(resultProduct.extra_images);
         resultProduct.extra_images = extraImages.map(extraImage=>extraImage.secure_url);
+        console.log("testing product added in service: ",resultProduct);
         const productAdded = await this.productRepository.addProduct(resultProduct, supabase);
         return { success: true, data: productAdded } as ProductServiceResponse;
     }

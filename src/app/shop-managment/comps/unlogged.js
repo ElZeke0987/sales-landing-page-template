@@ -28,7 +28,7 @@ export default function Login() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 panel-login-form">
       <input
         type="email"
         value={email}
