@@ -57,12 +57,17 @@ export default function AddProduct({categoryList}){
         setIsAdding(false);
     }
     
-    return <div className="dev-panel-add-product">
+    return <div className={`dev-panel-add-product `}>
         
-        {isAdding&&<>
-            <input type="text" placeholder="Name" value={name} onChange={handleNameChange}/>
-            <input type="number" placeholder="Price" value={price} onChange={handlePriceChange}/>
-            <textarea className="dev-panel-desc-textarea" placeholder="Description" value={desc} onChange={handleDescChange}/>
+        {isAdding&&<div className="dev-on-adding fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center">
+            <div className="add-basic-fields flex">
+                <input type="text" placeholder="Name" value={name} onChange={handleNameChange}/>
+                <input type="number" placeholder="Price" value={price} onChange={handlePriceChange}/>
+                <input type="number" placeholder="Stock" value={stock} onChange={handleStockChanges}/>
+            </div>
+
+            <textarea className="dev-panel-desc-textarea w-full" placeholder="Description" value={desc} onChange={handleDescChange}/>
+
             <div className="add-product-logo">
                 <p>Logo / Preview</p>
                 <CustomInputFile images={logoImages} setImages={setLogoImages}/>
@@ -81,19 +86,17 @@ export default function AddProduct({categoryList}){
                     </option>
                 ))}
             </select>
-            <input type="number" placeholder="Stock" value={stock} onChange={handleStockChanges}/>
             
+            <div className="dev-panel-add-product-buttons">
+                <button className="dev-panel-button cancel-button" onClick={()=>setIsAdding(!isAdding)}>Cancel</button>
+                <button className="dev-panel-button" onClick={addProduct}>Add</button>
+            </div>
             
-        </>}
+        </div>}
         <div className="dev-panel-add-product-buttons">
-            {isAdding?
-            <>
-            <button className="dev-panel-button cancel-button" onClick={()=>setIsAdding(!isAdding)}>Cancel</button>
-            <button className="dev-panel-button" onClick={addProduct}>Add</button>
-            
-            </>:
+
             <button className="dev-panel-button" onClick={()=>setIsAdding(!isAdding)}>Add Product</button>
-            }
+            
         </div>
     </div>;
 }

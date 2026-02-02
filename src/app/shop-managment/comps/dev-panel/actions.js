@@ -32,7 +32,7 @@ export default function Actions() {
     
     
 
-    return <div className="dev-panel-actions">
+    return <div className="dev-panel-actions md-w-none w-full">
         <div className="dev-panel-actions-buttons">
             <button onClick={()=>setMenu("products")} className="dev-panel-button">List Products</button>
             <button onClick={()=>setMenu("filters")} className="dev-panel-button">List Filters</button>
