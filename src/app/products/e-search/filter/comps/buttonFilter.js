@@ -42,7 +42,7 @@ export default function FilterButton(){
                         </g>
                     </svg>
                 </div>
-                <button  className="button-filter-txt">Show filters<span></span></button>
+                <button  className="button-filter-txt">Categorias<span></span></button>
             </div>
         </div>
         
