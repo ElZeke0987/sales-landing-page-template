@@ -61,7 +61,7 @@ export default function Product(){
 
     return(
         <>
-            <div className="w-full flex flex-col md:flex-row justify-center items-center product-section" id="product-section">
+            <div className="w-full flex flex-col md:flex-row justify-center items-center product-section min-h-screen" id="product-section">
                 <div className="flex product-principal flex-col lg:flex-row">
                     <ProductVisuals objOpt={prodObj} imgSel={imgSel} setImgSel={setImgSel}/>
                     <ProductAside objOpt={prodObj}/> 
