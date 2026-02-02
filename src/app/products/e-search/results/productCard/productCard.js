@@ -5,6 +5,7 @@ import TypeItem from "../../typeItem/typeItem";
 import Link from "next/link";
 import { useProductIdStore } from "@/app/products/[id]/productStore";
 import { useEffect, useState } from "react";
+import { generalCurrency } from "@/global-vars";
 
 export default function ProductCard({productObj}){
     const { addCategory, filters }=useFilterStore();
@@ -32,7 +33,7 @@ export default function ProductCard({productObj}){
             <Image src={productObj.thumbnail_url == null || productObj.thumbnail_url == "" ? defaultImage : productObj?.thumbnail_url||productObj?.imgList[0].imgUrl} width={200} height={200} alt={productObj.name||productObj.title}/>
             <div className="product-card-info flex h-full w-full flex-col justify-center" onClick={handleProductCardClick}>
                 <Link href={`/products/${productObj.name_id}`} key={productObj.name_id}>
-                    <div className="price ">${productObj.price} USD</div>
+                    <div className="price ">${productObj.price} {productObj.currency||generalCurrency|| ""}</div>
                     <div className="title counter-color">{productObj.name||productObj.title}</div>
                     <div className="desc counter-color">{productObj.description||productObj.desc}</div>
                 </Link>

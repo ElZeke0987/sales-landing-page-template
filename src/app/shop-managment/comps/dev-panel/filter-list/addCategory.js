@@ -31,19 +31,16 @@ export default function AddCategory() {
     
     return <div className="dev-panel-add-product">
         
-        {isAdding&&<>
+        {isAdding&&<div className="dev-on-adding fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center">
             <input type="text" placeholder="Title text" value={title} onChange={handleTitleChange}/>
             <input type="text" placeholder="Value for category (No spaces)" value={val} onChange={handleValChange}/>
-        </>}
+            <div className="dev-panel-add-product-buttons">
+                <button className="dev-panel-button cancel-button" onClick={()=>setIsAdding(!isAdding)}>Cancel</button>
+                <button className="dev-panel-button" onClick={addFilter}>Add</button>
+            </div>
+        </div>}
         <div className="dev-panel-add-product-buttons">
-            {isAdding?
-            <>
-            <button className="dev-panel-button cancel-button" onClick={()=>setIsAdding(!isAdding)}>Cancel</button>
-            <button className="dev-panel-button" onClick={addFilter}>Add</button>
-            
-            </>:
             <button className="dev-panel-button" onClick={()=>setIsAdding(!isAdding)}>Add Filter</button>
-            }
         </div>
     </div>;
 }

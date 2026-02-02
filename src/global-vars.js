@@ -9,6 +9,8 @@ export const delivery=0;//USD o $
 
 export const heroBG="";
 
+export const generalCurrency="ARS";
+
 export const infoHero=[
     {
         principalTitle: "Best durable-economic relation headphones",

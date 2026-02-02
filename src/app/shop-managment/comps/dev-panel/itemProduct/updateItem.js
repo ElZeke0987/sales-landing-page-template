@@ -10,6 +10,8 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
     const [desc, setDesc] = useState(product.description);
     const [updatedThumbnail, setUpdatedThumbnail] = useState([product.thumbnail_url||""]);
     const [updatedExtraImages, setUpdatedExtraImages] = useState(["", "", ""]);
+    const [stock, setStock] = useState(product.stock);
+    console.log("updating product", product)
     async function updateProduct(){
         setIsEditing(false);
         if(!name&&!price){
@@ -24,6 +26,7 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
             body: JSON.stringify({
                 name,
                 price,
+                stock,
                 external_id: product.external_id,
                 id: product.id,
                 description: desc,
@@ -38,24 +41,29 @@ export default function UpdateItem({product, setIsEditing, isEditing}){
     
     return <>
         {isEditing?
-        <div className="update-product-container">
+        <form className="update-product-container">
             <h2>Thumbnail</h2>
             <CustomInputFile images={updatedThumbnail} setImages={setUpdatedThumbnail}/>
             <h2>Extra Images</h2>
             <CustomInputFile images={updatedExtraImages} setImages={setUpdatedExtraImages} multipleImgs={true}/>
-            <div className="dev-panel-update-product">
-                <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/>
-                
-                {product.price?<input type="number" value={price} onChange={(e)=>setPrice(e.target.value)}/>:<div>Sin precio local</div>}
+            <div className="dev-panel-update-product ">
+                <input name="product-name" type="text" value={name} onChange={(e)=>setName(e.target.value)} autoComplete="off"/>
+                <input name="product-price"  type="number" value={price} onChange={(e)=>setPrice(e.target.value)} autoComplete="off"/>
+                <input name="product-stock" type="number" value={stock} onChange={(e)=>setStock(e.target.value)} autoComplete="off"/>
+            </div>
+            <textarea name="product-description" value={desc} onChange={(e)=>setDesc(e.target.value)} autoComplete="off"></textarea>
+            <div className="update-product-buttons">
+                <button className="update-save-button" onClick={updateProduct}>Save</button>
+                <button className="update-cancel-button" onClick={()=>setIsEditing(!isEditing)}>Cancel</button>
                 
             </div>
-            <textarea value={desc} onChange={(e)=>setDesc(e.target.value)}></textarea>
-            <button className="update-save-button" onClick={updateProduct}>Save</button>
-        </div>:
+            <button className="update-delete-button" onClick={()=>deleteProduct(product.id)}>Delete Product</button>
+        </form>:
         <div className="dev-panel-product">
             
             <h2>{name}</h2>
-            <p>{price}</p>
+            <p>$ {price} | Stock: {stock}</p>
+            
         </div>
         }
     </>

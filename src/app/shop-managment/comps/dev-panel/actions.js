@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import ItemProduct from "./itemProduct/item-product";
 import AddProduct from "./itemProduct/addProduct";
-import FilterList from "./filter-list/FilterList";
 import { newProductList } from "@/globalMods/productBase";
 import {fetchCategories} from "@/globalMods/categoryBase";
-
+import AddCategory from "./filter-list/addCategory";
+import ItemFilter from "./filter-list/ItemFilter";
 
 export default function Actions() {
     const [products, setProducts] = useState([]);
@@ -38,13 +38,16 @@ export default function Actions() {
             <button onClick={()=>setMenu("filters")} className="dev-panel-button">List Filters</button>
             <div className="dev-panel-add">
                 {(menu==="products")&&<AddProduct categoryList={filters}/>}
-                {(menu==="filters")&&<FilterList filters={filters}/>}
+                {(menu==="filters")&&<AddCategory/>}
             </div>
         </div>
         
         <ul className="dev-panel-products">
             {(products!==undefined&&products.length>0&&menu==="products")&&products.map((product)=>{
                 return <ItemProduct key={product.id||product.external_id} product={product}/>
+            })}
+            {(filters!==undefined&&filters.length>0&&menu==="filters")&&filters.map((filter)=>{
+                return <ItemFilter key={filter.id} filter={filter}/>
             })}
         </ul>
         
