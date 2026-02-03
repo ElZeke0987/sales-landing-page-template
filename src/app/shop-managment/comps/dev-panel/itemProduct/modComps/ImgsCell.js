@@ -24,8 +24,9 @@ export function SingleImgCell({images,setImages}){
     useEffect(()=>{
         console.log("images from single img cell",images)
     },[images])
+    console.log("images from single img cell",images)
     return <div className="relative flex justify-center items-center" onMouseEnter={()=>setHoveringPreviewImage(true)} onMouseLeave={()=>setHoveringPreviewImage(false)}>
-                <img className="preview-add-product-img" src={images} ></img>
+                <img className="preview-add-product-img" src={images.preview|| images} ></img>
                 {hoveringPreviewImage&&
                 <p className="absolute top-0 left-0 z-10 bg-black text-white w-full h-full flex justify-end items-start p-1 on-hover-back">
                     <button className="bg-red-500 text-white p-1 rounded" onClick={()=>setImages([])}>X</button>

@@ -41,7 +41,7 @@ export default function Results(){
                 
                 filteredProducts?.map((prd) => (
                     <ProductCard
-                        key={prd.id}        // 🔥 key estable
+                        key={prd.id}    
                         productObj={prd}
                     />
                 ))

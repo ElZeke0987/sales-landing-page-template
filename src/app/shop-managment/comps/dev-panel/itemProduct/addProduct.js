@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import CustomInputFile from "./modComps/customInputFile";
 import { fetchCategories } from "@/globalMods/categoryBase";
+import { uploadImageToCloudinary } from "./modComps/uploadImage";
 
 export default function AddProduct({categoryList, setter}){
     const [name, setName] = useState('');
@@ -14,6 +15,10 @@ export default function AddProduct({categoryList, setter}){
     const [extraImages, setExtraImages] = useState([]);
     const [stock, setStock] = useState(0);
     const [isSending, setIsSending] = useState(false);
+
+    useEffect(()=>{
+        console.log("logoImages",logoImages)
+    },[logoImages])
 
     function handleStockChanges(event){
         setStock(event.target.value);
@@ -36,13 +41,15 @@ export default function AddProduct({categoryList, setter}){
         if(isSending){return}
         const searchCategoryId = categoryList.find((categoryToSearch) => categoryToSearch.name_id === category);
         console.log("searchCategoryId", searchCategoryId, categoryList)
+        const logoUploaded = await uploadImageToCloudinary(logoImages);
+        console.log("logoUploaded", logoUploaded)
         const product = {
                 name,
                 price: parseInt(price),
                 description: desc,
                 external_id,
                 category_id: parseInt(searchCategoryId.id),
-                thumbnail_url: logoImages,
+                thumbnail_url: logoUploaded.secure_url,
                 extra_images: extraImages,
                 stock: parseInt(stock),
                 outstanding: false

@@ -41,10 +41,10 @@ class ProductService {
 
         
         
-        const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
-        resultProduct.thumbnail_url = thumbnail.secure_url;
-        const extraImages = await this.uploadExtraImages(resultProduct.extra_images);
-        resultProduct.extra_images = extraImages.map(extraImage=>extraImage.secure_url);
+        // const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
+        // resultProduct.thumbnail_url = thumbnail.secure_url;
+        // const extraImages = await this.uploadExtraImages(resultProduct.extra_images);
+        // resultProduct.extra_images = extraImages.map(extraImage=>extraImage.secure_url);
         const productAdded = await this.productRepository.addProduct(resultProduct, supabase);
         return { success: true, data: productAdded } as ProductServiceResponse;
     }
@@ -54,17 +54,17 @@ class ProductService {
         const resultProduct = await this.validateBody(UpdateProductSchema,body);
 
         try{
-            if(resultProduct.thumbnail_url){
-                const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
-                resultProduct.thumbnail_url = thumbnail.secure_url;
-            }
-            resultProduct.extra_images?.map(async extraImage=>{
-                if(!extraImage){
-                    return;
-                }
-                const extraImageResult = await this.uploadExtraImages([extraImage]);
-                resultProduct.extra_images = extraImageResult.map(extraImage=>extraImage.secure_url);
-            })
+            // if(resultProduct.thumbnail_url){
+            //     const thumbnail = await this.uploadThumbnail(resultProduct.thumbnail_url);
+            //     resultProduct.thumbnail_url = thumbnail.secure_url;
+            // }
+            // resultProduct.extra_images?.map(async extraImage=>{
+            //     if(!extraImage){
+            //         return;
+            //     }
+            //     const extraImageResult = await this.uploadExtraImages([extraImage]);
+            //     resultProduct.extra_images = extraImageResult.map(extraImage=>extraImage.secure_url);
+            // })
         }catch(err){
             console.log("ERROR UPLOADING IMAGES TO CLOUDINARY: ",err);
             throw err;
