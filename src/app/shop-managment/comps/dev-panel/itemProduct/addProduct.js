@@ -41,8 +41,23 @@ export default function AddProduct({categoryList, setter}){
         if(isSending){return}
         const searchCategoryId = categoryList.find((categoryToSearch) => categoryToSearch.name_id === category);
         console.log("searchCategoryId", searchCategoryId, categoryList)
-        const logoUploaded = await uploadImageToCloudinary(logoImages);
-        console.log("logoUploaded", logoUploaded)
+        let logoUploaded;
+        try{
+            logoUploaded = await uploadImageToCloudinary(logoImages);
+            if(!logoUploaded){
+                    alert("Logo not uploaded");
+                    return;
+                }
+            if(!extraImages){
+                alert("Extra images not uploaded");
+                return;
+            }
+            console.log("logoUploaded", logoUploaded)
+        }catch(error){
+            console.log("error", error)
+            alert("Error uploading images");
+            return;
+        }
         const product = {
                 name,
                 price: parseInt(price),
