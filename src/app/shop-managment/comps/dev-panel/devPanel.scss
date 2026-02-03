@@ -27,6 +27,9 @@
         color: black;
         cursor: pointer;
     }
+    .dev-panel-button-active {
+        background-color: #f44336;
+    }
     
 }
 
@@ -192,6 +195,7 @@
 .update-product-container{
     display: flex;
     flex-direction: column;
+    
     textarea{
         color: black;
     }

@@ -32,8 +32,8 @@ export default function Actions() {
     
     
 
-    return <div className="dev-panel-actions md-w-none w-full">
-        <div className="dev-panel-actions-buttons">
+    return <div className="dev-panel-actions w-full">
+        <div className="dev-panel-actions-buttons flex-wrap">
             <button onClick={()=>setMenu("products")} className="dev-panel-button">List Products</button>
             <button onClick={()=>setMenu("filters")} className="dev-panel-button">List Filters</button>
             <div className="dev-panel-add">

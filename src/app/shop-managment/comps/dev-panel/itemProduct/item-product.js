@@ -11,8 +11,6 @@ export default function ItemProduct({product}) {
     }
     return <li className="item-product"> 
         <UpdateItem product={product} setIsEditing={setIsEditing} isEditing={isEditing} setter={setIsDeleted}/>
-        <div>
-            <button onClick={()=>setIsEditing(!isEditing)} className={"dev-panel-button "+isEditing?"dev-panel-button-active":""}>{isEditing?"Cancel":"Update"}</button>
-        </div>
+        <button onClick={()=>setIsEditing(!isEditing)} className={`dev-panel-button ${isEditing?"dev-panel-button-active":""}`}>{isEditing?"X":"Update"}</button>
     </li>;
 }
