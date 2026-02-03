@@ -17,13 +17,17 @@ export default function CustomInputFile({images,setImages, multipleImgs, default
         const previews = files.map((file, i) => ({
             id: i,
             name: file.name,
-            file, // 👈 guardamos el File REAL
-            preview: URL.createObjectURL(file) // 👈 solo para mostrar
+            file, // guardamos el File REAL
+            preview: URL.createObjectURL(file) // solo para mostrar
         }))
         // console.log("previews",previews)
-        multipleImgs
-            ? setImages(prev => [...prev, ...previews])
-            : setImages(previews[0]);
+        setImages(prev => {
+            if (!multipleImgs && prev?.preview) {
+            URL.revokeObjectURL(prev.preview); // cleanup
+            }
+
+            return multipleImgs ? [...prev, ...previews] : previews[0];
+        });
 
     }
 
