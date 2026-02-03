@@ -42,6 +42,27 @@ export default function AddProduct({categoryList, setter}){
         const searchCategoryId = categoryList.find((categoryToSearch) => categoryToSearch.name_id === category);
         console.log("searchCategoryId", searchCategoryId, categoryList)
         let logoUploaded;
+
+        if(!logoImages){
+            alert("Logo not uploaded");
+            return;
+        }
+        if(!searchCategoryId){
+            alert("Category not found");
+            return;
+        }
+        if(!name||name===""){
+            alert("Name not found");
+            return;
+        }
+        if(!price){
+            alert("Price not found");
+            return;
+        }
+        if(!desc||desc===""){
+            alert("Description not found");
+            return;
+        }
         try{
             console.log("logoImages", logoImages.file)
             logoUploaded = await uploadImageToCloudinary(logoImages.file);
@@ -81,6 +102,12 @@ export default function AddProduct({categoryList, setter}){
         const data = await response.json();
         setIsAdding(false);
         setIsSending(false);
+        setName("");
+        setPrice(0);
+        setDesc("");
+        setStock(0);
+        setLogoImages(null);
+        setExtraImages(null);
         setter(products=>[...products, product]);
     }
     

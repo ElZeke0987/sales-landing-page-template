@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function MultipleImgsCell({images,setImages}){
     const [hoveringPreviewImage, setHoveringPreviewImage] = useState(null);
-
+    console.log("images from multiple imgs cell",images)
 
     return <div className="flex">
                 {images.map((image,index)=>{
@@ -31,7 +31,7 @@ export function SingleImgCell({images,setImages}){
     // console.log("images from single img cell",images)
     // console.log("typeof images",typeof images)
 
-    return <div className="relative flex justify-center items-center" onMouseEnter={()=>setHoveringPreviewImage(true)} onMouseLeave={()=>setHoveringPreviewImage(false)}>
+    return <div className="relative flex justify-center items-center" onMouseEnter={()=>setHoveringPreviewImage(true)} onClick={()=>setHoveringPreviewImage(!hoveringPreviewImage)} onMouseLeave={()=>setHoveringPreviewImage(false)}>
                 {((typeof images=='object'||typeof images=='string')&&(typeof images!='array'&&images.preview))&&
                 <Image className="preview-add-product-img" 
                 src={images.preview}

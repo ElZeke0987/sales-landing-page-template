@@ -55,7 +55,7 @@ export default function UpdateItem({product, setIsEditing, isEditing, setter}){
             <h2>Thumbnail</h2>
             <CustomInputFile images={{preview: updatedThumbnail}} setImages={setUpdatedThumbnail}/>
             <h2>Extra Images</h2>
-            <CustomInputFile images={updatedExtraImages.map((img)=>({preview: img}))} setImages={setUpdatedExtraImages} multipleImgs={true}/>
+            <CustomInputFile images={updatedExtraImages} setImages={setUpdatedExtraImages} multipleImgs={true}/>
             <div className="dev-panel-update-product ">
                 <input name="product-name" type="text" value={name} onChange={(e)=>setName(e.target.value)} autoComplete="off"/>
                 <input name="product-price"  type="number" value={price} onChange={(e)=>setPrice(e.target.value)} autoComplete="off"/>

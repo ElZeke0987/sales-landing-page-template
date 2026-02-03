@@ -23,7 +23,7 @@ export default function Filters(){
         result()
     },[])
     return(
-        <section className="">
+        <section className="h-full ">
             <div className="relative relative-field ">
                  <FilterButton/>
                 
