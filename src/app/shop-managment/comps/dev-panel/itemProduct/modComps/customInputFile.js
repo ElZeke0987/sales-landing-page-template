@@ -4,23 +4,23 @@ import {MultipleImgsCell, SingleImgCell} from "./ImgsCell";
 
 
 
-export default function CustomInputFile({images,setImages, multipleImgs}) {
+export default function CustomInputFile({images,setImages, multipleImgs, defaultImage}) {
     const fileInputRef = useRef(null);
     
     useEffect(()=>{
-        console.log("images in custom input file",images)
+        // console.log("images in custom input file",images)
 
     },[images])
     function handleImageChange(e){  
         const files = Array.from(e.target.files);
-        console.log("files & multiple Images",files,multipleImgs)
+        // console.log("files & multiple Images",files,multipleImgs)
         const previews = files.map((file, i) => ({
             id: i,
             name: file.name,
             file, // 👈 guardamos el File REAL
             preview: URL.createObjectURL(file) // 👈 solo para mostrar
         }))
-        console.log("previews",previews)
+        // console.log("previews",previews)
         multipleImgs
             ? setImages(prev => [...prev, ...previews])
             : setImages(previews[0]);

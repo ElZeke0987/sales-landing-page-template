@@ -12,7 +12,7 @@ export default function UpdateItem({product, setIsEditing, isEditing, setter}){
     const [updatedThumbnail, setUpdatedThumbnail] = useState(product.thumbnail_url);
     const [updatedExtraImages, setUpdatedExtraImages] = useState(product.extra_images||[]);
     const [stock, setStock] = useState(product.stock);
-    console.log("updating product", product)
+    // console.log("updating product", product)
     async function updateProduct(){
         setIsEditing(false);
         if(!name&&!price){
@@ -53,9 +53,9 @@ export default function UpdateItem({product, setIsEditing, isEditing, setter}){
         {isEditing?
         <div className="update-product-container">
             <h2>Thumbnail</h2>
-            <CustomInputFile images={updatedThumbnail} setImages={setUpdatedThumbnail}/>
+            <CustomInputFile images={{preview: updatedThumbnail}} setImages={setUpdatedThumbnail}/>
             <h2>Extra Images</h2>
-            <CustomInputFile images={updatedExtraImages} setImages={setUpdatedExtraImages} multipleImgs={true}/>
+            <CustomInputFile images={updatedExtraImages.map((img)=>({preview: img}))} setImages={setUpdatedExtraImages} multipleImgs={true}/>
             <div className="dev-panel-update-product ">
                 <input name="product-name" type="text" value={name} onChange={(e)=>setName(e.target.value)} autoComplete="off"/>
                 <input name="product-price"  type="number" value={price} onChange={(e)=>setPrice(e.target.value)} autoComplete="off"/>

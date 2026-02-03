@@ -43,7 +43,8 @@ export default function AddProduct({categoryList, setter}){
         console.log("searchCategoryId", searchCategoryId, categoryList)
         let logoUploaded;
         try{
-            logoUploaded = await uploadImageToCloudinary(logoImages);
+            console.log("logoImages", logoImages.file)
+            logoUploaded = await uploadImageToCloudinary(logoImages.file);
             if(!logoUploaded){
                     alert("Logo not uploaded");
                     return;

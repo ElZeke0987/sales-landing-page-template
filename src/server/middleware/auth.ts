@@ -7,7 +7,7 @@ export async function authenticateAdmin(){
 
     const cookiesStore = await cookies();
     const token = JSON.parse(cookiesStore.get("dev_auth")?.value || "{}").token;
-    console.log("THIS IS THE TOKEN: ", token)
+    //console.log("THIS IS THE TOKEN: ", token)
     if (!token) {
         throw new Error('Unauthorized: no JWT');
     }
@@ -27,7 +27,7 @@ export async function authenticateAdmin(){
 
     // Obtener info del usuario autenticado
     const { data: { user }, error } = await supabase.auth.getUser();
-    console.log("getting user: ", await supabase.auth.getUser());
+    //console.log("getting user: ", await supabase.auth.getUser());
     if (error || !user) throw new Error('Unauthorized: JWT inválido');
 
     // Verificar rol usando tu tabla admins

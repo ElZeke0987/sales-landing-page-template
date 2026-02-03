@@ -30,8 +30,8 @@ class CloudinaryService {
             const signature = cloudinary.utils.api_sign_request(
                 {
                     timestamp,
-                    folder: "uploads", // cambiá esto si querés
-                    allowed_formats: "webp,jpg,jpeg,png", // cambiá esto si querés
+                    folder: "thumbnails", // cambiá esto si querés
+                    // allowed_formats: "webp,jpg,jpeg,png", // cambiá esto si querés
                 },
                 this.apiSecret
             );
